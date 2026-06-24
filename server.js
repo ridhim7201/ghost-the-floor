@@ -16,7 +16,8 @@ const rooms = {};
 io.on('connection', (socket) => {
 
   // Player creates a room
-  socket.on('create_room', ({ code, nick }) => {
+  socket.on('create_room', ({ nick }) => {
+    const code = Math.random().toString(36).substring(2,6).toUpperCase();
     rooms[code] = {
       code,
       players: [{ id: socket.id, nick, charId: null, locked: false, color: '#F5C842', isHost: true }],
@@ -51,7 +52,6 @@ io.on('connection', (socket) => {
     if (!room) return;
     const player = room.players.find(p => p.id === socket.id);
     if (!player) return;
-    // Check not taken
     const taken = room.players.find(p => p.id !== socket.id && p.charId === charId);
     if (taken) { socket.emit('char_taken', charId); return; }
     player.charId = charId;
@@ -90,7 +90,7 @@ io.on('connection', (socket) => {
     io.to(socket.roomCode).emit('loot_dropoff', { id: socket.id, amount });
   });
 
-  // Confrontation — broadcast to whole room so others see
+  // Confrontation
   socket.on('confrontation_start', () => {
     socket.to(socket.roomCode).emit('teammate_confronted', { id: socket.id });
   });
@@ -127,7 +127,6 @@ io.on('connection', (socket) => {
     if (rooms[code].players.length === 0) {
       delete rooms[code];
     } else {
-      // Pass host to next player if host left
       if (!rooms[code].players.find(p => p.isHost)) {
         rooms[code].players[0].isHost = true;
       }
