@@ -18,7 +18,7 @@ body{background:var(--navy);color:var(--offwhite);font-family:'Barlow',sans-seri
 .screen{display:none;min-height:100vh;flex-direction:column;position:fixed;inset:0;z-index:1}
 .screen.active{display:flex}
 
-/* ══ HOME ══ */
+/* HOME */
 #home{align-items:center;justify-content:center;overflow:hidden;background:var(--navy)}
 .bg-grid{position:absolute;inset:0;background-image:linear-gradient(var(--border) 1px,transparent 1px),linear-gradient(90deg,var(--border) 1px,transparent 1px);background-size:40px 40px;opacity:.25;pointer-events:none}
 .home-inner{position:relative;z-index:1;text-align:center;padding:2rem}
@@ -37,7 +37,10 @@ body{background:var(--navy);color:var(--offwhite);font-family:'Barlow',sans-seri
 .corner.tl{top:24px;left:24px;border-width:2px 0 0 2px}.corner.tr{top:24px;right:24px;border-width:2px 2px 0 0}
 .corner.bl{bottom:24px;left:24px;border-width:0 0 2px 2px}.corner.br{bottom:24px;right:24px;border-width:0 2px 2px 0}
 
-/* ══ JOIN ══ */
+/* NICK SCREEN */
+#nick-screen{align-items:center;justify-content:center;padding:2rem;background:var(--navy)}
+
+/* JOIN */
 #join{align-items:center;justify-content:center;padding:2rem;background:var(--navy)}
 .panel{background:var(--navy2);border:1px solid var(--border);padding:2.5rem;width:100%;max-width:400px}
 .panel-title{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:28px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);margin-bottom:.2rem}
@@ -49,7 +52,7 @@ body{background:var(--navy);color:var(--offwhite);font-family:'Barlow',sans-seri
 .back-link{background:none;border:none;color:var(--muted);font-size:12px;letter-spacing:3px;text-transform:uppercase;cursor:pointer;padding:14px 0 0;font-family:'Barlow',sans-serif;display:block;text-align:center}
 .back-link:hover{color:var(--offwhite)}
 
-/* ══ LOBBY ══ */
+/* LOBBY */
 #lobby{padding:0;overflow:hidden;background:var(--navy)}
 .lobby-header{background:var(--navy2);border-bottom:1px solid var(--border);padding:.85rem 1.5rem;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:.75rem;flex-shrink:0}
 .room-code-area{display:flex;align-items:center;gap:1.25rem;flex-wrap:wrap}
@@ -96,7 +99,7 @@ body{background:var(--navy);color:var(--offwhite);font-family:'Barlow',sans-seri
 .start-btn:not(:disabled):hover{background:var(--gold2)}
 .ready-txt{font-size:10px;color:var(--muted);text-align:center;margin-top:7px;letter-spacing:1px}
 
-/* ══ CHAR MODAL ══ */
+/* CHAR MODAL */
 .modal-bg{position:fixed;inset:0;background:rgba(0,0,0,.92);z-index:200;display:none;align-items:center;justify-content:center;padding:1rem}
 .modal-bg.open{display:flex}
 .modal{background:var(--navy2);border:1px solid var(--border);padding:1.75rem;max-width:320px;width:100%;max-height:90vh;overflow-y:auto}
@@ -118,7 +121,7 @@ body{background:var(--navy);color:var(--offwhite);font-family:'Barlow',sans-seri
 .btn-confirm{background:var(--gold);color:var(--navy);font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:15px;letter-spacing:2px;text-transform:uppercase;border:none;padding:11px;cursor:pointer}
 .btn-confirm:hover{background:var(--gold2)}
 
-/* ══ GAME SCREEN ══ */
+/* GAME SCREEN */
 #game{background:var(--navy);overflow:hidden}
 .game-hud{background:var(--navy2);border-bottom:1px solid var(--border);padding:.55rem 1rem;display:flex;align-items:center;justify-content:space-between;flex-shrink:0;z-index:10;gap:1rem}
 .hud-timer{font-family:'Share Tech Mono',monospace;font-size:30px;color:var(--gold);letter-spacing:4px;min-width:75px;line-height:1}
@@ -176,11 +179,14 @@ canvas#mc{display:block}
 .act-icon{font-size:22px;line-height:1}
 .progress-ring{position:absolute;inset:-3px;border-radius:50%;background:conic-gradient(var(--gold) 0%, transparent 0%);opacity:0;transition:opacity .1s}
 .act-btn.progressing .progress-ring{opacity:1}
-
 .pwr-btn{position:absolute;bottom:108px;right:26px;width:46px;height:46px;border-radius:50%;background:rgba(28,32,64,.9);border:2px solid var(--gold2);display:flex;align-items:center;justify-content:center;z-index:20;cursor:pointer;font-size:18px;touch-action:manipulation}
 .pwr-btn.used{border-color:var(--border);opacity:.4;cursor:not-allowed}
 
-/* ══ OVERLAYS ══ */
+/* OVERDRIVE INDICATOR */
+.overdrive-bar{position:absolute;top:44px;left:50%;transform:translateX(-50%);background:rgba(255,179,0,.15);border:1px solid #FFB300;padding:4px 12px;font-size:10px;letter-spacing:2px;text-transform:uppercase;color:#FFB300;z-index:12;display:none;white-space:nowrap}
+.overdrive-bar.active{display:block}
+
+/* OVERLAYS */
 /* CONFRONTATION */
 .cf-overlay{position:fixed;inset:0;background:rgba(0,0,0,.96);z-index:300;display:none;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:2rem}
 .cf-overlay.open{display:flex}
@@ -218,7 +224,7 @@ canvas#mc{display:block}
 .dark-overlay.on{opacity:1}
 
 /* ENDGAME */
-.end-overlay{position:fixed;inset:0;background:rgba(0,0,0,.97);z-index:500;display:none;flex-direction:column;align-items:center;justify-content:center;padding:2rem;text-align:center}
+.end-overlay{position:fixed;inset:0;background:rgba(0,0,0,.97);z-index:500;display:none;flex-direction:column;align-items:center;justify-content:center;padding:2rem;text-align:center;overflow-y:auto}
 .end-overlay.open{display:flex}
 .end-icon{font-size:68px;margin-bottom:.8rem}
 .end-title{font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:clamp(36px,9vw,68px);letter-spacing:4px;text-transform:uppercase;margin-bottom:.4rem}
@@ -239,18 +245,29 @@ canvas#mc{display:block}
 .notif.show{opacity:1}
 .notif.alert{border-left-color:var(--crimson)}
 
+/* TEAMMATE SPRITES */
+.teammate-sprite{position:absolute;pointer-events:none;z-index:8;transition:left .1s,top .1s}
+
 /* SHAKE */
 @keyframes shake{0%,100%{transform:translateX(0)}20%{transform:translateX(-6px)}40%{transform:translateX(6px)}60%{transform:translateX(-4px)}80%{transform:translateX(4px)}}
 .shaking{animation:shake .35s ease}
+
+/* CONNECTION STATUS */
+.conn-status{position:fixed;bottom:8px;left:8px;font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--muted);z-index:999;font-family:'Share Tech Mono',monospace}
+.conn-status.connected{color:var(--teal)}
+.conn-status.disconnected{color:var(--crimson)}
 </style>
 <script src="/socket.io/socket.io.js"></script>
 </head>
 <body>
 
+<!-- CONNECTION STATUS -->
+<div class="conn-status" id="conn-status">Connecting...</div>
+
 <!-- NOTIF -->
 <div class="notif" id="notif"></div>
 
-<!-- ══ HOME ══ -->
+<!-- HOME -->
 <div class="screen active" id="home">
   <div class="bg-grid"></div>
   <div class="corner tl"></div><div class="corner tr"></div>
@@ -269,7 +286,7 @@ canvas#mc{display:block}
   </div>
 </div>
 
-<!-- ══ JOIN ══ -->
+<!-- JOIN -->
 <div class="screen" id="join">
   <div style="display:flex;align-items:center;justify-content:center;flex:1;padding:2rem">
     <div class="panel">
@@ -285,7 +302,7 @@ canvas#mc{display:block}
   </div>
 </div>
 
-<!-- ══ LOBBY ══ -->
+<!-- LOBBY -->
 <div class="screen" id="lobby">
   <div class="lobby-header">
     <div class="room-code-area">
@@ -293,7 +310,7 @@ canvas#mc{display:block}
       <div class="vdiv"></div>
       <div><div class="rc-label">Players</div><div style="font-family:'Share Tech Mono',monospace;font-size:20px;color:var(--offwhite)" id="disp-count">1/6</div></div>
       <div class="vdiv"></div>
-      <div><div class="rc-label">Link</div><div style="font-size:11px;color:var(--muted);font-family:'Share Tech Mono',monospace" id="disp-link">ghostthefloor.app/XXXX</div></div>
+      <div><div class="rc-label">Link</div><div style="font-size:11px;color:var(--muted);font-family:'Share Tech Mono',monospace" id="disp-link">—</div></div>
     </div>
     <div style="text-align:right"><div class="rc-label">Status</div><div style="font-size:12px;color:var(--gold)" id="disp-status">Waiting for crew</div></div>
   </div>
@@ -321,7 +338,7 @@ canvas#mc{display:block}
   </div>
 </div>
 
-<!-- ══ CHAR MODAL ══ -->
+<!-- CHAR MODAL -->
 <div class="modal-bg" id="char-modal">
   <div class="modal">
     <div class="modal-port" id="modal-port"></div>
@@ -342,7 +359,7 @@ canvas#mc{display:block}
   </div>
 </div>
 
-<!-- ══ GAME ══ -->
+<!-- GAME -->
 <div class="screen" id="game">
   <div class="game-hud">
     <div class="hud-timer" id="hud-timer">7:00</div>
@@ -367,6 +384,7 @@ canvas#mc{display:block}
     <div class="inv-bar" id="inv-bar"></div>
     <div class="sound-banner" id="sound-banner">🔊 Guards Alerted — Sound Detected!</div>
     <div class="dark-overlay" id="dark-overlay"></div>
+    <div class="overdrive-bar" id="overdrive-bar">⚙️ OVERDRIVE ACTIVE</div>
     <div class="joy-zone" id="joy-zone"><div class="joy-base"></div><div class="joy-knob" id="joy-knob"></div></div>
     <div class="act-btn" id="act-btn" ontouchstart="actPress(event)" ontouchend="actRelease()" onmousedown="actPress(event)" onmouseup="actRelease()">
       <div class="progress-ring" id="prog-ring"></div>
@@ -377,7 +395,7 @@ canvas#mc{display:block}
   </div>
 </div>
 
-<!-- ══ CONFRONTATION ══ -->
+<!-- CONFRONTATION -->
 <div class="cf-overlay" id="cf-overlay">
   <div class="cf-guard-icon">🚨</div>
   <div class="cf-alert">Caught!</div>
@@ -394,14 +412,14 @@ canvas#mc{display:block}
   <div class="cf-warning">Timer hits 0 → permanent arrest</div>
 </div>
 
-<!-- ══ ARREST ══ -->
+<!-- ARREST -->
 <div class="arrest-overlay" id="arrest-overlay">
   <div class="detained-stamp">Detained</div>
   <div class="arrest-nick" id="arrest-nick">You've been arrested</div>
   <div class="arrest-release" id="arrest-release">Released at <span class="hl">1:00</span> remaining</div>
 </div>
 
-<!-- ══ ENDGAME ══ -->
+<!-- ENDGAME -->
 <div class="end-overlay" id="end-overlay">
   <div class="end-icon" id="end-icon">🚐</div>
   <div class="end-title" id="end-title">Heist Complete</div>
@@ -417,68 +435,206 @@ canvas#mc{display:block}
   <div class="end-badges" id="end-badges"></div>
   <div class="end-actions">
     <button class="btn-gold" onclick="goHome()">Play Again</button>
-    <button class="btn-outline" onclick="goLobby()">Back to Lobby</button>
+    <button class="btn-outline" onclick="goLobbyFromEnd()">Back to Lobby</button>
   </div>
 </div>
 
 <script>
 // ══════════════════════════════════════════════════════
+//  SOCKET.IO — connect immediately on page load
+// ══════════════════════════════════════════════════════
+const socket = io();
+const connEl = document.getElementById('conn-status');
+
+socket.on('connect', () => {
+  connEl.textContent = '● Connected';
+  connEl.className = 'conn-status connected';
+});
+socket.on('disconnect', () => {
+  connEl.textContent = '● Disconnected';
+  connEl.className = 'conn-status disconnected';
+  notif('Lost connection to server', 'alert');
+});
+socket.on('connect_error', () => {
+  connEl.textContent = '● Connection failed';
+  connEl.className = 'conn-status disconnected';
+});
+
+// ── Server → client events ──────────────────────────
+
+// Room state updated (player joined, char selected, etc.)
+socket.on('room_update', (room) => {
+  G.players = room.players;
+  // Sync our own isHost status in case we inherited it
+  const me = room.players.find(p => p.id === socket.id);
+  if (me) G.isHost = me.isHost;
+  if (document.getElementById('lobby').classList.contains('active')) {
+    renderLobby();
+  }
+});
+
+// Another player tried to claim a character we were viewing
+socket.on('char_taken', (charId) => {
+  notif('That role was just taken — pick another', 'alert');
+  closeModal();
+  renderGrid();
+});
+
+// Server error (room full, not found, etc.)
+socket.on('error', (msg) => {
+  notif(msg, 'alert');
+});
+
+// Host started the game
+socket.on('game_start', (room) => {
+  G.players = room.players;
+  const me = room.players.find(p => p.id === socket.id);
+  if (me) {
+    G.myCharId = me.charId;
+    G.myStyle  = me.style || 0;
+    G.isHost   = me.isHost;
+  }
+  startGame(room);
+});
+
+// Another player moved
+socket.on('other_player_move', ({ id, x, y, roomId }) => {
+  if (!GS.otherPlayers[id]) GS.otherPlayers[id] = { x, y, roomId };
+  GS.otherPlayers[id].x = x;
+  GS.otherPlayers[id].y = y;
+  GS.otherPlayers[id].roomId = roomId;
+});
+
+// Loot stolen by any player
+socket.on('loot_stolen', ({ roomId, lootId }) => {
+  const loot = (GS.roomLoots[roomId] || []).find(l => l.id === lootId);
+  if (loot) loot.stolen = true;
+});
+
+// Loot dropped at van by any player
+socket.on('loot_dropoff', ({ id, amount }) => {
+  GS.vanLoot += amount;
+  updateHUD();
+  if (id !== socket.id) {
+    const p = G.players.find(x => x.id === id);
+    notif(`💰 ${p ? p.nick : 'Teammate'} loaded ${fmt(amount)} into van!`);
+  }
+  if (GS.vanLoot >= GS.targetLoot) setTimeout(triggerVictory, 400);
+});
+
+// Timer sync from host
+socket.on('timer_sync', ({ timeLeft }) => {
+  if (!G.isHost) {
+    GS.timeLeft = timeLeft;
+    updateTimerDisplay();
+  }
+});
+
+// Guard positions from host
+socket.on('guard_update', ({ guards }) => {
+  if (!G.isHost) GS.guards = guards;
+});
+
+// A teammate was caught
+socket.on('teammate_confronted', ({ id }) => {
+  const p = G.players.find(x => x.id === id);
+  notif(`🚨 ${p ? p.nick : 'Teammate'} caught by a guard!`, 'alert');
+});
+
+// Confrontation resolved by a teammate
+socket.on('confrontation_resolved', ({ id, outcome }) => {
+  if (id === socket.id) return; // we handle our own
+  const p = G.players.find(x => x.id === id);
+  const name = p ? p.nick : 'Teammate';
+  if (outcome === 'bribe') {
+    GS.targetLoot += 500000;
+    notif(`💸 ${name} bribed a guard — target +$500k`, 'alert');
+    updateHUD();
+  } else if (outcome === 'kill') {
+    if (G.isHost) {
+      GS.timeLeft = Math.max(0, GS.timeLeft - 30);
+      updateTimerDisplay();
+    }
+    notif(`👊 ${name} took down a guard — −30s`, 'alert');
+  } else if (outcome === 'arrested') {
+    notif(`🔒 ${name} was arrested!`, 'alert');
+  }
+});
+
+// Token activated by any player
+socket.on('token_activated', ({ id, tokenId, targetRoom }) => {
+  if (id === socket.id) return;
+  const p = G.players.find(x => x.id === id);
+  applyTokenEffect(tokenId, targetRoom, p ? p.nick : 'Teammate');
+});
+
+// Game over from server
+socket.on('game_over', ({ result }) => {
+  if (result === 'victory') triggerVictory();
+  else triggerDefeat(result);
+});
+
+// A player disconnected — room_update handles roster, this is just a notif
+socket.on('player_disconnected', ({ nick }) => {
+  notif(`${nick} left the heist`, 'alert');
+});
+
+// ══════════════════════════════════════════════════════
 //  DATA
 // ══════════════════════════════════════════════════════
-const CHARS=[
-  {id:'hacker',name:'The Hacker',gender:'Woman',color:'#00C8FF',
-   rooms:['cctv','server'],roomLabel:'Server Rooms & CCTV Hubs',
-   restrict:'Carries only 1 loot item',token:'Blackout',
+const CHARS = [
+  {id:'hacker', name:'The Hacker',  gender:'Woman', color:'#00C8FF',
+   rooms:['cctv','server'], roomLabel:'Server Rooms & CCTV Hubs',
+   restrict:'Carries only 1 loot item', token:'Blackout',
    tdesc:'Plunges a target room into total darkness for 20s — guards inside are blinded.',
    bA:{skin:'#C68642',hair:'#1a1a1a',top:'#1a3a4a',acc:'#00C8FF'},
    bB:{skin:'#F5CBA7',hair:'#5c3317',top:'#2a1a4a',acc:'#00C8FF'}},
-  {id:'acrobat',name:'The Acrobat',gender:'Woman',color:'#00E676',
-   rooms:['laser','vents'],roomLabel:'Laser Vaults & Ventilation Shafts',
-   restrict:'Lightweight loot only · 25% faster',token:'Smokebomb',
+  {id:'acrobat', name:'The Acrobat', gender:'Woman', color:'#00E676',
+   rooms:['laser','vents'], roomLabel:'Laser Vaults & Ventilation Shafts',
+   restrict:'Lightweight loot only · 25% faster', token:'Smokebomb',
    tdesc:'Instantly escapes a guard confrontation with zero penalty.',
    bA:{skin:'#8D5524',hair:'#0a0a0a',top:'#1a2e1a',acc:'#00E676'},
    bB:{skin:'#FDBCB4',hair:'#c87941',top:'#1a1a2e',acc:'#00E676'}},
-  {id:'techie',name:'The Techie',gender:'Man',color:'#FFB300',
-   rooms:['laser','fuse'],roomLabel:'Laser Vaults & Fuse Boxes',
-   restrict:'Takes 40s to bag items (double)',token:'Overdrive',
-   tdesc:'All puzzles and lock times drop to 0s for 15 seconds.',
+  {id:'techie', name:'The Techie',  gender:'Man',   color:'#FFB300',
+   rooms:['laser','fuse'], roomLabel:'Laser Vaults & Fuse Boxes',
+   restrict:'Takes 40s to bag items (double)', token:'Overdrive',
+   tdesc:'Overclocks all tools — lock times drop to 0s for 15 seconds.',
    bA:{skin:'#8D5524',hair:'#3d2b1f',top:'#2a1a00',acc:'#FFB300'},
    bB:{skin:'#C68642',hair:'#1a1a1a',top:'#1a1a2a',acc:'#FFB300'}},
-  {id:'muscle',name:'The Muscle',gender:'Man',color:'#FF6B35',
-   rooms:['storage','gallery'],roomLabel:'Heavy Storage & Main Gallery',
-   restrict:'Smash noise alerts nearby guards',token:'Takedown',
-   tdesc:'Silently knocks out a guard for 45 seconds.',
+  {id:'muscle', name:'The Muscle',  gender:'Man',   color:'#FF6B35',
+   rooms:['storage','gallery'], roomLabel:'Heavy Storage & Main Gallery',
+   restrict:'Smash noise alerts nearby guards', token:'Takedown',
+   tdesc:'Silently knocks out the nearest guard for 45 seconds.',
    bA:{skin:'#8D5524',hair:'#1a0a00',top:'#1a0a00',acc:'#FF6B35'},
    bB:{skin:'#C68642',hair:'#2a1a00',top:'#2a0a00',acc:'#FF6B35'}},
-  {id:'source',name:'Inside Source',gender:'Woman',color:'#B388FF',
-   rooms:['maint','vip','loading'],roomLabel:'Maintenance, VIP Lounge & Loading Docks',
-   restrict:'Low-tier loot only · 10s steal time',token:'Master Key',
-   tdesc:'Instantly unlocks any door on the map for any teammate.',
+  {id:'source', name:'Inside Source',gender:'Woman', color:'#B388FF',
+   rooms:['maint','vip','loading'], roomLabel:'Maintenance, VIP Lounge & Loading Docks',
+   restrict:'Low-tier loot only · 10s steal time', token:'Master Key',
+   tdesc:'Instantly unlocks any role-restricted room for all teammates for 30 seconds.',
    bA:{skin:'#F5CBA7',hair:'#2c1810',top:'#1a1a3a',acc:'#B388FF'},
    bB:{skin:'#8D5524',hair:'#1a1a1a',top:'#2a1a2a',acc:'#B388FF'}},
-  {id:'driver',name:'The Driver',gender:'Man',color:'#FF4757',
-   rooms:['loading','vents'],roomLabel:'Loading Docks & Ventilation Shafts',
-   restrict:'Cannot steal — logistics only',token:'Adrenaline Dump',
+  {id:'driver', name:'The Driver',  gender:'Man',   color:'#FF4757',
+   rooms:['loading','vents'], roomLabel:'Loading Docks & Ventilation Shafts',
+   restrict:'Cannot steal — logistics only', token:'Adrenaline Dump',
    tdesc:'Blasts a siren giving all teammates 50% speed boost for 20 seconds.',
    bA:{skin:'#C68642',hair:'#2a2a2a',top:'#1a0000',acc:'#FF4757'},
    bB:{skin:'#8D5524',hair:'#1a1a1a',top:'#0a0a1a',acc:'#FF4757'}},
 ];
 
-// All rooms visible to everyone — restricted rooms still walkable but loot locked
-const ROOMS=[
-  {id:'cctv',    name:'CCTV Hub',      col:0,row:0, fill:'#08111e', border:'#102030', roles:['hacker'],   loot:[]},
-  {id:'server',  name:'Server Room',   col:1,row:0, fill:'#080d1e', border:'#101828', roles:['hacker'],   loot:[{name:'Digital Assets',val:600000,weight:'light',icon:'💾'}]},
-  {id:'laser',   name:'Laser Vault',   col:2,row:0, fill:'#0e0820', border:'#1a1030', roles:['acrobat','techie'], loot:[{name:'Crown Jewels',val:900000,weight:'light',icon:'💎'},{name:'Ruby Pendant',val:350000,weight:'light',icon:'🔴'}]},
-  {id:'fuse',    name:'Fuse Box',      col:0,row:1, fill:'#111000', border:'#1e1c00', roles:['techie'],   loot:[]},
-  {id:'gallery', name:'Main Gallery',  col:1,row:1, fill:'#100e00', border:'#1e1a00', roles:['muscle'],   loot:[{name:'Gold Artifact',val:700000,weight:'heavy',icon:'🏺'},{name:'Ancient Coins',val:300000,weight:'light',icon:'🪙'},{name:'Silk Painting',val:400000,weight:'medium',icon:'🖼️'}]},
-  {id:'storage', name:'Heavy Storage', col:2,row:1, fill:'#110800', border:'#200e00', roles:['muscle'],   loot:[{name:'Gold Bars',val:1200000,weight:'heavy',icon:'🥇'},{name:'Marble Statue',val:800000,weight:'heavy',icon:'🗿'}]},
-  {id:'vip',     name:'VIP Lounge',    col:0,row:2, fill:'#0e0812', border:'#1a1020', roles:['source'],   loot:[{name:'Registry Cash',val:200000,weight:'light',icon:'💵'},{name:'Wall Painting',val:350000,weight:'medium',icon:'🎨'}]},
-  {id:'maint',   name:'Maintenance',   col:1,row:2, fill:'#080e08', border:'#101a10', roles:['source'],   loot:[]},
-  {id:'vents',   name:'Ventilation',   col:2,row:2, fill:'#08080e', border:'#10101a', roles:['acrobat','driver'], loot:[]},
-  {id:'loading', name:'Loading Docks', col:1,row:3, fill:'#0e0e0e', border:'#1a1a1a', roles:['source','driver'], loot:[], isExit:true},
+const ROOMS = [
+  {id:'cctv',    name:'CCTV Hub',      col:0,row:0, fill:'#08111e', border:'#102030', roles:['hacker'],            loot:[]},
+  {id:'server',  name:'Server Room',   col:1,row:0, fill:'#080d1e', border:'#101828', roles:['hacker'],            loot:[{name:'Digital Assets',  val:600000,weight:'light', icon:'💾'}]},
+  {id:'laser',   name:'Laser Vault',   col:2,row:0, fill:'#0e0820', border:'#1a1030', roles:['acrobat','techie'],  loot:[{name:'Crown Jewels',    val:900000,weight:'light', icon:'💎'},{name:'Ruby Pendant', val:350000,weight:'light',icon:'🔴'}]},
+  {id:'fuse',    name:'Fuse Box',      col:0,row:1, fill:'#111000', border:'#1e1c00', roles:['techie'],            loot:[]},
+  {id:'gallery', name:'Main Gallery',  col:1,row:1, fill:'#100e00', border:'#1e1a00', roles:['muscle'],            loot:[{name:'Gold Artifact',   val:700000,weight:'heavy', icon:'🏺'},{name:'Ancient Coins',val:300000,weight:'light',icon:'🪙'},{name:'Silk Painting',val:400000,weight:'medium',icon:'🖼️'}]},
+  {id:'storage', name:'Heavy Storage', col:2,row:1, fill:'#110800', border:'#200e00', roles:['muscle'],            loot:[{name:'Gold Bars',       val:1200000,weight:'heavy',icon:'🥇'},{name:'Marble Statue',val:800000,weight:'heavy',icon:'🗿'}]},
+  {id:'vip',     name:'VIP Lounge',    col:0,row:2, fill:'#0e0812', border:'#1a1020', roles:['source'],            loot:[{name:'Registry Cash',   val:200000,weight:'light', icon:'💵'},{name:'Wall Painting',val:350000,weight:'medium',icon:'🎨'}]},
+  {id:'maint',   name:'Maintenance',   col:1,row:2, fill:'#080e08', border:'#101a10', roles:['source'],            loot:[]},
+  {id:'vents',   name:'Ventilation',   col:2,row:2, fill:'#08080e', border:'#10101a', roles:['acrobat','driver'],  loot:[]},
+  {id:'loading', name:'Loading Docks', col:1,row:3, fill:'#0e0e0e', border:'#1a1a1a', roles:['source','driver'],   loot:[], isExit:true},
 ];
 
-const CORRIDORS=[
+const CORRIDORS = [
   ['cctv','server'],['server','laser'],
   ['cctv','fuse'],['server','gallery'],['laser','storage'],
   ['fuse','gallery'],['gallery','storage'],
@@ -487,678 +643,1319 @@ const CORRIDORS=[
   ['maint','loading'],['vip','loading'],
 ];
 
-const GUARD_PATHS=[
+const GUARD_PATHS = [
   ['gallery','server','laser','storage','gallery'],
   ['fuse','vip','maint','gallery','fuse'],
   ['cctv','server','gallery','maint','vip','cctv'],
   ['storage','vents','maint','loading','gallery','storage'],
 ];
 
-const SCALE={
-  3:{target:1500000,tgtStr:'$1.5M',ai:'slow'},
-  4:{target:2200000,tgtStr:'$2.2M',ai:'standard'},
-  5:{target:3000000,tgtStr:'$3.0M',ai:'random'},
-  6:{target:4000000,tgtStr:'$4.0M',ai:'fast'},
+const SCALE = {
+  3:{target:1500000,  tgtStr:'$1.5M', ai:'slow'},
+  4:{target:2200000,  tgtStr:'$2.2M', ai:'standard'},
+  5:{target:3000000,  tgtStr:'$3.0M', ai:'random'},
+  6:{target:4000000,  tgtStr:'$4.0M', ai:'fast'},
 };
 
 // ══════════════════════════════════════════════════════
 //  APP STATE
 // ══════════════════════════════════════════════════════
-const MOCK=[
-  {nick:'Ghost',charId:'hacker',locked:true,color:'#00C8FF'},
-  {nick:'Viper',charId:'muscle',locked:false,color:'#FF6B35'},
-];
-let G={roomCode:'',myNick:'',isHost:false,myCharId:null,myStyle:0,players:[],pendingId:null,pendingStyle:0};
+let G = {
+  roomCode:'', myNick:'', isHost:false,
+  myCharId:null, myStyle:0,
+  players:[], pendingId:null, pendingStyle:0,
+};
 
-// Game runtime
-let GS={
-  running:false,timeLeft:420,timerIv:null,
-  targetLoot:1500000,vanLoot:0,
-  guardTriggers:0,bribesCount:0,
-  myPos:{roomId:'gallery',x:0,y:0,vx:0,vy:0},
+let GS = {
+  running:false, timeLeft:420, timerIv:null,
+  targetLoot:1500000, vanLoot:0,
+  guardTriggers:0, bribesCount:0,
+  myPos:{roomId:'gallery', x:0, y:0, vx:0, vy:0},
   myInventory:[null,null,null,null],
-  arrested:false,arrestPermanent:false,
-  confrontActive:false,confrontIv:null,confrontN:0,
-  roomLoots:{},guards:[],
+  arrested:false, arrestPermanent:false,
+  confrontActive:false, confrontIv:null, confrontN:0,
+  roomLoots:{}, guards:[],
   interactTarget:null,
-  actionHeld:false,actionProgress:0,actionIv:null,
+  actionHeld:false, actionProgress:0, actionIv:null,
   tokenUsed:false,
-  speedBoost:0,  // seconds remaining for adrenaline
-  darknessRoom:null,darknessTimer:0,
+  speedBoost:0,
+  overdrive:0,
+  masterKeyActive:false, masterKeyTimer:0,
+  darknessRoom:null, darknessTimer:0,
   screenShake:0,
   aiMode:'standard',
+  otherPlayers:{},  // id → {x, y, roomId, charId, nick, color}
+  lastMoveSent:0,
 };
+
+// ══════════════════════════════════════════════════════
+//  SVG CHARACTER DRAWING
+// ══════════════════════════════════════════════════════
+function buildChar(c, pal) {
+  const s = pal.skin, h = pal.hair, t = pal.top, a = pal.acc;
+  return `
+    <rect x="28" y="55" width="24" height="35" rx="3" fill="${t}"/>
+    <circle cx="40" cy="42" r="14" fill="${s}"/>
+    <path d="M26 40 Q40 25 54 40" fill="${h}"/>
+    <rect x="30" y="90" width="8" height="17" rx="2" fill="${t}"/>
+    <rect x="42" y="90" width="8" height="17" rx="2" fill="${t}"/>
+    <rect x="18" y="57" width="8" height="26" rx="3" fill="${t}"/>
+    <rect x="54" y="57" width="8" height="26" rx="3" fill="${t}"/>
+    <circle cx="35" cy="42" r="2.5" fill="#1a1a2a"/>
+    <circle cx="45" cy="42" r="2.5" fill="#1a1a2a"/>
+    <path d="M35 50 Q40 53 45 50" stroke="#1a1a2a" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+    <rect x="30" y="68" width="20" height="3" rx="1" fill="${a}" opacity=".8"/>
+  `;
+}
+
+function charSVG(c, style) {
+  const pal = style === 0 ? c.bA : c.bB;
+  return `<svg viewBox="0 0 80 107" xmlns="http://www.w3.org/2000/svg">${buildChar(c, pal)}</svg>`;
+}
 
 // ══════════════════════════════════════════════════════
 //  NAVIGATION
 // ══════════════════════════════════════════════════════
-function show(id){document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));document.getElementById(id).classList.add('active')}
-function goHome(){stopGame();show('home')}
-function goJoin(){show('join')}
-function goLobby(){stopGame();G.myCharId=null;G.players.forEach(p=>{if(p.nick===G.players[0]?.nick){p.charId=null;p.locked=false}});show('lobby');renderLobby()}
+function show(id) {
+  document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+}
 
-function goCreate(){
-  G.roomCode=rndCode();G.myNick='You (Host)';G.isHost=true;
-  G.players=[{nick:'You (Host)',charId:null,locked:false,color:'#F5C842'},...JSON.parse(JSON.stringify(MOCK))];
-  show('lobby');renderLobby();
+function goHome() {
+  stopGame();
+  show('home');
 }
-function doJoin(){
-  const code=document.getElementById('join-code').value.trim();
-  const nick=document.getElementById('join-nick').value.trim();
-  if(code.length<4){notif('Enter a 4-letter room code','alert');return}
-  if(!nick){notif('Enter your nickname','alert');return}
-  G.roomCode=code;G.myNick=nick;G.isHost=false;
-  G.players=[{nick,charId:null,locked:false,color:'#F5C842'},...JSON.parse(JSON.stringify(MOCK))];
-  show('lobby');renderLobby();
+
+function goJoin() { show('join'); }
+
+function goCreate() {
+  const nick = prompt('Your nickname (host):');
+  if (!nick || !nick.trim()) return;
+  G.myNick = nick.trim().substring(0, 14);
+  G.isHost = true;
+  socket.emit('create_room', { nick: G.myNick });
+
+  // Server will send room_update with the generated code
+  socket.once('room_update', (room) => {
+    G.roomCode = room.code;
+    G.players  = room.players;
+    document.getElementById('disp-code').textContent = room.code;
+    document.getElementById('disp-link').textContent = `${location.host}?room=${room.code}`;
+    show('lobby');
+    renderLobby();
+  });
 }
-function rndCode(){return Array.from({length:4},()=>'ABCDEFGHJKLMNPQRSTUVWXYZ'[Math.floor(Math.random()*23)]).join('')}
+
+function doJoin() {
+  const code = document.getElementById('join-code').value.trim().toUpperCase();
+  const nick  = document.getElementById('join-nick').value.trim();
+  if (code.length < 4) { notif('Enter a 4-letter room code', 'alert'); return; }
+  if (!nick)           { notif('Enter your nickname', 'alert');         return; }
+
+  G.myNick  = nick.substring(0, 14);
+  G.isHost  = false;
+  G.roomCode = code;
+
+  socket.emit('join_room', { code, nick: G.myNick });
+
+  socket.once('room_update', (room) => {
+    G.roomCode = room.code;
+    G.players  = room.players;
+    document.getElementById('disp-code').textContent = room.code;
+    document.getElementById('disp-link').textContent = `${location.host}?room=${room.code}`;
+    show('lobby');
+    renderLobby();
+  });
+}
+
+// Auto-join if URL has ?room=CODE
+window.addEventListener('DOMContentLoaded', () => {
+  const params = new URLSearchParams(location.search);
+  const code   = params.get('room');
+  if (code) {
+    document.getElementById('join-code').value = code.toUpperCase();
+    show('join');
+    document.getElementById('join-nick').focus();
+  }
+});
 
 // ══════════════════════════════════════════════════════
 //  LOBBY
 // ══════════════════════════════════════════════════════
-function renderLobby(){
-  document.getElementById('disp-code').textContent=G.roomCode;
-  document.getElementById('disp-link').textContent=`ghostthefloor.app/${G.roomCode}`;
-  renderGrid();renderPlayers();updateMatch();
+function renderLobby() {
+  document.getElementById('disp-code').textContent = G.roomCode;
+  document.getElementById('disp-link').textContent = `${location.host}?room=${G.roomCode}`;
+  renderGrid();
+  renderPlayers();
+  updateMatch();
+
+  // Only host sees Start button active
+  const startBtn = document.getElementById('start-btn');
+  if (!G.isHost) {
+    startBtn.disabled = true;
+    startBtn.textContent = 'Waiting for host...';
+  } else {
+    startBtn.textContent = 'Start Heist';
+  }
 }
-function renderGrid(){
-  const others=G.players.filter((_,i)=>i>0);
-  document.getElementById('char-grid').innerHTML=CHARS.map(c=>{
-    const isMine=G.myCharId===c.id;
-    const takenP=others.find(p=>p.charId===c.id);
-    let cls='char-card'+(isMine?' mine':takenP?' taken':'');
-    return`<div class="${cls}" onclick="openModal('${c.id}')">
-      <div class="char-portrait">${charSVG(c,0)}</div>
+
+function renderGrid() {
+  const mySocketId = socket.id;
+  document.getElementById('char-grid').innerHTML = CHARS.map(c => {
+    const myPlayer  = G.players.find(p => p.id === mySocketId);
+    const isMine    = myPlayer && myPlayer.charId === c.id;
+    const takenP    = G.players.find(p => p.id !== mySocketId && p.charId === c.id);
+    let cls = 'char-card' + (isMine ? ' mine' : takenP ? ' taken' : '');
+    return `<div class="${cls}" onclick="openModal('${c.id}')">
+      <div class="char-portrait">${charSVG(c, 0)}</div>
       <div class="color-bar" style="background:${c.color}"></div>
       <div class="char-info">
-        <div class="char-name" style="color:${isMine?c.color:'var(--offwhite)'}">${c.name}</div>
+        <div class="char-name" style="color:${isMine ? c.color : 'var(--offwhite)'}">${c.name}</div>
         <div class="char-gender">${c.gender}</div>
-        <div class="char-rooms-text">${c.roomLabel.replace(' & ','<br>')}</div>
+        <div class="char-rooms-text">${c.roomLabel.replace(' & ', '<br>')}</div>
         <div class="token-pill">${c.token}</div>
       </div>
-      ${takenP?`<div class="taken-overlay"><div class="taken-name-lbl" style="color:${takenP.color}">${takenP.nick}</div><div style="font-size:8px;letter-spacing:2px;text-transform:uppercase;color:var(--muted)">Claimed</div></div>`:''}
-      ${isMine?`<div class="check-badge"><svg width="10" height="10" viewBox="0 0 10 10"><polyline points="1,5 4,8 9,2" stroke="#0D0F1A" stroke-width="2.2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></div>`:''}
+      ${takenP ? `<div class="taken-overlay"><div class="taken-name-lbl" style="color:${takenP.color}">${takenP.nick}</div><div style="font-size:8px;letter-spacing:2px;text-transform:uppercase;color:var(--muted)">Claimed</div></div>` : ''}
+      ${isMine  ? `<div class="check-badge"><svg width="10" height="10" viewBox="0 0 10 10"><polyline points="1,5 4,8 9,2" stroke="#0D0F1A" stroke-width="2.2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></div>` : ''}
     </div>`;
   }).join('');
 }
-function renderPlayers(){
-  const max=6,cnt=G.players.length;
-  document.getElementById('player-list').innerHTML=
-    G.players.map(p=>{
-      const c=CHARS.find(x=>x.id===p.charId);
-      const sc=p.locked?'s-ready':p.charId?'s-picking':'s-waiting';
-      return`<div class="player-row"><div class="player-dot" style="background:${p.color}"></div>
-        <div><div class="player-nick">${p.nick}</div><div class="player-role-lbl">${c?c.name:'No role'}</div></div>
-        <div class="p-status ${sc}">${p.locked?'Ready':p.charId?'Picking':'Waiting'}</div></div>`;
-    }).join('')+Array.from({length:max-cnt},()=>`<div class="empty-row"><div class="empty-dot"></div><div style="font-size:12px;color:var(--muted)">Open slot</div></div>`).join('');
-  document.getElementById('disp-count').textContent=`${cnt}/6`;
-  const locked=G.players.filter(p=>p.locked).length,total=G.players.length;
-  const allReady=locked===total&&total>=3;
-  document.getElementById('start-btn').disabled=!allReady;
-  document.getElementById('ready-txt').textContent=allReady?`${total} players ready — let's go`:total<3?`Need at least 3 players (${total} joined)`:`${locked}/${total} locked in`;
-  document.getElementById('disp-status').textContent=allReady?'All crew ready':'Waiting for crew';
+
+function renderPlayers() {
+  const max = 6, cnt = G.players.length;
+  document.getElementById('player-list').innerHTML =
+    G.players.map(p => {
+      const c   = CHARS.find(x => x.id === p.charId);
+      const sc  = p.locked ? 's-ready' : p.charId ? 's-picking' : 's-waiting';
+      const isMe = p.id === socket.id;
+      return `<div class="player-row">
+        <div class="player-dot" style="background:${p.color}"></div>
+        <div><div class="player-nick">${p.nick}${isMe ? ' (you)' : ''}${p.isHost ? ' 👑' : ''}</div><div class="player-role-lbl">${c ? c.name : 'No role'}</div></div>
+        <div class="p-status ${sc}">${p.locked ? 'Ready' : p.charId ? 'Picking' : 'Waiting'}</div>
+      </div>`;
+    }).join('') +
+    Array.from({length: max - cnt}, () =>
+      `<div class="empty-row"><div class="empty-dot"></div><div style="font-size:12px;color:var(--muted)">Open slot</div></div>`
+    ).join('');
+
+  document.getElementById('disp-count').textContent = `${cnt}/6`;
+
+  if (G.isHost) {
+    const locked = G.players.filter(p => p.locked).length;
+    const total  = G.players.length;
+    const allReady = locked === total && total >= 3;
+    document.getElementById('start-btn').disabled = !allReady;
+    document.getElementById('ready-txt').textContent =
+      allReady ? `${total} players ready — let's go` :
+      total < 3 ? `Need at least 3 players (${total} joined)` :
+      `${locked}/${total} locked in`;
+    document.getElementById('disp-status').textContent = allReady ? 'All crew ready' : 'Waiting for crew';
+  } else {
+    document.getElementById('ready-txt').textContent = 'Waiting for host to start';
+  }
 }
-function updateMatch(){
-  const n=G.players.length,s=SCALE[n]||SCALE[3];
-  document.getElementById('ms-p').textContent=n;
-  document.getElementById('ms-t').textContent=s.tgtStr;
-  document.getElementById('ms-a').textContent={slow:'Slow patrols',standard:'Standard',random:'Random routes',fast:'Fast + cameras'}[s.ai];
+
+function updateMatch() {
+  const n = G.players.length, s = SCALE[n] || SCALE[3];
+  document.getElementById('ms-p').textContent = n;
+  document.getElementById('ms-t').textContent = s.tgtStr;
+  document.getElementById('ms-a').textContent = {slow:'Slow patrols', standard:'Standard', random:'Random routes', fast:'Fast + cameras'}[s.ai];
 }
 
 // ══════════════════════════════════════════════════════
 //  CHARACTER MODAL
 // ══════════════════════════════════════════════════════
-function openModal(id){
-  const me=G.players[0];if(me.locked){notif('Already locked in');return}
-  const tp=G.players.find((p,i)=>i>0&&p.charId===id);
-  if(tp){notif(`${tp.nick} already claimed this role`,'alert');return}
-  G.pendingId=id;G.pendingStyle=0;
-  const c=CHARS.find(x=>x.id===id);
-  document.getElementById('modal-cname').textContent=c.name;
-  document.getElementById('modal-crole').textContent=c.gender;
-  document.getElementById('m-rooms').textContent=c.roomLabel;
-  document.getElementById('m-restrict').textContent=c.restrict;
-  document.getElementById('m-tname').textContent='⚡ '+c.token;
-  document.getElementById('m-tdesc').textContent=c.tdesc;
-  document.getElementById('modal-port').innerHTML=`<svg viewBox="0 0 80 107" xmlns="http://www.w3.org/2000/svg" style="width:80px;height:107px">${buildChar(c,c.bA)}</svg>`;
-  document.querySelectorAll('.style-opt').forEach((b,i)=>b.classList.toggle('on',i===0));
+function openModal(id) {
+  const me = G.players.find(p => p.id === socket.id);
+  if (me && me.locked) { notif('Already locked in'); return; }
+  const takenP = G.players.find(p => p.id !== socket.id && p.charId === id);
+  if (takenP) { notif(`${takenP.nick} already claimed this role`, 'alert'); return; }
+
+  G.pendingId    = id;
+  G.pendingStyle = 0;
+  const c = CHARS.find(x => x.id === id);
+  document.getElementById('modal-cname').textContent  = c.name;
+  document.getElementById('modal-crole').textContent  = c.gender;
+  document.getElementById('m-rooms').textContent      = c.roomLabel;
+  document.getElementById('m-restrict').textContent   = c.restrict;
+  document.getElementById('m-tname').textContent      = '⚡ ' + c.token;
+  document.getElementById('m-tdesc').textContent      = c.tdesc;
+  document.getElementById('modal-port').innerHTML =
+    `<svg viewBox="0 0 80 107" xmlns="http://www.w3.org/2000/svg" style="width:80px;height:107px">${buildChar(c, c.bA)}</svg>`;
+  document.querySelectorAll('.style-opt').forEach((b, i) => b.classList.toggle('on', i === 0));
   document.getElementById('char-modal').classList.add('open');
 }
-function pickStyle(idx,btn){
-  G.pendingStyle=idx;document.querySelectorAll('.style-opt').forEach(b=>b.classList.remove('on'));btn.classList.add('on');
-  const c=CHARS.find(x=>x.id===G.pendingId);
-  document.getElementById('modal-port').innerHTML=`<svg viewBox="0 0 80 107" xmlns="http://www.w3.org/2000/svg" style="width:80px;height:107px">${buildChar(c,idx===0?c.bA:c.bB)}</svg>`;
+
+function pickStyle(idx, btn) {
+  G.pendingStyle = idx;
+  document.querySelectorAll('.style-opt').forEach(b => b.classList.remove('on'));
+  btn.classList.add('on');
+  const c = CHARS.find(x => x.id === G.pendingId);
+  document.getElementById('modal-port').innerHTML =
+    `<svg viewBox="0 0 80 107" xmlns="http://www.w3.org/2000/svg" style="width:80px;height:107px">${buildChar(c, idx === 0 ? c.bA : c.bB)}</svg>`;
 }
-function closeModal(){document.getElementById('char-modal').classList.remove('open');G.pendingId=null}
-function confirmChar(){
-  if(!G.pendingId)return;
-  G.myCharId=G.pendingId;G.myStyle=G.pendingStyle;
-  G.players[0].charId=G.pendingId;G.players[0].locked=true;
-  const tb=document.getElementById('token-btn');
-  const c=CHARS.find(x=>x.id===G.myCharId);
-  if(tb&&c)tb.textContent=`⚡ ${c.token}`;
-  closeModal();renderLobby();
-  notif('Locked in as '+CHARS.find(c=>c.id===G.myCharId).name);
+
+function closeModal() {
+  document.getElementById('char-modal').classList.remove('open');
+  G.pendingId = null;
+}
+
+function confirmChar() {
+  if (!G.pendingId) return;
+  // Tell server
+  socket.emit('select_char', { charId: G.pendingId, style: G.pendingStyle });
+  // Optimistically update local state
+  G.myCharId = G.pendingId;
+  G.myStyle  = G.pendingStyle;
+  const c  = CHARS.find(x => x.id === G.myCharId);
+  const tb = document.getElementById('token-btn');
+  if (tb && c) tb.textContent = `⚡ ${c.token}`;
+  closeModal();
+  notif('Locked in as ' + c.name);
 }
 
 // ══════════════════════════════════════════════════════
 //  GAME START
 // ══════════════════════════════════════════════════════
-let canvas,ctx,miniCanvas,miniCtx,W,H;
-const RW=162,RH=112,GAP=14,MGNTOP=28,MGNLEFT=16;
+function doStart() {
+  // Client-side guard: host only, min 3 players all locked
+  if (!G.isHost) return;
+  const locked = G.players.filter(p => p.locked).length;
+  if (locked < 3 || locked !== G.players.length) {
+    notif('All players must lock in first', 'alert'); return;
+  }
+  socket.emit('start_game');
+}
 
-function doStart(){
-  const n=G.players.length,s=SCALE[Math.min(n,6)]||SCALE[3];
-  GS={
-    running:true,timeLeft:420,timerIv:null,
-    targetLoot:s.target,vanLoot:0,
-    guardTriggers:0,bribesCount:0,
-    myPos:{roomId:'gallery',x:0,y:0,vx:0,vy:0},
+let canvas, ctx, miniCanvas, miniCtx, W, H;
+const RW = 162, RH = 112, GAP = 14, MGNTOP = 28, MGNLEFT = 16;
+
+function startGame(room) {
+  const n = room.players.length;
+  const s = SCALE[Math.min(n, 6)] || SCALE[3];
+
+  GS = {
+    running:true, timeLeft:420, timerIv:null,
+    targetLoot:s.target, vanLoot:0,
+    guardTriggers:0, bribesCount:0,
+    myPos:{roomId:'gallery', x:0, y:0, vx:0, vy:0},
     myInventory:[null,null,null,null],
-    arrested:false,arrestPermanent:false,
-    confrontActive:false,confrontIv:null,confrontN:0,
-    roomLoots:{},guards:[],
+    arrested:false, arrestPermanent:false,
+    confrontActive:false, confrontIv:null, confrontN:0,
+    roomLoots:{}, guards:[],
     interactTarget:null,
-    actionHeld:false,actionProgress:0,actionIv:null,
+    actionHeld:false, actionProgress:0, actionIv:null,
     tokenUsed:false,
-    speedBoost:0,darknessRoom:null,darknessTimer:0,
+    speedBoost:0, overdrive:0,
+    masterKeyActive:false, masterKeyTimer:0,
+    darknessRoom:null, darknessTimer:0,
     screenShake:0,
     aiMode:s.ai,
+    otherPlayers:{},
+    lastMoveSent:0,
   };
-  ROOMS.forEach(r=>{GS.roomLoots[r.id]=r.loot.map(l=>({...l,stolen:false,id:Math.random()}))});
-  GUARD_PATHS.forEach((path,i)=>{
-    const rc=roomCenter(ROOMS.find(r=>r.id===path[0]));
-    GS.guards.push({pathIdx:i,stepIdx:0,x:rc.x,y:rc.y,roomId:path[0],knocked:0,alertTimer:0,patrolWait:0});
-  });
-  const gc=roomCenter(ROOMS.find(r=>r.id==='gallery'));
-  GS.myPos={roomId:'gallery',x:gc.x,y:gc.y,vx:0,vy:0};
 
-  // Update token button
-  const c=CHARS.find(x=>x.id===G.myCharId)||CHARS[0];
-  document.getElementById('token-btn').textContent=`⚡ ${c.token}`;
-  document.getElementById('token-btn').disabled=false;
-  document.getElementById('pwr-btn').textContent='⚡';
+  // Seed room loots with stable IDs
+  ROOMS.forEach(r => {
+    GS.roomLoots[r.id] = r.loot.map(l => ({...l, stolen:false, id: r.id + '_' + l.name}));
+  });
+
+  // Init guards (host drives guard AI)
+  GUARD_PATHS.forEach((path, i) => {
+    const rc = roomCenter(ROOMS.find(r => r.id === path[0]));
+    GS.guards.push({pathIdx:i, stepIdx:0, x:rc.x, y:rc.y, roomId:path[0], knocked:0, alertTimer:0, patrolWait:0});
+  });
+
+  // Start position: gallery center
+  const gc = roomCenter(ROOMS.find(r => r.id === 'gallery'));
+  GS.myPos = {roomId:'gallery', x:gc.x, y:gc.y, vx:0, vy:0};
+
+  // Build otherPlayers map from room data
+  room.players.forEach(p => {
+    if (p.id !== socket.id) {
+      const rc2 = roomCenter(ROOMS.find(r => r.id === 'gallery'));
+      GS.otherPlayers[p.id] = {x:rc2.x + Math.random()*30-15, y:rc2.y + Math.random()*30-15, roomId:'gallery'};
+    }
+  });
+
+  // Token button
+  const c = CHARS.find(x => x.id === G.myCharId) || CHARS[0];
+  document.getElementById('token-btn').textContent = `⚡ ${c.token}`;
+  document.getElementById('token-btn').disabled    = false;
+  document.getElementById('pwr-btn').textContent   = '⚡';
   document.getElementById('pwr-btn').classList.remove('used');
 
   show('game');
   initCanvas();
-  startTimer();
+  if (G.isHost) startTimer();
   requestAnimationFrame(gameLoop);
   updateHUD();
+  renderInventory();
+  initJoystick();
 }
 
-function stopGame(){
-  GS.running=false;
-  if(GS.timerIv)clearInterval(GS.timerIv);
-  if(GS.confrontIv)clearInterval(GS.confrontIv);
-  if(GS.actionIv)clearInterval(GS.actionIv);
-  ['cf-overlay','arrest-overlay','end-overlay'].forEach(id=>document.getElementById(id).classList.remove('open'));
+function stopGame() {
+  GS.running = false;
+  if (GS.timerIv)    clearInterval(GS.timerIv);
+  if (GS.confrontIv) clearInterval(GS.confrontIv);
+  if (GS.actionIv)   clearInterval(GS.actionIv);
+  ['cf-overlay','arrest-overlay','end-overlay'].forEach(id =>
+    document.getElementById(id).classList.remove('open')
+  );
 }
 
 // ══════════════════════════════════════════════════════
 //  CANVAS
 // ══════════════════════════════════════════════════════
-function initCanvas(){
-  canvas=document.getElementById('gc');
-  miniCanvas=document.getElementById('mc');
-  const area=document.getElementById('map-area');
-  W=area.clientWidth;H=area.clientHeight;
-  canvas.width=W;canvas.height=H;
-  ctx=canvas.getContext('2d');
-  miniCtx=miniCanvas.getContext('2d');
+function initCanvas() {
+  canvas     = document.getElementById('gc');
+  miniCanvas = document.getElementById('mc');
+  const area = document.getElementById('map-area');
+  W = area.clientWidth;
+  H = area.clientHeight;
+  canvas.width  = W;
+  canvas.height = H;
+  ctx     = canvas.getContext('2d');
+  miniCtx = miniCanvas.getContext('2d');
 }
 
-function roomPos(room){
-  const totalW=3*RW+2*GAP;
-  const startX=Math.max(MGNLEFT,(W-totalW)/2);
-  const startY=MGNTOP;
-  return{x:startX+room.col*(RW+GAP),y:startY+room.row*(RH+GAP)};
+function roomPos(room) {
+  const totalW = 3 * RW + 2 * GAP;
+  const startX = Math.max(MGNLEFT, (W - totalW) / 2);
+  const startY = MGNTOP;
+  return {x: startX + room.col * (RW + GAP), y: startY + room.row * (RH + GAP)};
 }
-function roomCenter(room){const p=roomPos(room);return{x:p.x+RW/2,y:p.y+RH/2}}
-function getRoomAt(x,y){return ROOMS.find(r=>{const p=roomPos(r);return x>=p.x&&x<=p.x+RW&&y>=p.y&&y<=p.y+RH})}
+function roomCenter(room) {
+  const p = roomPos(room);
+  return {x: p.x + RW / 2, y: p.y + RH / 2};
+}
+function getRoomAt(x, y) {
+  return ROOMS.find(r => {
+    const p = roomPos(r);
+    return x >= p.x && x <= p.x + RW && y >= p.y && y <= p.y + RH;
+  });
+}
 
 // ══════════════════════════════════════════════════════
 //  DRAW
 // ══════════════════════════════════════════════════════
-function draw(){
-  ctx.clearRect(0,0,W,H);
+function draw() {
+  ctx.clearRect(0, 0, W, H);
   // Corridors
-  ctx.strokeStyle='#1C2040';ctx.lineWidth=16;ctx.lineCap='round';
-  CORRIDORS.forEach(([a,b])=>{
-    const ra=ROOMS.find(r=>r.id===a),rb=ROOMS.find(r=>r.id===b);
-    if(!ra||!rb)return;
-    const ca=roomCenter(ra),cb=roomCenter(rb);
-    ctx.beginPath();ctx.moveTo(ca.x,ca.y);ctx.lineTo(cb.x,cb.y);ctx.stroke();
+  ctx.strokeStyle = '#1C2040'; ctx.lineWidth = 16; ctx.lineCap = 'round';
+  CORRIDORS.forEach(([a, b]) => {
+    const ra = ROOMS.find(r => r.id === a), rb = ROOMS.find(r => r.id === b);
+    if (!ra || !rb) return;
+    const ca = roomCenter(ra), cb = roomCenter(rb);
+    ctx.beginPath(); ctx.moveTo(ca.x, ca.y); ctx.lineTo(cb.x, cb.y); ctx.stroke();
   });
+
   // Rooms
-  ROOMS.forEach(r=>{
-    const {x,y}=roomPos(r);
-    const isMyRoom=r.id===GS.myPos.roomId;
-    const isDark=GS.darknessRoom===r.id&&GS.darknessTimer>0;
-    // Floor
-    ctx.fillStyle=isDark?'#020204':r.fill;ctx.fillRect(x,y,RW,RH);
-    // Border
-    ctx.strokeStyle=isMyRoom?'#F5C842':r.isExit?'#00B894':r.border;
-    ctx.lineWidth=isMyRoom?2:1;ctx.strokeRect(x,y,RW,RH);
-    // Room name
-    ctx.font=`700 9px 'Barlow Condensed',sans-serif`;ctx.textAlign='center';
-    ctx.fillStyle=isMyRoom?'#F5C842':r.isExit?'#00B894':'#3A3D55';
-    ctx.fillText(r.name.toUpperCase(),x+RW/2,y+13);
+  ROOMS.forEach(r => {
+    const {x, y} = roomPos(r);
+    const isMyRoom  = r.id === GS.myPos.roomId;
+    const isDark    = GS.darknessRoom === r.id && GS.darknessTimer > 0;
+    const unlocked  = GS.masterKeyActive;
+
+    ctx.fillStyle = isDark ? '#020204' : r.fill;
+    ctx.fillRect(x, y, RW, RH);
+
+    ctx.strokeStyle = isMyRoom ? '#F5C842' : r.isExit ? '#00B894' : unlocked ? '#B388FF55' : r.border;
+    ctx.lineWidth   = isMyRoom ? 2 : 1;
+    ctx.strokeRect(x, y, RW, RH);
+
+    ctx.font      = `700 9px 'Barlow Condensed',sans-serif`;
+    ctx.textAlign = 'center';
+    ctx.fillStyle = isMyRoom ? '#F5C842' : r.isExit ? '#00B894' : '#3A3D55';
+    ctx.fillText(r.name.toUpperCase(), x + RW / 2, y + 13);
+
     // Role indicator dots
-    r.roles.forEach((roleId,i)=>{
-      const rc=CHARS.find(c=>c.id===roleId);
-      if(!rc)return;
-      ctx.fillStyle=rc.color+'66';
-      ctx.beginPath();ctx.arc(x+6+i*10,y+RH-7,3,0,Math.PI*2);ctx.fill();
+    r.roles.forEach((roleId, i) => {
+      const rc = CHARS.find(c => c.id === roleId);
+      if (!rc) return;
+      ctx.fillStyle = rc.color + '66';
+      ctx.beginPath(); ctx.arc(x + 6 + i * 10, y + RH - 7, 3, 0, Math.PI * 2); ctx.fill();
     });
-    // Exit label
-    if(r.isExit){
-      ctx.fillStyle='#00B894';ctx.font='8px Barlow,sans-serif';
-      ctx.fillText('🚐 GETAWAY VAN',x+RW/2,y+RH-10);
+
+    if (r.isExit) {
+      ctx.fillStyle = '#00B894'; ctx.font = '8px Barlow,sans-serif';
+      ctx.fillText('🚐 GETAWAY VAN', x + RW / 2, y + RH - 10);
     }
+
     // Loot items
-    if(!isDark){
-      const loots=(GS.roomLoots[r.id]||[]).filter(l=>!l.stolen);
-      loots.slice(0,4).forEach((l,i)=>{
-        const cols=Math.min(loots.length,2);
-        const lx=x+RW/2+(i%cols-cols/2+.5)*(RW/(cols+1));
-        const ly=y+RH/2+(Math.floor(i/cols)-.3)*24;
-        ctx.font='14px serif';ctx.textAlign='center';ctx.fillText(l.icon,lx,ly+4);
-        const wc=l.weight==='heavy'?'#D63031':l.weight==='medium'?'#C9A030':'#555';
-        ctx.fillStyle=wc;ctx.font='7px Barlow,sans-serif';
-        ctx.fillText('$'+(l.val/1000).toFixed(0)+'k',lx,ly+15);
+    if (!isDark) {
+      const loots = (GS.roomLoots[r.id] || []).filter(l => !l.stolen);
+      loots.slice(0, 4).forEach((l, i) => {
+        const cols = Math.min(loots.length, 2);
+        const lx   = x + RW / 2 + (i % cols - cols / 2 + .5) * (RW / (cols + 1));
+        const ly   = y + RH / 2 + (Math.floor(i / cols) - .3) * 24;
+        ctx.font      = '14px serif'; ctx.textAlign = 'center';
+        ctx.fillText(l.icon, lx, ly + 4);
+        ctx.fillStyle = l.weight === 'heavy' ? '#D63031' : l.weight === 'medium' ? '#C9A030' : '#555';
+        ctx.font      = '7px Barlow,sans-serif';
+        ctx.fillText('$' + (l.val / 1000).toFixed(0) + 'k', lx, ly + 15);
       });
     }
   });
+
   drawGuards();
+  drawOtherPlayers();
   drawPlayer();
 }
 
-function drawGuards(){
-  GS.guards.forEach((g,i)=>{
-    if(g.knocked>0){
-      // Knocked out — draw X
-      ctx.save();ctx.translate(g.x,g.y);
-      ctx.fillStyle='rgba(100,100,100,0.4)';
-      ctx.beginPath();ctx.arc(0,0,10,0,Math.PI*2);ctx.fill();
-      ctx.fillStyle='#555';ctx.font='12px serif';ctx.textAlign='center';ctx.fillText('💤',0,5);
-      ctx.restore();return;
+function drawGuards() {
+  GS.guards.forEach(g => {
+    if (g.knocked > 0) {
+      ctx.save(); ctx.translate(g.x, g.y);
+      ctx.fillStyle = 'rgba(100,100,100,0.4)';
+      ctx.beginPath(); ctx.arc(0, 0, 10, 0, Math.PI * 2); ctx.fill();
+      ctx.fillStyle = '#555'; ctx.font = '12px serif'; ctx.textAlign = 'center';
+      ctx.fillText('💤', 0, 5);
+      ctx.restore(); return;
     }
-    ctx.save();ctx.translate(g.x,g.y);
-    // Glow when alert
-    if(g.alertTimer>0){
-      ctx.shadowBlur=14;ctx.shadowColor='#D63031';
-    }
-    ctx.fillStyle=g.alertTimer>0?'#D63031':'#882222';
-    ctx.beginPath();ctx.arc(0,0,11,0,Math.PI*2);ctx.fill();
-    ctx.shadowBlur=0;
-    ctx.font='13px serif';ctx.textAlign='center';ctx.fillText('👮',0,5);
-    if(g.alertTimer>0){
-      ctx.fillStyle='#FF4444';ctx.font='bold 10px Barlow Condensed,sans-serif';
-      ctx.fillText('!',0,-17);
+    ctx.save(); ctx.translate(g.x, g.y);
+    if (g.alertTimer > 0) { ctx.shadowBlur = 14; ctx.shadowColor = '#D63031'; }
+    ctx.fillStyle = g.alertTimer > 0 ? '#D63031' : '#882222';
+    ctx.beginPath(); ctx.arc(0, 0, 11, 0, Math.PI * 2); ctx.fill();
+    ctx.shadowBlur = 0;
+    ctx.font = '13px serif'; ctx.textAlign = 'center'; ctx.fillText('👮', 0, 5);
+    if (g.alertTimer > 0) {
+      ctx.fillStyle = '#FF4444'; ctx.font = 'bold 10px Barlow Condensed,sans-serif';
+      ctx.fillText('!', 0, -17);
     }
     ctx.restore();
   });
 }
 
-function drawPlayer(){
-  const c=CHARS.find(x=>x.id===G.myCharId)||CHARS[3];
-  const px=GS.myPos.x,py=GS.myPos.y;
+function drawOtherPlayers() {
+  G.players.forEach(p => {
+    if (p.id === socket.id) return;
+    const op = GS.otherPlayers[p.id];
+    if (!op) return;
+    const c = CHARS.find(x => x.id === p.charId) || CHARS[0];
+    ctx.save(); ctx.translate(op.x, op.y);
+    ctx.fillStyle = 'rgba(0,0,0,0.25)';
+    ctx.beginPath(); ctx.ellipse(0, 9, 10, 4, 0, 0, Math.PI * 2); ctx.fill();
+    ctx.fillStyle = '#0D0F1A';
+    ctx.beginPath(); ctx.arc(0, -4, 11, 0, Math.PI * 2); ctx.fill();
+    ctx.strokeStyle = c.color; ctx.lineWidth = 2; ctx.stroke();
+    ctx.font = '13px serif'; ctx.textAlign = 'center'; ctx.fillText('🧍', 0, 1);
+    ctx.fillStyle = c.color; ctx.font = `bold 7px 'Barlow Condensed',sans-serif`;
+    ctx.fillText(p.nick.substring(0, 7).toUpperCase(), 0, -18);
+    ctx.restore();
+  });
+}
+
+function drawPlayer() {
+  const c  = CHARS.find(x => x.id === G.myCharId) || CHARS[3];
+  const px = GS.myPos.x, py = GS.myPos.y;
   ctx.save();
-  // Screen shake
-  if(GS.screenShake>0){ctx.translate((Math.random()-.5)*GS.screenShake*6,(Math.random()-.5)*GS.screenShake*4)}
-  ctx.translate(px,py);
-  // Shadow
-  ctx.fillStyle='rgba(0,0,0,0.35)';ctx.beginPath();ctx.ellipse(0,9,11,4,0,0,Math.PI*2);ctx.fill();
-  // Speed boost aura
-  if(GS.speedBoost>0){
-    ctx.strokeStyle=c.color+'55';ctx.lineWidth=4;
-    ctx.beginPath();ctx.arc(0,-4,18,0,Math.PI*2);ctx.stroke();
+  if (GS.screenShake > 0) {
+    ctx.translate((Math.random() - .5) * GS.screenShake * 6, (Math.random() - .5) * GS.screenShake * 4);
   }
-  // Player circle
-  ctx.fillStyle=GS.arrested?'#333':'#0D0F1A';ctx.beginPath();ctx.arc(0,-4,12,0,Math.PI*2);ctx.fill();
-  ctx.strokeStyle=GS.arrested?'#555':c.color;ctx.lineWidth=2;ctx.stroke();
-  ctx.font='15px serif';ctx.textAlign='center';ctx.fillText(GS.arrested?'🔒':'🧍',0,1);
-  // Nick tag
-  if(!GS.arrested){
-    ctx.fillStyle=c.color;ctx.font=`bold 8px 'Barlow Condensed',sans-serif`;
-    ctx.fillText(G.myNick.substring(0,7).toUpperCase(),0,-20);
+  ctx.translate(px, py);
+  ctx.fillStyle = 'rgba(0,0,0,0.35)';
+  ctx.beginPath(); ctx.ellipse(0, 9, 11, 4, 0, 0, Math.PI * 2); ctx.fill();
+  if (GS.speedBoost > 0) {
+    ctx.strokeStyle = c.color + '55'; ctx.lineWidth = 4;
+    ctx.beginPath(); ctx.arc(0, -4, 18, 0, Math.PI * 2); ctx.stroke();
   }
-  // Action progress arc
-  if(GS.actionProgress>0){
-    ctx.strokeStyle=c.color;ctx.lineWidth=3;ctx.lineCap='round';
-    ctx.beginPath();ctx.arc(0,-4,17,-Math.PI/2,-Math.PI/2+Math.PI*2*GS.actionProgress);ctx.stroke();
+  if (GS.overdrive > 0) {
+    ctx.strokeStyle = '#FFB30088'; ctx.lineWidth = 3;
+    ctx.beginPath(); ctx.arc(0, -4, 20, 0, Math.PI * 2); ctx.stroke();
+  }
+  ctx.fillStyle = GS.arrested ? '#333' : '#0D0F1A';
+  ctx.beginPath(); ctx.arc(0, -4, 12, 0, Math.PI * 2); ctx.fill();
+  ctx.strokeStyle = GS.arrested ? '#555' : c.color; ctx.lineWidth = 2; ctx.stroke();
+  ctx.font = '15px serif'; ctx.textAlign = 'center'; ctx.fillText(GS.arrested ? '🔒' : '🧍', 0, 1);
+  if (!GS.arrested) {
+    ctx.fillStyle = c.color; ctx.font = `bold 8px 'Barlow Condensed',sans-serif`;
+    ctx.fillText(G.myNick.substring(0, 7).toUpperCase(), 0, -20);
+  }
+  if (GS.actionProgress > 0) {
+    ctx.strokeStyle = c.color; ctx.lineWidth = 3; ctx.lineCap = 'round';
+    ctx.beginPath();
+    ctx.arc(0, -4, 17, -Math.PI / 2, -Math.PI / 2 + Math.PI * 2 * GS.actionProgress);
+    ctx.stroke();
   }
   ctx.restore();
 }
 
-// Minimap
-function drawMinimap(){
-  const mw=miniCanvas.width,mh=miniCanvas.height;
-  miniCtx.clearRect(0,0,mw,mh);
-  miniCtx.fillStyle='rgba(13,15,26,.9)';miniCtx.fillRect(0,0,mw,mh);
-  const scaleX=mw/(3*RW+2*GAP+MGNLEFT*2);
-  const scaleY=mh/(4*(RH+GAP)+MGNTOP);
-  ROOMS.forEach(r=>{
-    const {x,y}=roomPos(r);
-    const mx=x*scaleX,my=y*scaleY,mRW=RW*scaleX,mRH=RH*scaleY;
-    miniCtx.fillStyle=r.id===GS.myPos.roomId?'#2A2D55':r.isExit?'#002a1a':'#131625';
-    miniCtx.fillRect(mx,my,mRW,mRH);
-    if(r.isExit){miniCtx.fillStyle='#00B894';miniCtx.font='6px sans-serif';miniCtx.textAlign='center';miniCtx.fillText('VAN',mx+mRW/2,my+mRH/2+2)}
+function drawMinimap() {
+  const mw = miniCanvas.width, mh = miniCanvas.height;
+  miniCtx.clearRect(0, 0, mw, mh);
+  miniCtx.fillStyle = 'rgba(13,15,26,.9)'; miniCtx.fillRect(0, 0, mw, mh);
+  const scaleX = mw / (3 * RW + 2 * GAP + MGNLEFT * 2);
+  const scaleY = mh / (4 * (RH + GAP) + MGNTOP);
+  ROOMS.forEach(r => {
+    const {x, y} = roomPos(r);
+    miniCtx.fillStyle = r.id === GS.myPos.roomId ? '#2A2D55' : r.isExit ? '#002a1a' : '#131625';
+    miniCtx.fillRect(x * scaleX, y * scaleY, RW * scaleX, RH * scaleY);
+    if (r.isExit) {
+      miniCtx.fillStyle = '#00B894'; miniCtx.font = '6px sans-serif'; miniCtx.textAlign = 'center';
+      miniCtx.fillText('VAN', (x + RW / 2) * scaleX, (y + RH / 2) * scaleY + 2);
+    }
   });
-  // My dot
-  miniCtx.fillStyle=CHARS.find(c=>c.id===G.myCharId)?.color||'#F5C842';
-  miniCtx.beginPath();miniCtx.arc(GS.myPos.x*scaleX,GS.myPos.y*scaleY,3,0,Math.PI*2);miniCtx.fill();
-  // Guard dots
-  GS.guards.forEach(g=>{
-    if(g.knocked>0)return;
-    miniCtx.fillStyle=g.alertTimer>0?'#D63031':'#882222';
-    miniCtx.beginPath();miniCtx.arc(g.x*scaleX,g.y*scaleY,2.5,0,Math.PI*2);miniCtx.fill();
+  const myC = CHARS.find(c => c.id === G.myCharId);
+  miniCtx.fillStyle = myC ? myC.color : '#F5C842';
+  miniCtx.beginPath(); miniCtx.arc(GS.myPos.x * scaleX, GS.myPos.y * scaleY, 3, 0, Math.PI * 2); miniCtx.fill();
+
+  G.players.forEach(p => {
+    if (p.id === socket.id) return;
+    const op = GS.otherPlayers[p.id]; if (!op) return;
+    const pc = CHARS.find(c => c.id === p.charId);
+    miniCtx.fillStyle = pc ? pc.color : '#EDE8DC';
+    miniCtx.beginPath(); miniCtx.arc(op.x * scaleX, op.y * scaleY, 2.5, 0, Math.PI * 2); miniCtx.fill();
+  });
+
+  GS.guards.forEach(g => {
+    if (g.knocked > 0) return;
+    miniCtx.fillStyle = g.alertTimer > 0 ? '#D63031' : '#882222';
+    miniCtx.beginPath(); miniCtx.arc(g.x * scaleX, g.y * scaleY, 2.5, 0, Math.PI * 2); miniCtx.fill();
   });
 }
 
 // ══════════════════════════════════════════════════════
 //  GAME LOOP
 // ══════════════════════════════════════════════════════
-let lastTS=0;
-function gameLoop(ts){
-  if(!GS.running)return;
-  const dt=Math.min((ts-lastTS)/1000,.05);lastTS=ts;
-  if(!GS.arrested&&!GS.confrontActive){
+let lastTS = 0;
+function gameLoop(ts) {
+  if (!GS.running) return;
+  const dt = Math.min((ts - lastTS) / 1000, .05);
+  lastTS = ts;
+
+  if (!GS.arrested && !GS.confrontActive) {
     movePlayer(dt);
-    moveGuards(dt);
-    checkGuardCollision();
+    if (G.isHost) {
+      moveGuards(dt);
+      checkGuardCollision();
+      // Broadcast guard positions every ~100ms
+      if (ts - GS.lastMoveSent > 100) {
+        socket.emit('guard_state', { guards: GS.guards });
+      }
+    }
     checkInteractable();
   }
+
   // Timers
-  if(GS.speedBoost>0)GS.speedBoost=Math.max(0,GS.speedBoost-dt);
-  if(GS.darknessTimer>0)GS.darknessTimer=Math.max(0,GS.darknessTimer-dt);
-  if(GS.screenShake>0)GS.screenShake=Math.max(0,GS.screenShake-dt*3);
+  if (GS.speedBoost   > 0) GS.speedBoost   = Math.max(0, GS.speedBoost   - dt);
+  if (GS.overdrive    > 0) {
+    GS.overdrive = Math.max(0, GS.overdrive - dt);
+    document.getElementById('overdrive-bar').classList.toggle('active', GS.overdrive > 0);
+  }
+  if (GS.masterKeyTimer > 0) {
+    GS.masterKeyTimer = Math.max(0, GS.masterKeyTimer - dt);
+    GS.masterKeyActive = GS.masterKeyTimer > 0;
+  }
+  if (GS.darknessTimer > 0) GS.darknessTimer = Math.max(0, GS.darknessTimer - dt);
+  if (GS.screenShake   > 0) GS.screenShake   = Math.max(0, GS.screenShake  - dt * 3);
+
+  // Broadcast my position every ~50ms
+  if (ts - GS.lastMoveSent > 50) {
+    socket.emit('player_move', {x: GS.myPos.x, y: GS.myPos.y, roomId: GS.myPos.roomId});
+    GS.lastMoveSent = ts;
+  }
+
   // Resize check
-  const area=document.getElementById('map-area');
-  if(area&&(W!==area.clientWidth||H!==area.clientHeight))initCanvas();
+  const area = document.getElementById('map-area');
+  if (area && (W !== area.clientWidth || H !== area.clientHeight)) initCanvas();
+
   draw();
   drawMinimap();
   requestAnimationFrame(gameLoop);
 }
 
 // ══════════════════════════════════════════════════════
-//  MOVEMENT
+//  TIMER
 // ══════════════════════════════════════════════════════
-const BASE_SPD=95;
-let joyActive=false,joyDelta={x:0,y:0};
+function startTimer() {
+  GS.timerIv = setInterval(() => {
+    if (!GS.running) return;
+    GS.timeLeft--;
+    // Broadcast timer to all clients
+    socket.emit('timer_tick', { timeLeft: GS.timeLeft });
+    updateTimerDisplay();
+    if (GS.timeLeft <= 0) triggerDefeat('timeout');
+    // Release arrested players at 1:00
+    if (GS.timeLeft === 60) {
+      socket.emit('game_over', { result: 'release_check' });
+    }
+  }, 1000);
+}
 
-function movePlayer(dt){
-  const c=CHARS.find(x=>x.id===G.myCharId)||CHARS[3];
-  let spd=BASE_SPD;
-  // Role speed bonus
-  if(G.myCharId==='acrobat')spd*=1.25;
-  // Speed boost token
-  if(GS.speedBoost>0)spd*=1.5;
-  // Weight penalty (Muscle immune)
-  if(G.myCharId!=='muscle'){
-    const hasHeavy=GS.myInventory.some(i=>i&&i.weight==='heavy');
-    const hasMed=GS.myInventory.some(i=>i&&i.weight==='medium');
-    if(hasHeavy)spd*=.7;
-    else if(hasMed)spd*=.9;
-  }
-  if(joyActive){GS.myPos.vx=joyDelta.x*spd;GS.myPos.vy=joyDelta.y*spd}
-  else{GS.myPos.vx*=.75;GS.myPos.vy*=.75}
+function updateTimerDisplay() {
+  const m   = Math.floor(GS.timeLeft / 60);
+  const s   = String(GS.timeLeft % 60).padStart(2, '0');
+  const el  = document.getElementById('hud-timer');
+  el.textContent = `${m}:${s}`;
+  el.classList.toggle('danger', GS.timeLeft <= 60);
 
-  let nx=GS.myPos.x+GS.myPos.vx*dt;
-  let ny=GS.myPos.y+GS.myPos.vy*dt;
-
-  // Map bounds
-  const totalW=3*RW+2*GAP,totalH=4*(RH+GAP);
-  const sx=Math.max(MGNLEFT,(W-totalW)/2);
-  nx=Math.max(sx+8,Math.min(sx+totalW-8,nx));
-  ny=Math.max(MGNTOP+8,Math.min(MGNTOP+totalH-8,ny));
-
-  GS.myPos.x=nx;GS.myPos.y=ny;
-  const room=getRoomAt(nx,ny);
-  if(room){
-    GS.myPos.roomId=room.id;
-    document.getElementById('hud-room').textContent=room.name;
+  // Release arrested player at 1:00 remaining (non-permanent)
+  if (GS.timeLeft === 60 && GS.arrested && !GS.arrestPermanent) {
+    releaseFromArrest();
   }
 }
 
 // ══════════════════════════════════════════════════════
-//  GUARD AI
+//  MOVEMENT
 // ══════════════════════════════════════════════════════
-function guardSpeed(){return{slow:28,standard:40,random:44,fast:56}[GS.aiMode]||40}
+const BASE_SPD = 95;
+let joyActive = false, joyDelta = {x:0, y:0};
 
-function moveGuards(dt){
-  GS.guards.forEach(g=>{
-    if(g.knocked>0){g.knocked=Math.max(0,g.knocked-dt);return}
-    if(g.patrolWait>0){g.patrolWait=Math.max(0,g.patrolWait-dt);return}
-    // Random route shifts (5-player AI mode)
-    if(GS.aiMode==='random'&&Math.random()<.0005){g.stepIdx=(g.stepIdx+1)%GUARD_PATHS[g.pathIdx].length}
-    const path=GUARD_PATHS[g.pathIdx];
-    const tRoom=ROOMS.find(r=>r.id===path[g.stepIdx]);
-    if(!tRoom)return;
-    const tc=roomCenter(tRoom);
-    const dx=tc.x-g.x,dy=tc.y-g.y,dist=Math.sqrt(dx*dx+dy*dy);
-    const spd=guardSpeed();
-    if(dist<5){
-      g.stepIdx=(g.stepIdx+1)%path.length;
-      g.roomId=path[g.stepIdx];
-      g.patrolWait=g.alertTimer>0?.2:.8; // brief pause at each room
-    } else {
-      g.x+=dx/dist*spd*dt;g.y+=dy/dist*spd*dt;
+function movePlayer(dt) {
+  let spd = BASE_SPD;
+  if (G.myCharId === 'acrobat') spd *= 1.25;
+  if (GS.speedBoost > 0)        spd *= 1.5;
+  if (G.myCharId !== 'muscle') {
+    const hasHeavy = GS.myInventory.some(i => i && i.weight === 'heavy');
+    const hasMed   = GS.myInventory.some(i => i && i.weight === 'medium');
+    if (hasHeavy) spd *= .7;
+    else if (hasMed) spd *= .9;
+  }
+  if (joyActive) { GS.myPos.vx = joyDelta.x * spd; GS.myPos.vy = joyDelta.y * spd; }
+  else           { GS.myPos.vx *= .75; GS.myPos.vy *= .75; }
+
+  let nx = GS.myPos.x + GS.myPos.vx * dt;
+  let ny = GS.myPos.y + GS.myPos.vy * dt;
+
+  const totalW = 3 * RW + 2 * GAP, totalH = 4 * (RH + GAP);
+  const sx     = Math.max(MGNLEFT, (W - totalW) / 2);
+  nx = Math.max(sx + 8,       Math.min(sx + totalW - 8, nx));
+  ny = Math.max(MGNTOP + 8,   Math.min(MGNTOP + totalH - 8, ny));
+
+  GS.myPos.x = nx; GS.myPos.y = ny;
+  const room = getRoomAt(nx, ny);
+  if (room) {
+    GS.myPos.roomId = room.id;
+    document.getElementById('hud-room').textContent = room.name;
+  }
+}
+
+// Keyboard support (desktop)
+const keysDown = {};
+window.addEventListener('keydown', e => { keysDown[e.key] = true;  updateKeyJoy(); });
+window.addEventListener('keyup',   e => { keysDown[e.key] = false; updateKeyJoy(); });
+function updateKeyJoy() {
+  const dx = (keysDown['ArrowRight'] || keysDown['d'] ? 1 : 0) - (keysDown['ArrowLeft'] || keysDown['a'] ? 1 : 0);
+  const dy = (keysDown['ArrowDown']  || keysDown['s'] ? 1 : 0) - (keysDown['ArrowUp']   || keysDown['w'] ? 1 : 0);
+  const len = Math.sqrt(dx * dx + dy * dy);
+  if (len > 0) { joyActive = true;  joyDelta = {x: dx / len, y: dy / len}; }
+  else         { joyActive = false; joyDelta = {x: 0, y: 0}; }
+}
+
+// ══════════════════════════════════════════════════════
+//  JOYSTICK (touch)
+// ══════════════════════════════════════════════════════
+function initJoystick() {
+  const zone = document.getElementById('joy-zone');
+  const knob = document.getElementById('joy-knob');
+  let originX = 0, originY = 0, touchId = null;
+
+  zone.addEventListener('touchstart', e => {
+    e.preventDefault();
+    const t = e.changedTouches[0];
+    touchId  = t.identifier;
+    const r  = zone.getBoundingClientRect();
+    originX  = r.left + r.width  / 2;
+    originY  = r.top  + r.height / 2;
+    joyActive = true;
+  }, {passive:false});
+
+  zone.addEventListener('touchmove', e => {
+    e.preventDefault();
+    const t = Array.from(e.changedTouches).find(x => x.identifier === touchId);
+    if (!t) return;
+    const dx  = t.clientX - originX;
+    const dy  = t.clientY - originY;
+    const len = Math.sqrt(dx * dx + dy * dy);
+    const max = 38;
+    const clampedLen = Math.min(len, max);
+    const nx  = len > 0 ? dx / len : 0;
+    const ny  = len > 0 ? dy / len : 0;
+    knob.style.transform = `translate(calc(-50% + ${nx * clampedLen}px), calc(-50% + ${ny * clampedLen}px))`;
+    joyDelta  = {x: nx, y: ny};
+    joyActive = len > 5;
+  }, {passive:false});
+
+  const endJoy = () => {
+    joyActive = false; joyDelta = {x:0, y:0}; touchId = null;
+    knob.style.transform = 'translate(-50%, -50%)';
+  };
+  zone.addEventListener('touchend',    endJoy);
+  zone.addEventListener('touchcancel', endJoy);
+}
+
+// ══════════════════════════════════════════════════════
+//  GUARD AI (host only)
+// ══════════════════════════════════════════════════════
+function guardSpeed() {
+  return {slow:28, standard:40, random:44, fast:56}[GS.aiMode] || 40;
+}
+
+function moveGuards(dt) {
+  GS.guards.forEach(g => {
+    if (g.knocked  > 0) { g.knocked   = Math.max(0, g.knocked   - dt); return; }
+    if (g.patrolWait > 0) { g.patrolWait = Math.max(0, g.patrolWait - dt); return; }
+    if (GS.aiMode === 'random' && Math.random() < .0005) {
+      g.stepIdx = (g.stepIdx + 1) % GUARD_PATHS[g.pathIdx].length;
     }
-    if(g.alertTimer>0)g.alertTimer=Math.max(0,g.alertTimer-dt);
+    const path  = GUARD_PATHS[g.pathIdx];
+    const tRoom = ROOMS.find(r => r.id === path[g.stepIdx]);
+    if (!tRoom) return;
+    const tc   = roomCenter(tRoom);
+    const dx   = tc.x - g.x, dy = tc.y - g.y, dist = Math.sqrt(dx * dx + dy * dy);
+    const spd  = guardSpeed();
+    if (dist < 5) {
+      g.stepIdx   = (g.stepIdx + 1) % path.length;
+      g.roomId    = path[g.stepIdx];
+      g.patrolWait = g.alertTimer > 0 ? .2 : .8;
+    } else {
+      g.x += dx / dist * spd * dt;
+      g.y += dy / dist * spd * dt;
+    }
+    if (g.alertTimer > 0) g.alertTimer = Math.max(0, g.alertTimer - dt);
   });
 }
 
-// Sound detection — if Muscle smashes, guards within 2 room hops investigate
-function checkSoundAlert(){
-  const myRoomId=GS.myPos.roomId;
-  GS.guards.forEach(g=>{
-    if(g.knocked>0)return;
-    // Graph distance check (simple: within 2 corridor hops)
-    const dist=roomGraphDist(g.roomId,myRoomId);
-    if(dist<=2){
-      g.alertTimer=8;
-      // Redirect guard toward player
-      const pathToPlayer=GUARD_PATHS[g.pathIdx].indexOf(myRoomId);
-      if(pathToPlayer!==-1)g.stepIdx=pathToPlayer;
+function checkSoundAlert() {
+  const myRoomId = GS.myPos.roomId;
+  GS.guards.forEach(g => {
+    if (g.knocked > 0) return;
+    const dist = roomGraphDist(g.roomId, myRoomId);
+    if (dist <= 2) {
+      g.alertTimer = 8;
+      const pathIdx = GUARD_PATHS[g.pathIdx].indexOf(myRoomId);
+      if (pathIdx !== -1) g.stepIdx = pathIdx;
     }
   });
   showSoundBanner();
+  GS.guardTriggers++;
 }
 
-function roomGraphDist(aId,bId){
-  if(aId===bId)return 0;
-  // BFS on corridor graph
-  const adj={};
-  CORRIDORS.forEach(([x,y])=>{
-    if(!adj[x])adj[x]=[];if(!adj[y])adj[y]=[];
-    adj[x].push(y);adj[y].push(x);
+function roomGraphDist(aId, bId) {
+  if (aId === bId) return 0;
+  const adj = {};
+  CORRIDORS.forEach(([x, y]) => {
+    if (!adj[x]) adj[x] = []; if (!adj[y]) adj[y] = [];
+    adj[x].push(y); adj[y].push(x);
   });
-  const visited=new Set([aId]),queue=[{id:aId,d:0}];
-  while(queue.length){
-    const {id,d}=queue.shift();
-    for(const nb of(adj[id]||[])){
-      if(nb===bId)return d+1;
-      if(!visited.has(nb)){visited.add(nb);queue.push({id:nb,d:d+1})}
+  const visited = new Set([aId]), queue = [{id:aId, d:0}];
+  while (queue.length) {
+    const {id, d} = queue.shift();
+    for (const nb of (adj[id] || [])) {
+      if (nb === bId) return d + 1;
+      if (!visited.has(nb)) { visited.add(nb); queue.push({id:nb, d:d+1}); }
     }
   }
   return 99;
 }
 
-function showSoundBanner(){
-  const b=document.getElementById('sound-banner');
-  b.classList.remove('flash');void b.offsetWidth;b.classList.add('flash');
+function showSoundBanner() {
+  const b = document.getElementById('sound-banner');
+  b.classList.remove('flash'); void b.offsetWidth; b.classList.add('flash');
 }
 
 // ══════════════════════════════════════════════════════
-//  GUARD COLLISION
+//  GUARD COLLISION (host only)
 // ══════════════════════════════════════════════════════
-function checkGuardCollision(){
-  if(GS.arrested||GS.confrontActive)return;
-  for(const g of GS.guards){
-    if(g.knocked>0)continue;
-    const dx=g.x-GS.myPos.x,dy=g.y-GS.myPos.y;
-    if(Math.sqrt(dx*dx+dy*dy)<24){
-      // Inside Source disguise — no confrontation unless in same room as another player
-      if(G.myCharId==='source'){notif('Staff disguise holds — walk away!');return}
-      triggerConfrontation();return;
+function checkGuardCollision() {
+  if (GS.arrested || GS.confrontActive) return;
+  for (const g of GS.guards) {
+    if (g.knocked > 0) continue;
+    // Darkness — guard can't see in dark room
+    if (GS.darknessRoom === g.roomId && GS.darknessTimer > 0) continue;
+    const dx = g.x - GS.myPos.x, dy = g.y - GS.myPos.y;
+    if (Math.sqrt(dx * dx + dy * dy) < 24) {
+      // Inside Source disguise
+      if (G.myCharId === 'source') { notif('Staff disguise holds — walk away!'); return; }
+      // Acrobat with smokebomb token
+      if (G.myCharId === 'acrobat' && !GS.tokenUsed) {
+        chooseSmokeEscape(); return;
+      }
+      triggerConfrontation(); return;
     }
   }
+}
+
+// ══════════════════════════════════════════════════════
+//  CONFRONTATION
+// ══════════════════════════════════════════════════════
+function triggerConfrontation() {
+  if (GS.confrontActive) return;
+  GS.confrontActive = true;
+  GS.confrontN      = 9;
+  document.getElementById('cf-overlay').classList.add('open');
+  document.getElementById('cf-count').textContent  = 9;
+  document.getElementById('cf-count').classList.remove('urgent');
+
+  // Tell teammates
+  socket.emit('confrontation_start');
+
+  GS.confrontIv = setInterval(() => {
+    GS.confrontN--;
+    const el = document.getElementById('cf-count');
+    el.textContent = GS.confrontN;
+    if (GS.confrontN <= 3) el.classList.add('urgent');
+    if (GS.confrontN <= 0) {
+      clearInterval(GS.confrontIv);
+      triggerArrest(GS.timeLeft <= 60);
+    }
+  }, 1000);
+}
+
+function chooseBribe() {
+  if (!GS.confrontActive) return;
+  clearInterval(GS.confrontIv);
+  GS.confrontActive = false;
+  document.getElementById('cf-overlay').classList.remove('open');
+  GS.targetLoot  += 500000;
+  GS.bribesCount ++;
+  GS.guardTriggers++;
+  socket.emit('confrontation_end', { outcome: 'bribe' });
+  notif('💸 Bribed the guard — target +$500k!', 'alert');
+  updateHUD();
+}
+
+function chooseKill() {
+  if (!GS.confrontActive) return;
+  clearInterval(GS.confrontIv);
+  GS.confrontActive = false;
+  document.getElementById('cf-overlay').classList.remove('open');
+  GS.guardTriggers++;
+  GS.screenShake = .6;
+  socket.emit('confrontation_end', { outcome: 'kill' });
+  // Host deducts 30s; non-host does it on receipt of confrontation_resolved
+  if (G.isHost) {
+    GS.timeLeft = Math.max(0, GS.timeLeft - 30);
+    updateTimerDisplay();
+  }
+  notif('👊 Took down the guard — −30 seconds!', 'alert');
+}
+
+function triggerArrest(permanent) {
+  GS.confrontActive = false;
+  document.getElementById('cf-overlay').classList.remove('open');
+  GS.arrested        = true;
+  GS.arrestPermanent = permanent;
+  socket.emit('confrontation_end', { outcome: 'arrested' });
+
+  // Drop inventory on floor
+  GS.myInventory.forEach((item, i) => {
+    if (item) {
+      const roomLoots = GS.roomLoots[GS.myPos.roomId];
+      if (roomLoots) { item.stolen = false; roomLoots.push(item); }
+    }
+  });
+  GS.myInventory = [null, null, null, null];
+  renderInventory();
+
+  const nick = document.getElementById('arrest-nick');
+  const rel  = document.getElementById('arrest-release');
+  nick.textContent = 'You\'ve been arrested';
+  if (permanent) {
+    rel.innerHTML  = 'Permanent arrest — the crew is on their own';
+  } else {
+    rel.innerHTML  = 'Released at <span class="hl">1:00</span> remaining';
+  }
+  document.getElementById('arrest-overlay').classList.add('open');
+  notif('🔒 ARRESTED', 'alert');
+}
+
+function releaseFromArrest() {
+  GS.arrested = false;
+  document.getElementById('arrest-overlay').classList.remove('open');
+  notif('🔓 Released — back in action!');
+}
+
+function chooseSmokeEscape() {
+  clearInterval(GS.confrontIv);
+  GS.confrontActive = false;
+  document.getElementById('cf-overlay').classList.remove('open');
+  GS.tokenUsed = true;
+  document.getElementById('token-btn').disabled = true;
+  document.getElementById('pwr-btn').classList.add('used');
+  socket.emit('token_used', { tokenId: 'acrobat', targetRoom: GS.myPos.roomId });
+  notif('💨 SMOKEBOMB — escaped with zero penalty!');
 }
 
 // ══════════════════════════════════════════════════════
 //  INTERACTION
 // ══════════════════════════════════════════════════════
-function checkInteractable(){
-  const myRoom=ROOMS.find(r=>r.id===GS.myPos.roomId);
-  const prompt=document.getElementById('inter-prompt');
-  const denied=document.getElementById('access-denied');
-  const actBtn=document.getElementById('act-btn');
-  const actIcon=document.getElementById('act-icon');
+function checkInteractable() {
+  const myRoom  = ROOMS.find(r => r.id === GS.myPos.roomId);
+  const prompt  = document.getElementById('inter-prompt');
+  const denied  = document.getElementById('access-denied');
+  const actBtn  = document.getElementById('act-btn');
+  const actIcon = document.getElementById('act-icon');
 
   // Dropoff at loading docks
-  if(GS.myPos.roomId==='loading'&&GS.myInventory.some(Boolean)){
-    GS.interactTarget={type:'dropoff'};
-    prompt.textContent='Hold ACT — Load loot into van 🚐';
-    prompt.classList.add('show');denied.classList.remove('show');
-    actBtn.classList.add('lit');actIcon.textContent='🚐';return;
+  if (GS.myPos.roomId === 'loading' && GS.myInventory.some(Boolean)) {
+    GS.interactTarget = {type:'dropoff'};
+    prompt.textContent = 'Hold ACT — Load loot into van 🚐';
+    prompt.classList.add('show'); denied.classList.remove('show');
+    actBtn.classList.add('lit'); actIcon.textContent = '🚐'; return;
   }
 
-  // Check role access for loot stealing
-  const c=CHARS.find(x=>x.id===G.myCharId)||CHARS[3];
-  const hasAccess=!myRoom||myRoom.roles.includes(G.myCharId)||myRoom.roles.length===0;
-  // Driver cannot steal
-  const canSteal=G.myCharId!=='driver';
-  const loots=(GS.roomLoots[GS.myPos.roomId]||[]).filter(l=>!l.stolen);
-  const invFull=!GS.myInventory.includes(null);
-  const maxInv=G.myCharId==='hacker'?1:4;
-  const invCount=GS.myInventory.filter(Boolean).length;
+  const hasAccess  = !myRoom || myRoom.roles.includes(G.myCharId) || myRoom.roles.length === 0 || GS.masterKeyActive;
+  const canSteal   = G.myCharId !== 'driver';
+  const loots      = (GS.roomLoots[GS.myPos.roomId] || []).filter(l => !l.stolen);
+  const maxInv     = G.myCharId === 'hacker' ? 1 : 4;
+  const invCount   = GS.myInventory.filter(Boolean).length;
 
-  if(loots.length>0&&canSteal){
-    if(!hasAccess){
-      denied.classList.add('show');prompt.classList.remove('show');
-      actBtn.classList.remove('lit');actIcon.textContent='⚡';
-      GS.interactTarget=null;return;
+  if (loots.length > 0 && canSteal) {
+    if (!hasAccess) {
+      denied.classList.add('show'); prompt.classList.remove('show');
+      actBtn.classList.remove('lit'); actIcon.textContent = '⚡';
+      GS.interactTarget = null; return;
     }
-    if(invCount>=maxInv){
-      prompt.textContent='Inventory full — drop off at Loading Docks';
-      prompt.classList.add('show');denied.classList.remove('show');
-      actBtn.classList.remove('lit');actIcon.textContent='🎒';
-      GS.interactTarget=null;return;
+    if (invCount >= maxInv) {
+      prompt.textContent = 'Inventory full — drop off at Loading Docks';
+      prompt.classList.add('show'); denied.classList.remove('show');
+      actBtn.classList.remove('lit'); actIcon.textContent = '🎒';
+      GS.interactTarget = null; return;
     }
-    // Acrobat restriction
-    const loot=loots[0];
-    if(G.myCharId==='acrobat'&&loot.weight!=='light'){
-      prompt.textContent=`Acrobat can't carry ${loot.weight} loot`;
-      prompt.classList.add('show');denied.classList.remove('show');
-      actBtn.classList.remove('lit');GS.interactTarget=null;return;
+    const loot = loots[0];
+    if (G.myCharId === 'acrobat' && loot.weight !== 'light') {
+      prompt.textContent = `Acrobat can't carry ${loot.weight} loot`;
+      prompt.classList.add('show'); denied.classList.remove('show');
+      actBtn.classList.remove('lit'); GS.interactTarget = null; return;
     }
-    GS.interactTarget=loot;
-    prompt.textContent=`Hold ACT — Steal ${loot.icon} ${loot.name} ($${(loot.val/1000).toFixed(0)}k)`;
-    prompt.classList.add('show');denied.classList.remove('show');
-    actBtn.classList.add('lit');actIcon.textContent='🎒';return;
+    if (G.myCharId === 'source' && loot.weight !== 'light') {
+      prompt.textContent = `Inside Source can only take light loot`;
+      prompt.classList.add('show'); denied.classList.remove('show');
+      actBtn.classList.remove('lit'); GS.interactTarget = null; return;
+    }
+    GS.interactTarget = loot;
+    prompt.textContent = `Hold ACT — Steal ${loot.icon} ${loot.name} ($${(loot.val / 1000).toFixed(0)}k)`;
+    prompt.classList.add('show'); denied.classList.remove('show');
+    actBtn.classList.add('lit'); actIcon.textContent = '🎒'; return;
   }
-  denied.classList.remove('show');prompt.classList.remove('show');
-  actBtn.classList.remove('lit');actIcon.textContent='⚡';
-  GS.interactTarget=null;
+
+  denied.classList.remove('show'); prompt.classList.remove('show');
+  actBtn.classList.remove('lit'); actIcon.textContent = '⚡';
+  GS.interactTarget = null;
 }
 
-// Action button press/release
-function actPress(e){
-  if(e)e.preventDefault();
-  if(!GS.interactTarget||GS.arrested||GS.confrontActive)return;
-  GS.actionHeld=true;
-  const isDrop=GS.interactTarget.type==='dropoff';
-  const stealTime=G.myCharId==='techie'?40000:G.myCharId==='source'?10000:20000;
-  const duration=isDrop?2500:stealTime;
-  const startT=Date.now();
-  const ring=document.getElementById('prog-ring');
-  const actBtn=document.getElementById('act-btn');
+function actPress(e) {
+  if (e) e.preventDefault();
+  if (!GS.interactTarget || GS.arrested || GS.confrontActive) return;
+  GS.actionHeld = true;
+  const isDrop = GS.interactTarget.type === 'dropoff';
+  let stealTime = 20000;
+  if (G.myCharId === 'techie') stealTime = GS.overdrive > 0 ? 0 : 40000;
+  else if (G.myCharId === 'source') stealTime = GS.overdrive > 0 ? 0 : 10000;
+  else if (GS.overdrive > 0) stealTime = 0;
+  const duration = isDrop ? 2500 : stealTime;
+
+  if (duration === 0) {
+    // Instant (overdrive)
+    if (isDrop) doDropoff(); else { if (G.myCharId === 'muscle') checkSoundAlert(); doSteal(GS.interactTarget); }
+    return;
+  }
+
+  const startT  = Date.now();
+  const ring    = document.getElementById('prog-ring');
+  const actBtn  = document.getElementById('act-btn');
   actBtn.classList.add('progressing');
-  GS.actionIv=setInterval(()=>{
-    if(!GS.actionHeld||!GS.running){clearActionProgress();return}
-    GS.actionProgress=(Date.now()-startT)/duration;
-    ring.style.background=`conic-gradient(var(--gold) ${GS.actionProgress*360}deg, transparent 0deg)`;
-    if(GS.actionProgress>=1){
+
+  GS.actionIv = setInterval(() => {
+    if (!GS.actionHeld || !GS.running) { clearActionProgress(); return; }
+    GS.actionProgress = (Date.now() - startT) / duration;
+    ring.style.background = `conic-gradient(var(--gold) ${GS.actionProgress * 360}deg, transparent 0deg)`;
+    if (GS.actionProgress >= 1) {
       clearActionProgress();
-      if(isDrop)doDropoff();else{
-        // Muscle smash sound detection
-        if(G.myCharId==='muscle')checkSoundAlert();
-        doSteal(GS.interactTarget);
-      }
+      if (isDrop) doDropoff();
+      else { if (G.myCharId === 'muscle') checkSoundAlert(); doSteal(GS.interactTarget); }
     }
-  },50);
-}
-function actRelease(){
-  GS.actionHeld=false;clearActionProgress();
-}
-function clearActionProgress(){
-  GS.actionProgress=0;
-  if(GS.actionIv)clearInterval(GS.actionIv);
-  const ring=document.getElementById('prog-ring');
-  const actBtn=document.getElementById('act-btn');
-  if(ring)ring.style.background='conic-gradient(var(--gold) 0%, transparent 0%)';
-  if(actBtn)actBtn.classList.remove('progressing');
+  }, 50);
 }
 
-function doSteal(loot){
-  loot.stolen=true;
-  const slot=GS.myInventory.indexOf(null);
-  if(slot===-1)return;
-  GS.myInventory[slot]=loot;
+function actRelease() { GS.actionHeld = false; clearActionProgress(); }
+
+function clearActionProgress() {
+  GS.actionProgress = 0;
+  if (GS.actionIv) clearInterval(GS.actionIv);
+  const ring   = document.getElementById('prog-ring');
+  const actBtn = document.getElementById('act-btn');
+  if (ring)    ring.style.background = 'conic-gradient(var(--gold) 0%, transparent 0%)';
+  if (actBtn)  actBtn.classList.remove('progressing');
+}
+
+function doSteal(loot) {
+  loot.stolen = true;
+  const slot = GS.myInventory.indexOf(null);
+  if (slot === -1) return;
+  GS.myInventory[slot] = loot;
+  // Tell server — all clients will mark this loot stolen
+  socket.emit('loot_stolen', { roomId: GS.myPos.roomId, lootId: loot.id });
   notif(`Grabbed ${loot.icon} ${loot.name}!`);
   GS.guardTriggers++;
-  updateHUD();renderInventory();
+  updateHUD();
+  renderInventory();
 }
 
-function doDropoff(){
-  const items=GS.myInventory.filter(Boolean);
-  if(!items.length)return;
-  const total=items.reduce((s,i)=>s+i.val,0);
-  GS.vanLoot+=total;
-  GS.myInventory=[null,null,null,null];
+function doDropoff() {
+  const items = GS.myInventory.filter(Boolean);
+  if (!items.length) return;
+  const total = items.reduce((s, i) => s + i.val, 0);
+  GS.vanLoot      += total;
+  GS.myInventory   = [null, null, null, null];
+  socket.emit('loot_dropoff', { amount: total });
   notif(`💰 Loaded ${fmt(total)} into van!`);
-  GS.screenShake=.4;
-  updateHUD();renderInventory();
-  if(GS.vanLoot>=GS.targetLoot)setTimeout(triggerVictory,400);
+  GS.screenShake = .4;
+  updateHUD();
+  renderInventory();
+  if (GS.vanLoot >= GS.targetLoot) setTimeout(triggerVictory, 400);
 }
 
-function renderInventory(){
-  const bar=document.getElementById('inv-bar');
-  const max=G.myCharId==='hacker'?1:4;
-  bar.innerHTML=Array.from({length:max},(_,i)=>{
-    const item=GS.myInventory[i];
-    const wCls=item?item.weight==='heavy'?' heavy-item':item.weight==='medium'?' medium-item':' filled':'';
-    return`<div class="inv-slot${wCls}">${item?`${item.icon}<div class="wt">${item.weight.substring(0,3).toUpperCase()}</div>`:'+'}</div>`;
+function renderInventory() {
+  const bar = document.getElementById('inv-bar');
+  const max = G.myCharId === 'hacker' ? 1 : 4;
+  bar.innerHTML = Array.from({length: max}, (_, i) => {
+    const item = GS.myInventory[i];
+    const wCls = item ? (item.weight === 'heavy' ? ' heavy-item' : item.weight === 'medium' ? ' medium-item' : ' filled') : '';
+    return `<div class="inv-slot${wCls}">${item ? `${item.icon}<div class="wt">${item.weight.substring(0, 3).toUpperCase()}</div>` : '+'}</div>`;
   }).join('');
 }
 
 // ══════════════════════════════════════════════════════
-//  POWER TOKEN
+//  POWER TOKENS
 // ══════════════════════════════════════════════════════
-function useToken(){
-  if(GS.tokenUsed||!GS.running||GS.arrested)return;
-  GS.tokenUsed=true;
-  document.getElementById('token-btn').disabled=true;
+function useToken() {
+  if (GS.tokenUsed || !GS.running || GS.arrested) return;
+  GS.tokenUsed = true;
+  document.getElementById('token-btn').disabled = true;
   document.getElementById('pwr-btn').classList.add('used');
-  const c=CHARS.find(x=>x.id===G.myCharId)||CHARS[3];
-  switch(G.myCharId){
+
+  const targetRoom = GS.myPos.roomId;
+
+  switch (G.myCharId) {
+
     case 'hacker':
-      // Blackout — darkness in current room
-      GS.darknessRoom=GS.myPos.roomId;GS.darknessTimer=20;
-      notif('🌑 BLACKOUT — room plunged into darkness for 20s!');
+      // Blackout — darkness in current room for 20s
+      GS.darknessRoom  = targetRoom;
+      GS.darknessTimer = 20;
       document.getElementById('dark-overlay').classList.add('on');
-      setTimeout(()=>document.getElementById('dark-overlay').classList.remove('on'),20000);
+      setTimeout(() => document.getElementById('dark-overlay').classList.remove('on'), 20000);
+      socket.emit('token_used', { tokenId: 'hacker', targetRoom });
+      notif('🌑 BLACKOUT — room plunged into darkness for 20s!');
       break;
+
     case 'acrobat':
-      // Smokebomb — escape current confrontation
-      if(GS.confrontActive){chooseSmokeEscape()}
-      else notif('💨 SMOKEBOMB ready — triggers automatically if caught');
+      // Smokebomb — auto-triggers on confrontation; if used manually, escape immediately
+      if (GS.confrontActive) {
+        chooseSmokeEscape();
+        GS.tokenUsed = true; // re-set since chooseSmokeEscape sets it too
+      } else {
+        socket.emit('token_used', { tokenId: 'acrobat', targetRoom });
+        notif('💨 SMOKEBOMB armed — auto-escapes next guard catch!');
+        // Don't mark as fully used yet — keep it armed
+        GS.tokenUsed = false;
+        GS.smokebombArmed = true;
+        document.getElementById('token-btn').style.borderColor = '#00E676';
+      }
+      break;
+
+    case 'techie':
+      // Overdrive — instant actions for 15s
+      GS.overdrive = 15;
+      document.getElementById('overdrive-bar').classList.add('active');
+      socket.emit('token_used', { tokenId: 'techie', targetRoom });
+      notif('⚙️ OVERDRIVE — all actions instant for 15 seconds!');
+      setTimeout(() => {
+        document.getElementById('overdrive-bar').classList.remove('active');
+      }, 15000);
+      break;
+
+    case 'muscle':
+      // Takedown — knock out nearest guard for 45s
+      if (GS.guards.length === 0) { GS.tokenUsed = false; return; }
+      let nearest = null, nearestDist = Infinity;
+      GS.guards.forEach(g => {
+        if (g.knocked > 0) return;
+        const dx = g.x - GS.myPos.x, dy = g.y - GS.myPos.y;
+        const d  = Math.sqrt(dx * dx + dy * dy);
+        if (d < nearestDist) { nearestDist = d; nearest = g; }
+      });
+      if (nearest) {
+        nearest.knocked = 45;
+        socket.emit('token_used', { tokenId: 'muscle', targetRoom });
+        notif('💥 TAKEDOWN — guard knocked out for 45 seconds!');
+      } else {
+        notif('No active guards nearby', 'alert');
+        GS.tokenUsed = false;
+        document.getElementById('token-btn').disabled = false;
+        document.getElementById('pwr-btn').classList.remove('used');
+      }
+      break;
+
+    case 'source':
+      // Master Key — unlock all rooms for 30s
+      GS.masterKeyActive = true;
+      GS.masterKeyTimer  = 30;
+      socket.emit('token_used', { tokenId: 'source', targetRoom });
+      notif('🔑 MASTER KEY — all rooms open for 30 seconds!');
+      setTimeout(() => {
+        GS.masterKeyActive = false;
+        notif('🔑 Master Key expired');
+      }, 30000);
+      break;
+
+    case 'driver':
+      // Adrenaline Dump — speed boost for all teammates
+      GS.speedBoost = 20;
+      socket.emit('token_used', { tokenId: 'driver', targetRoom });
+      notif('🚨 ADRENALINE DUMP — 50% speed boost for 20 seconds!');
+      break;
+  }
+}
+
+// Apply a token effect received from server (teammate used it)
+function applyTokenEffect(tokenId, targetRoom, senderNick) {
+  switch (tokenId) {
+    case 'hacker':
+      GS.darknessRoom  = targetRoom;
+      GS.darknessTimer = 20;
+      notif(`🌑 ${senderNick} activated BLACKOUT in ${targetRoom}!`);
       break;
     case 'techie':
-      // Overdrive — fast actions for 15s (handled in steal time check)
-      GS.tokenUsed=false; // reuse mechanism: flag on char
-      GS.overdrive=15;
-      notif('⚙️ OVERDRIVE — all actions instant for 15 seconds!');
-      setTimeout(()=>{GS.over
+      GS.overdrive = 15;
+      notif(`⚙️ ${senderNick} activated OVERDRIVE!`);
+      break;
+    case 'muscle':
+      // Host already knocked the guard; non-host just shows notif
+      notif(`💥 ${senderNick} knocked out a guard!`);
+      break;
+    case 'source':
+      GS.masterKeyActive = true;
+      GS.masterKeyTimer  = 30;
+      notif(`🔑 ${senderNick} used MASTER KEY — all rooms open!`);
+      break;
+    case 'driver':
+      GS.speedBoost = 20;
+      notif(`🚨 ${senderNick} activated ADRENALINE DUMP — +50% speed!`);
+      break;
+    case 'acrobat':
+      notif(`💨 ${senderNick} used SMOKEBOMB — escaped a guard!`);
+      break;
+  }
+}
+
+// ══════════════════════════════════════════════════════
+//  HUD
+// ══════════════════════════════════════════════════════
+function fmt(v) {
+  if (v >= 1000000) return '$' + (v / 1000000).toFixed(1) + 'M';
+  return '$' + (v / 1000).toFixed(0) + 'k';
+}
+
+function updateHUD() {
+  document.getElementById('hl-van').textContent = fmt(GS.vanLoot);
+  document.getElementById('hl-tgt').textContent = fmt(GS.targetLoot);
+  const pct = Math.min(100, Math.round(GS.vanLoot / GS.targetLoot * 100));
+  document.getElementById('lp-pct').textContent  = pct + '%';
+  document.getElementById('lp-fill').style.width = pct + '%';
+
+  // Player dots in HUD
+  const hudP = document.getElementById('hud-players');
+  hudP.innerHTML = G.players.map(p => {
+    const c   = CHARS.find(x => x.id === p.charId);
+    const isMe = p.id === socket.id;
+    return `<div class="hud-p${isMe ? ' me' : ''}">
+      <div class="hud-pdot" style="background:${p.color}"></div>
+      <span>${p.nick.substring(0, 6)}</span>
+    </div>`;
+  }).join('');
+}
+
+// ══════════════════════════════════════════════════════
+//  ENDGAME
+// ══════════════════════════════════════════════════════
+function triggerVictory() {
+  if (!GS.running) return;
+  GS.running = false;
+  stopGame();
+  if (G.isHost) socket.emit('game_over', { result: 'victory' });
+
+  const pct   = Math.min(100, Math.round(GS.vanLoot / GS.targetLoot * 100));
+  const mLeft = Math.floor(GS.timeLeft / 60);
+  const sLeft = String(GS.timeLeft % 60).padStart(2, '0');
+
+  document.getElementById('end-icon').textContent  = '🚐';
+  document.getElementById('end-title').textContent = 'Heist Complete';
+  document.getElementById('end-sub').textContent   = 'The crew ghosted the floor';
+  document.getElementById('end-title').style.color = '#00B894';
+  document.getElementById('e-loot').textContent    = fmt(GS.vanLoot);
+  document.getElementById('e-target').textContent  = fmt(GS.targetLoot);
+  document.getElementById('e-time').textContent    = `${mLeft}:${sLeft}`;
+  document.getElementById('e-guards').textContent  = GS.guardTriggers;
+  document.getElementById('e-bribes').textContent  = GS.bribesCount;
+  document.getElementById('e-pbar').style.background = '#00B894';
+  document.getElementById('e-pbar').style.width   = pct + '%';
+  document.getElementById('e-loot').className     = 'good';
+
+  // Badges
+  const badges = [];
+  if (GS.guardTriggers === 0)   badges.push({icon:'👻', name:'Ghost'});
+  if (GS.bribesCount   === 0)   badges.push({icon:'🤝', name:'Clean Hands'});
+  if (GS.timeLeft      > 120)   badges.push({icon:'⚡', name:'Speed Demons'});
+  if (GS.vanLoot >= GS.targetLoot * 1.2) badges.push({icon:'💰', name:'Greedy Crew'});
+  document.getElementById('end-badges').innerHTML =
+    badges.map(b => `<div class="badge">${b.icon} ${b.name}</div>`).join('');
+
+  document.getElementById('end-overlay').classList.add('open');
+}
+
+function triggerDefeat(reason) {
+  if (!GS.running) return;
+  GS.running = false;
+  stopGame();
+  if (G.isHost && reason !== 'total_arrest') socket.emit('game_over', { result: reason });
+
+  const pct   = Math.min(100, Math.round(GS.vanLoot / GS.targetLoot * 100));
+
+  const msgs = {
+    timeout:      {icon:'🚔', title:'Heist Failed',  sub:'Time expired — SWAT moved in'},
+    total_arrest: {icon:'🔒', title:'Crew Apprehended', sub:'Every operative detained'},
+  };
+  const m = msgs[reason] || msgs.timeout;
+
+  document.getElementById('end-icon').textContent  = m.icon;
+  document.getElementById('end-title').textContent = m.title;
+  document.getElementById('end-sub').textContent   = m.sub;
+  document.getElementById('end-title').style.color = '#D63031';
+  document.getElementById('e-loot').textContent    = fmt(GS.vanLoot);
+  document.getElementById('e-target').textContent  = fmt(GS.targetLoot);
+  document.getElementById('e-time').textContent    = '0:00';
+  document.getElementById('e-guards').textContent  = GS.guardTriggers;
+  document.getElementById('e-bribes').textContent  = GS.bribesCount;
+  document.getElementById('e-pbar').style.background = pct > 70 ? '#C9A030' : '#D63031';
+  document.getElementById('e-pbar').style.width   = pct + '%';
+  document.getElementById('e-loot').className     = 'bad';
+  document.getElementById('end-badges').innerHTML =
+    `<div class="badge">📊 ${pct}% secured</div>`;
+
+  document.getElementById('end-overlay').classList.add('open');
+}
+
+function goLobbyFromEnd() {
+  stopGame();
+  G.myCharId = null;
+  show('lobby');
+  renderLobby();
+}
+
+// ══════════════════════════════════════════════════════
+//  NOTIFICATIONS
+// ══════════════════════════════════════════════════════
+let notifTimer = null;
+function notif(msg, type) {
+  const el = document.getElementById('notif');
+  el.textContent = msg;
+  el.className   = 'notif show' + (type === 'alert' ? ' alert' : '');
+  if (notifTimer) clearTimeout(notifTimer);
+  notifTimer = setTimeout(() => el.classList.remove('show'), 2800);
+}
+</script>
+</body>
+</html>
