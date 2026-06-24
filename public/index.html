@@ -1,0 +1,1163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+<title>Ghost the Floor</title>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;900&family=Barlow:wght@400;500&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+:root{
+  --navy:#0D0F1A;--navy2:#13162A;--navy3:#1C2040;
+  --gold:#F5C842;--gold2:#C9A030;
+  --crimson:#D63031;--crimson2:#A32424;
+  --teal:#00B894;--offwhite:#EDE8DC;
+  --muted:#7A7A8A;--border:#2A2D45;
+}
+body{background:var(--navy);color:var(--offwhite);font-family:'Barlow',sans-serif;min-height:100vh;overflow:hidden;touch-action:none;user-select:none}
+.screen{display:none;min-height:100vh;flex-direction:column;position:fixed;inset:0;z-index:1}
+.screen.active{display:flex}
+
+/* ══ HOME ══ */
+#home{align-items:center;justify-content:center;overflow:hidden;background:var(--navy)}
+.bg-grid{position:absolute;inset:0;background-image:linear-gradient(var(--border) 1px,transparent 1px),linear-gradient(90deg,var(--border) 1px,transparent 1px);background-size:40px 40px;opacity:.25;pointer-events:none}
+.home-inner{position:relative;z-index:1;text-align:center;padding:2rem}
+.logo-ghost{font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:clamp(58px,14vw,116px);letter-spacing:8px;color:var(--gold);line-height:.85;text-transform:uppercase;text-shadow:0 0 60px rgba(245,200,66,.15)}
+.logo-the{font-family:'Barlow Condensed',sans-serif;font-weight:400;font-size:clamp(16px,3.5vw,30px);letter-spacing:16px;color:var(--gold2);text-transform:uppercase;margin:8px 0}
+.logo-floor{font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:clamp(58px,14vw,116px);letter-spacing:8px;color:var(--gold);line-height:.85;text-transform:uppercase;text-shadow:0 0 60px rgba(245,200,66,.15)}
+.logo-sub{font-size:clamp(10px,1.5vw,13px);letter-spacing:10px;color:var(--muted);text-transform:uppercase;margin:1.5rem 0 3rem}
+.tagline{font-size:13px;color:var(--muted);margin-bottom:2.5rem;letter-spacing:1px}
+.btn-gold{background:var(--gold);color:var(--navy);font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:18px;letter-spacing:3px;text-transform:uppercase;border:none;padding:14px 56px;cursor:pointer;transition:all .12s;display:block}
+.btn-gold:hover{background:var(--gold2);transform:translateY(-1px)}
+.btn-outline{background:transparent;color:var(--offwhite);font-family:'Barlow Condensed',sans-serif;font-weight:600;font-size:16px;letter-spacing:2px;text-transform:uppercase;border:1px solid var(--border);padding:12px 48px;cursor:pointer;margin-top:10px;transition:all .12s;display:block}
+.btn-outline:hover{border-color:var(--muted)}
+.home-btns{display:flex;flex-direction:column;align-items:center}
+.or-sep{color:var(--muted);font-size:11px;letter-spacing:4px;margin:10px 0}
+.corner{position:absolute;width:100px;height:100px;border-color:var(--gold2);border-style:solid;opacity:.15}
+.corner.tl{top:24px;left:24px;border-width:2px 0 0 2px}.corner.tr{top:24px;right:24px;border-width:2px 2px 0 0}
+.corner.bl{bottom:24px;left:24px;border-width:0 0 2px 2px}.corner.br{bottom:24px;right:24px;border-width:0 2px 2px 0}
+
+/* ══ JOIN ══ */
+#join{align-items:center;justify-content:center;padding:2rem;background:var(--navy)}
+.panel{background:var(--navy2);border:1px solid var(--border);padding:2.5rem;width:100%;max-width:400px}
+.panel-title{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:28px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);margin-bottom:.2rem}
+.panel-sub{font-size:13px;color:var(--muted);margin-bottom:2rem;letter-spacing:1px}
+.field-label{font-size:10px;letter-spacing:4px;text-transform:uppercase;color:var(--muted);margin-bottom:8px}
+.field-input{width:100%;background:var(--navy3);border:1px solid var(--border);color:var(--offwhite);font-family:'Barlow',sans-serif;font-size:16px;padding:12px 16px;outline:none;transition:border .15s;margin-bottom:1.5rem}
+.field-input:focus{border-color:var(--gold)}
+.code-input{font-family:'Share Tech Mono',monospace;font-size:26px;letter-spacing:10px;text-align:center;text-transform:uppercase}
+.back-link{background:none;border:none;color:var(--muted);font-size:12px;letter-spacing:3px;text-transform:uppercase;cursor:pointer;padding:14px 0 0;font-family:'Barlow',sans-serif;display:block;text-align:center}
+.back-link:hover{color:var(--offwhite)}
+
+/* ══ LOBBY ══ */
+#lobby{padding:0;overflow:hidden;background:var(--navy)}
+.lobby-header{background:var(--navy2);border-bottom:1px solid var(--border);padding:.85rem 1.5rem;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:.75rem;flex-shrink:0}
+.room-code-area{display:flex;align-items:center;gap:1.25rem;flex-wrap:wrap}
+.rc-label{font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--muted)}
+.rc-code{font-family:'Share Tech Mono',monospace;font-size:28px;color:var(--gold);letter-spacing:8px}
+.vdiv{width:1px;height:36px;background:var(--border)}
+.lobby-body{display:grid;grid-template-columns:1fr 270px;flex:1;min-height:0;overflow:hidden}
+@media(max-width:820px){.lobby-body{grid-template-columns:1fr;overflow-y:auto}}
+.char-wrap{padding:1.25rem;overflow-y:auto}
+.section-eye{font-size:10px;letter-spacing:4px;text-transform:uppercase;color:var(--muted);margin-bottom:.9rem}
+.char-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:9px}
+@media(max-width:640px){.char-grid{grid-template-columns:repeat(2,1fr)}}
+.char-card{background:var(--navy2);border:1px solid var(--border);cursor:pointer;transition:border-color .13s,transform .13s,box-shadow .13s;position:relative;overflow:hidden}
+.char-card:hover:not(.taken):not(.mine){border-color:var(--gold2);transform:translateY(-2px);box-shadow:0 4px 20px rgba(245,200,66,.1)}
+.char-card.mine{border-color:var(--teal);box-shadow:0 0 0 1px var(--teal)}
+.char-card.taken{opacity:.35;cursor:not-allowed}
+.char-portrait{width:100%;aspect-ratio:3/4}
+.char-portrait svg{width:100%;height:100%;display:block}
+.color-bar{height:3px;width:100%}
+.char-info{padding:7px 9px 9px}
+.char-name{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:15px;letter-spacing:1px;text-transform:uppercase;line-height:1}
+.char-gender{font-size:9px;color:var(--muted);letter-spacing:2px;text-transform:uppercase;margin:2px 0 4px}
+.char-rooms-text{font-size:9px;color:var(--muted);line-height:1.5}
+.token-pill{display:inline-block;background:var(--navy3);border:1px solid var(--border);font-size:8px;letter-spacing:1px;text-transform:uppercase;padding:2px 5px;margin-top:4px;color:var(--gold)}
+.taken-overlay{position:absolute;inset:0;background:rgba(13,15,26,.85);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px}
+.taken-name-lbl{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:17px;letter-spacing:2px;text-transform:uppercase}
+.check-badge{position:absolute;top:7px;right:7px;width:17px;height:17px;background:var(--teal);display:flex;align-items:center;justify-content:center}
+.sidebar{background:var(--navy2);border-left:1px solid var(--border);display:flex;flex-direction:column;overflow:hidden}
+@media(max-width:820px){.sidebar{border-left:none;border-top:1px solid var(--border)}}
+.sb-section{padding:1.1rem 1.4rem;border-bottom:1px solid var(--border);flex-shrink:0}
+.sb-title{font-size:9px;letter-spacing:4px;text-transform:uppercase;color:var(--muted);margin-bottom:.9rem}
+.player-row{display:flex;align-items:center;gap:9px;margin-bottom:9px}
+.player-dot{width:7px;height:7px;border-radius:50%;flex-shrink:0}
+.player-nick{font-size:13px;font-weight:500;line-height:1.2}
+.player-role-lbl{font-size:9px;color:var(--muted);letter-spacing:1px}
+.p-status{margin-left:auto;font-size:8px;letter-spacing:2px;text-transform:uppercase;white-space:nowrap}
+.s-ready{color:var(--teal)}.s-picking{color:var(--gold)}.s-waiting{color:var(--muted)}
+.empty-row{display:flex;align-items:center;gap:9px;margin-bottom:9px;opacity:.25}
+.empty-dot{width:7px;height:7px;border-radius:50%;border:1px dashed var(--muted);flex-shrink:0}
+.match-row{display:flex;justify-content:space-between;font-size:12px;color:var(--muted);line-height:2.2}
+.host-area{padding:1.1rem 1.4rem;margin-top:auto}
+.start-btn{width:100%;background:var(--gold);color:var(--navy);font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:19px;letter-spacing:3px;text-transform:uppercase;border:none;padding:14px;cursor:pointer;transition:background .13s}
+.start-btn:disabled{background:var(--navy3);color:var(--muted);cursor:not-allowed;border:1px solid var(--border)}
+.start-btn:not(:disabled):hover{background:var(--gold2)}
+.ready-txt{font-size:10px;color:var(--muted);text-align:center;margin-top:7px;letter-spacing:1px}
+
+/* ══ CHAR MODAL ══ */
+.modal-bg{position:fixed;inset:0;background:rgba(0,0,0,.92);z-index:200;display:none;align-items:center;justify-content:center;padding:1rem}
+.modal-bg.open{display:flex}
+.modal{background:var(--navy2);border:1px solid var(--border);padding:1.75rem;max-width:320px;width:100%;max-height:90vh;overflow-y:auto}
+.modal-port{width:80px;height:107px;background:#0D0F1A;display:block;margin:0 auto 1.1rem;border:1px solid var(--border)}
+.modal-cname{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:28px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);text-align:center}
+.modal-crole{font-size:10px;letter-spacing:4px;text-transform:uppercase;color:var(--muted);text-align:center;margin-bottom:1.25rem}
+.mdivider{border:none;border-top:1px solid var(--border);margin:1.1rem 0}
+.mdetail{display:flex;justify-content:space-between;font-size:12px;margin-bottom:8px}
+.mdetail-lbl{color:var(--muted)}.mdetail-val{color:var(--offwhite);text-align:right;max-width:60%}
+.mtoken{background:var(--navy3);border:1px solid var(--gold2);padding:9px 11px;margin:.9rem 0 1.3rem}
+.mtoken-name{font-family:'Barlow Condensed',sans-serif;font-size:14px;color:var(--gold);letter-spacing:1px;text-transform:uppercase}
+.mtoken-desc{font-size:11px;color:var(--muted);margin-top:3px;line-height:1.5}
+.style-row{display:flex;gap:8px;margin-bottom:.9rem}
+.style-opt{flex:1;padding:7px;border:1px solid var(--border);background:var(--navy3);cursor:pointer;font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--muted);font-family:'Barlow Condensed',sans-serif;font-weight:600;text-align:center;transition:all .13s}
+.style-opt.on{border-color:var(--gold);color:var(--gold);background:rgba(245,200,66,.07)}
+.modal-btns{display:grid;grid-template-columns:1fr 1fr;gap:9px}
+.btn-cancel{background:transparent;border:1px solid var(--border);color:var(--muted);font-family:'Barlow Condensed',sans-serif;font-weight:600;font-size:15px;letter-spacing:2px;text-transform:uppercase;padding:11px;cursor:pointer}
+.btn-cancel:hover{border-color:var(--muted);color:var(--offwhite)}
+.btn-confirm{background:var(--gold);color:var(--navy);font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:15px;letter-spacing:2px;text-transform:uppercase;border:none;padding:11px;cursor:pointer}
+.btn-confirm:hover{background:var(--gold2)}
+
+/* ══ GAME SCREEN ══ */
+#game{background:var(--navy);overflow:hidden}
+.game-hud{background:var(--navy2);border-bottom:1px solid var(--border);padding:.55rem 1rem;display:flex;align-items:center;justify-content:space-between;flex-shrink:0;z-index:10;gap:1rem}
+.hud-timer{font-family:'Share Tech Mono',monospace;font-size:30px;color:var(--gold);letter-spacing:4px;min-width:75px;line-height:1}
+.hud-timer.danger{color:var(--crimson);animation:blink .6s infinite alternate}
+@keyframes blink{0%{opacity:1}100%{opacity:.3}}
+.hud-center{text-align:center;flex:1}
+.hud-loot-text{font-size:11px;color:var(--muted);letter-spacing:1px}
+.hud-loot-text strong{color:var(--gold)}
+.hud-room{font-size:9px;color:var(--muted);letter-spacing:2px;text-transform:uppercase;margin-top:2px}
+.hud-right{display:flex;align-items:center;gap:6px;flex-wrap:wrap;justify-content:flex-end}
+.hud-pdot{width:9px;height:9px;border-radius:50%;flex-shrink:0}
+.hud-p{display:flex;align-items:center;gap:4px;font-size:10px;opacity:.55}
+.hud-p.me{opacity:1}
+.token-btn{background:var(--navy3);border:1px solid var(--border);color:var(--gold);font-family:'Barlow Condensed',sans-serif;font-size:11px;letter-spacing:1px;text-transform:uppercase;padding:4px 10px;cursor:pointer;transition:all .12s;white-space:nowrap}
+.token-btn:hover{background:rgba(245,200,66,.12);border-color:var(--gold)}
+.token-btn:disabled{opacity:.3;cursor:not-allowed}
+
+/* MAP */
+.map-area{flex:1;position:relative;overflow:hidden}
+canvas#gc{display:block;position:absolute;inset:0;image-rendering:pixelated}
+
+/* MINIMAP */
+.minimap{position:absolute;top:8px;right:8px;background:rgba(13,15,26,.85);border:1px solid var(--border);padding:3px;z-index:12}
+canvas#mc{display:block}
+
+/* LOOT PROGRESS */
+.loot-progress{position:absolute;top:8px;left:50%;transform:translateX(-50%);background:rgba(13,15,26,.88);border:1px solid var(--border);padding:5px 14px;z-index:12;font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--muted);white-space:nowrap;display:flex;align-items:center;gap:8px}
+.loot-bar-wrap{width:100px;height:4px;background:var(--navy3);border-radius:2px;overflow:hidden}
+.loot-bar-fill{height:100%;background:var(--gold);border-radius:2px;transition:width .3s}
+
+/* INTERACTION PROMPT */
+.inter-prompt{position:absolute;bottom:130px;left:50%;transform:translateX(-50%);background:var(--navy2);border:1px solid var(--gold);padding:7px 14px;font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);z-index:15;white-space:nowrap;opacity:0;transition:opacity .2s;pointer-events:none}
+.inter-prompt.show{opacity:1}
+
+/* ACCESS DENIED */
+.access-denied{position:absolute;bottom:130px;left:50%;transform:translateX(-50%);background:rgba(214,48,49,.15);border:1px solid var(--crimson);padding:7px 14px;font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--crimson);z-index:15;white-space:nowrap;opacity:0;transition:opacity .2s;pointer-events:none}
+.access-denied.show{opacity:1}
+
+/* INVENTORY */
+.inv-bar{position:absolute;bottom:128px;left:50%;transform:translateX(-50%);display:flex;gap:5px;z-index:14;pointer-events:none}
+.inv-slot{width:38px;height:38px;background:rgba(13,15,26,.8);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:17px;border-radius:2px;flex-direction:column}
+.inv-slot.filled{border-color:var(--gold)}
+.inv-slot .wt{font-size:7px;color:var(--muted);letter-spacing:1px;line-height:1;margin-top:1px}
+.inv-slot.heavy-item{border-color:var(--crimson)}
+.inv-slot.medium-item{border-color:var(--gold2)}
+
+/* JOYSTICK */
+.joy-zone{position:absolute;bottom:20px;left:20px;width:116px;height:116px;z-index:20;touch-action:none}
+.joy-base{position:absolute;inset:0;border-radius:50%;background:rgba(255,255,255,.04);border:1.5px solid rgba(255,255,255,.1)}
+.joy-knob{position:absolute;width:46px;height:46px;border-radius:50%;background:rgba(245,200,66,.65);border:2px solid var(--gold);top:50%;left:50%;transform:translate(-50%,-50%);transition:none}
+
+/* ACTION + TOKEN BTNS */
+.act-btn{position:absolute;bottom:30px;right:26px;width:66px;height:66px;border-radius:50%;background:rgba(28,32,64,.9);border:2px solid var(--border);display:flex;align-items:center;justify-content:center;z-index:20;cursor:pointer;font-family:'Barlow Condensed',sans-serif;font-size:10px;letter-spacing:1px;text-transform:uppercase;color:var(--muted);flex-direction:column;gap:2px;touch-action:manipulation}
+.act-btn.lit{background:var(--gold);border-color:var(--gold);color:var(--navy)}
+.act-icon{font-size:22px;line-height:1}
+.progress-ring{position:absolute;inset:-3px;border-radius:50%;background:conic-gradient(var(--gold) 0%, transparent 0%);opacity:0;transition:opacity .1s}
+.act-btn.progressing .progress-ring{opacity:1}
+
+.pwr-btn{position:absolute;bottom:108px;right:26px;width:46px;height:46px;border-radius:50%;background:rgba(28,32,64,.9);border:2px solid var(--gold2);display:flex;align-items:center;justify-content:center;z-index:20;cursor:pointer;font-size:18px;touch-action:manipulation}
+.pwr-btn.used{border-color:var(--border);opacity:.4;cursor:not-allowed}
+
+/* ══ OVERLAYS ══ */
+/* CONFRONTATION */
+.cf-overlay{position:fixed;inset:0;background:rgba(0,0,0,.96);z-index:300;display:none;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:2rem}
+.cf-overlay.open{display:flex}
+.cf-guard-icon{font-size:70px;margin-bottom:.5rem;animation:guardBob 1s ease-in-out infinite alternate}
+@keyframes guardBob{from{transform:scale(1) rotate(-2deg)}to{transform:scale(1.08) rotate(2deg)}}
+.cf-alert{font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:clamp(30px,8vw,58px);letter-spacing:4px;color:var(--crimson);text-transform:uppercase}
+.cf-sub{font-size:11px;letter-spacing:4px;text-transform:uppercase;color:var(--muted);margin-bottom:1.5rem}
+.cf-count{font-family:'Share Tech Mono',monospace;font-size:clamp(72px,18vw,108px);color:var(--crimson);line-height:1;margin-bottom:1.5rem;transition:color .1s}
+.cf-count.urgent{color:#FF6B6B;animation:countPulse .25s ease infinite alternate}
+@keyframes countPulse{from{transform:scale(1)}to{transform:scale(1.06)}}
+.cf-btns{display:grid;grid-template-columns:1fr 1fr;gap:14px;width:100%;max-width:380px}
+.cf-btn{padding:18px 12px;font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:18px;letter-spacing:2px;text-transform:uppercase;border:none;cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:5px;transition:transform .1s}
+.cf-btn:active{transform:scale(.96)}
+.cf-btn .icon{font-size:30px}
+.cf-btn .sub{font-size:10px;letter-spacing:2px;opacity:.8;font-weight:400}
+.btn-bribe{background:var(--gold);color:var(--navy)}
+.btn-kill{background:var(--crimson);color:#fff}
+.cf-warning{font-size:11px;color:var(--muted);margin-top:1.25rem;letter-spacing:2px;text-transform:uppercase}
+
+/* ARREST */
+.arrest-overlay{position:fixed;inset:0;background:#05050a;z-index:400;display:none;flex-direction:column;align-items:center;justify-content:center;filter:grayscale(1) brightness(.8)}
+.arrest-overlay.open{display:flex}
+.detained-stamp{font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:clamp(44px,11vw,80px);color:var(--crimson);letter-spacing:6px;text-transform:uppercase;border:5px solid var(--crimson);padding:8px 24px;transform:rotate(-7deg);text-shadow:0 0 30px rgba(214,48,49,.4)}
+.arrest-nick{font-size:14px;letter-spacing:4px;text-transform:uppercase;color:#555;margin-top:2rem}
+.arrest-release{font-size:12px;color:#444;margin-top:.75rem;letter-spacing:2px;text-transform:uppercase}
+.arrest-release .hl{color:#888}
+
+/* SOUND ALERT BANNER */
+.sound-banner{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);background:rgba(214,48,49,.15);border:1px solid var(--crimson);padding:8px 20px;font-family:'Barlow Condensed',sans-serif;font-size:14px;letter-spacing:3px;text-transform:uppercase;color:var(--crimson);z-index:30;pointer-events:none;opacity:0;transition:opacity .2s;white-space:nowrap}
+.sound-banner.flash{opacity:1;animation:soundFlash 1.2s forwards}
+@keyframes soundFlash{0%{opacity:1}70%{opacity:1}100%{opacity:0}}
+
+/* DARKNESS OVERLAY */
+.dark-overlay{position:absolute;inset:0;background:rgba(0,0,0,.88);z-index:11;pointer-events:none;opacity:0;transition:opacity .4s}
+.dark-overlay.on{opacity:1}
+
+/* ENDGAME */
+.end-overlay{position:fixed;inset:0;background:rgba(0,0,0,.97);z-index:500;display:none;flex-direction:column;align-items:center;justify-content:center;padding:2rem;text-align:center}
+.end-overlay.open{display:flex}
+.end-icon{font-size:68px;margin-bottom:.8rem}
+.end-title{font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:clamp(36px,9vw,68px);letter-spacing:4px;text-transform:uppercase;margin-bottom:.4rem}
+.end-sub{font-size:12px;letter-spacing:4px;text-transform:uppercase;color:var(--muted);margin-bottom:1.75rem}
+.end-box{background:var(--navy2);border:1px solid var(--border);padding:1.5rem 2rem;margin-bottom:1.75rem;min-width:280px;max-width:400px;width:100%}
+.end-row{display:flex;justify-content:space-between;font-size:13px;color:var(--muted);line-height:2.3}
+.end-row span{color:var(--offwhite)}
+.end-row span.good{color:var(--teal)}
+.end-row span.bad{color:var(--crimson)}
+.pbar-wrap{height:5px;background:var(--navy3);border-radius:3px;margin-top:1rem;overflow:hidden}
+.pbar-fill{height:100%;border-radius:3px;transition:width 1.2s ease}
+.end-badges{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin-bottom:1.5rem}
+.badge{background:var(--navy3);border:1px solid var(--gold2);padding:6px 12px;font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--gold)}
+.end-actions{display:flex;gap:10px;flex-wrap:wrap;justify-content:center}
+
+/* NOTIF */
+.notif{position:fixed;top:16px;left:50%;transform:translateX(-50%);background:var(--navy2);border:1px solid var(--border);border-left:3px solid var(--gold);color:var(--offwhite);font-family:'Barlow Condensed',sans-serif;font-weight:600;font-size:13px;letter-spacing:2px;text-transform:uppercase;padding:8px 20px;z-index:600;opacity:0;transition:opacity .2s;pointer-events:none;white-space:nowrap;max-width:90vw;overflow:hidden;text-overflow:ellipsis}
+.notif.show{opacity:1}
+.notif.alert{border-left-color:var(--crimson)}
+
+/* SHAKE */
+@keyframes shake{0%,100%{transform:translateX(0)}20%{transform:translateX(-6px)}40%{transform:translateX(6px)}60%{transform:translateX(-4px)}80%{transform:translateX(4px)}}
+.shaking{animation:shake .35s ease}
+</style>
+</head>
+<body>
+
+<!-- NOTIF -->
+<div class="notif" id="notif"></div>
+
+<!-- ══ HOME ══ -->
+<div class="screen active" id="home">
+  <div class="bg-grid"></div>
+  <div class="corner tl"></div><div class="corner tr"></div>
+  <div class="corner bl"></div><div class="corner br"></div>
+  <div class="home-inner">
+    <div class="logo-ghost">Ghost</div>
+    <div class="logo-the">the</div>
+    <div class="logo-floor">Floor</div>
+    <div class="logo-sub">A Cooperative Heist Game</div>
+    <div class="tagline">3–6 players &nbsp;·&nbsp; 7 minutes &nbsp;·&nbsp; one shot</div>
+    <div class="home-btns">
+      <button class="btn-gold" onclick="goCreate()">Create Room</button>
+      <div class="or-sep">— or —</div>
+      <button class="btn-outline" onclick="goJoin()">Join Room</button>
+    </div>
+  </div>
+</div>
+
+<!-- ══ JOIN ══ -->
+<div class="screen" id="join">
+  <div style="display:flex;align-items:center;justify-content:center;flex:1;padding:2rem">
+    <div class="panel">
+      <div class="panel-title">Join the Crew</div>
+      <div class="panel-sub">Get the room code from your host</div>
+      <div class="field-label">Room Code</div>
+      <input class="field-input code-input" id="join-code" maxlength="4" placeholder="XZQR" oninput="this.value=this.value.toUpperCase()">
+      <div class="field-label">Your Nickname</div>
+      <input class="field-input" id="join-nick" maxlength="14" placeholder="Ghost, Viper, Snake...">
+      <button class="btn-gold" style="width:100%" onclick="doJoin()">Enter Room</button>
+      <button class="back-link" onclick="goHome()">← Back</button>
+    </div>
+  </div>
+</div>
+
+<!-- ══ LOBBY ══ -->
+<div class="screen" id="lobby">
+  <div class="lobby-header">
+    <div class="room-code-area">
+      <div><div class="rc-label">Room Code</div><div class="rc-code" id="disp-code">—</div></div>
+      <div class="vdiv"></div>
+      <div><div class="rc-label">Players</div><div style="font-family:'Share Tech Mono',monospace;font-size:20px;color:var(--offwhite)" id="disp-count">1/6</div></div>
+      <div class="vdiv"></div>
+      <div><div class="rc-label">Link</div><div style="font-size:11px;color:var(--muted);font-family:'Share Tech Mono',monospace" id="disp-link">ghostthefloor.app/XXXX</div></div>
+    </div>
+    <div style="text-align:right"><div class="rc-label">Status</div><div style="font-size:12px;color:var(--gold)" id="disp-status">Waiting for crew</div></div>
+  </div>
+  <div class="lobby-body">
+    <div class="char-wrap">
+      <div class="section-eye">Choose Your Specialist</div>
+      <div class="char-grid" id="char-grid"></div>
+    </div>
+    <div class="sidebar">
+      <div class="sb-section"><div class="sb-title">The Crew</div><div id="player-list"></div></div>
+      <div class="sb-section" style="flex:1;overflow-y:auto">
+        <div class="sb-title">Match Settings</div>
+        <div class="match-row"><span>Players</span><span style="color:var(--offwhite)" id="ms-p">—</span></div>
+        <div class="match-row"><span>Loot Target</span><span style="color:var(--gold)" id="ms-t">—</span></div>
+        <div class="match-row"><span>Guard AI</span><span style="color:var(--offwhite)" id="ms-a">—</span></div>
+        <div class="match-row"><span>Time Limit</span><span style="color:var(--crimson)">7:00</span></div>
+        <div class="match-row"><span>Rooms</span><span style="color:var(--offwhite)">10</span></div>
+        <div class="match-row"><span>Guards</span><span style="color:var(--offwhite)">4</span></div>
+      </div>
+      <div class="host-area">
+        <button class="start-btn" id="start-btn" disabled onclick="doStart()">Start Heist</button>
+        <div class="ready-txt" id="ready-txt">Waiting for players to lock in</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ CHAR MODAL ══ -->
+<div class="modal-bg" id="char-modal">
+  <div class="modal">
+    <div class="modal-port" id="modal-port"></div>
+    <div class="modal-cname" id="modal-cname"></div>
+    <div class="modal-crole" id="modal-crole"></div>
+    <div class="style-row">
+      <button class="style-opt on" onclick="pickStyle(0,this)">Style A</button>
+      <button class="style-opt" onclick="pickStyle(1,this)">Style B</button>
+    </div>
+    <hr class="mdivider">
+    <div class="mdetail"><span class="mdetail-lbl">Rooms</span><span class="mdetail-val" id="m-rooms"></span></div>
+    <div class="mdetail"><span class="mdetail-lbl">Restriction</span><span class="mdetail-val" id="m-restrict"></span></div>
+    <div class="mtoken"><div class="mtoken-name" id="m-tname"></div><div class="mtoken-desc" id="m-tdesc"></div></div>
+    <div class="modal-btns">
+      <button class="btn-cancel" onclick="closeModal()">Cancel</button>
+      <button class="btn-confirm" onclick="confirmChar()">Lock In</button>
+    </div>
+  </div>
+</div>
+
+<!-- ══ GAME ══ -->
+<div class="screen" id="game">
+  <div class="game-hud">
+    <div class="hud-timer" id="hud-timer">7:00</div>
+    <div class="hud-center">
+      <div class="hud-loot-text">Van: <strong id="hl-van">$0</strong> / <strong id="hl-tgt">$1.5M</strong></div>
+      <div class="hud-room" id="hud-room">Main Gallery</div>
+    </div>
+    <div class="hud-right">
+      <div id="hud-players"></div>
+      <button class="token-btn" id="token-btn" onclick="useToken()" disabled>⚡ Token</button>
+    </div>
+  </div>
+  <div class="map-area" id="map-area">
+    <canvas id="gc"></canvas>
+    <canvas id="mc" class="minimap" width="120" height="90"></canvas>
+    <div class="loot-progress" id="loot-progress">
+      Van <span id="lp-pct">0%</span>
+      <div class="loot-bar-wrap"><div class="loot-bar-fill" id="lp-fill" style="width:0%"></div></div>
+    </div>
+    <div class="inter-prompt" id="inter-prompt">Hold ACT to steal</div>
+    <div class="access-denied" id="access-denied">🚫 No Access — Wrong Role</div>
+    <div class="inv-bar" id="inv-bar"></div>
+    <div class="sound-banner" id="sound-banner">🔊 Guards Alerted — Sound Detected!</div>
+    <div class="dark-overlay" id="dark-overlay"></div>
+    <div class="joy-zone" id="joy-zone"><div class="joy-base"></div><div class="joy-knob" id="joy-knob"></div></div>
+    <div class="act-btn" id="act-btn" ontouchstart="actPress(event)" ontouchend="actRelease()" onmousedown="actPress(event)" onmouseup="actRelease()">
+      <div class="progress-ring" id="prog-ring"></div>
+      <div class="act-icon" id="act-icon">⚡</div>
+      <div style="font-size:9px;letter-spacing:1px;text-transform:uppercase">ACT</div>
+    </div>
+    <div class="pwr-btn" id="pwr-btn" ontouchstart="event.preventDefault();useToken()" onclick="useToken()" title="Power Token">⚡</div>
+  </div>
+</div>
+
+<!-- ══ CONFRONTATION ══ -->
+<div class="cf-overlay" id="cf-overlay">
+  <div class="cf-guard-icon">🚨</div>
+  <div class="cf-alert">Caught!</div>
+  <div class="cf-sub">Guard has eyes on you — decide now</div>
+  <div class="cf-count" id="cf-count">9</div>
+  <div class="cf-btns">
+    <button class="cf-btn btn-bribe" onclick="chooseBribe()">
+      <div class="icon">💰</div><div>Bribe</div><div class="sub">+$500k target · guard walks</div>
+    </button>
+    <button class="cf-btn btn-kill" onclick="chooseKill()">
+      <div class="icon">👊</div><div>Take Down</div><div class="sub">−30 seconds · silent alarm</div>
+    </button>
+  </div>
+  <div class="cf-warning">Timer hits 0 → permanent arrest</div>
+</div>
+
+<!-- ══ ARREST ══ -->
+<div class="arrest-overlay" id="arrest-overlay">
+  <div class="detained-stamp">Detained</div>
+  <div class="arrest-nick" id="arrest-nick">You've been arrested</div>
+  <div class="arrest-release" id="arrest-release">Released at <span class="hl">1:00</span> remaining</div>
+</div>
+
+<!-- ══ ENDGAME ══ -->
+<div class="end-overlay" id="end-overlay">
+  <div class="end-icon" id="end-icon">🚐</div>
+  <div class="end-title" id="end-title">Heist Complete</div>
+  <div class="end-sub" id="end-sub">The crew ghosted the floor</div>
+  <div class="end-box">
+    <div class="end-row">Loot Secured <span id="e-loot">$0</span></div>
+    <div class="end-row">Target <span id="e-target">$1.5M</span></div>
+    <div class="end-row">Time Remaining <span id="e-time">0:00</span></div>
+    <div class="end-row">Guards Triggered <span id="e-guards">0</span></div>
+    <div class="end-row">Bribes Paid <span id="e-bribes">0</span></div>
+    <div class="pbar-wrap"><div class="pbar-fill" id="e-pbar" style="width:0%"></div></div>
+  </div>
+  <div class="end-badges" id="end-badges"></div>
+  <div class="end-actions">
+    <button class="btn-gold" onclick="goHome()">Play Again</button>
+    <button class="btn-outline" onclick="goLobby()">Back to Lobby</button>
+  </div>
+</div>
+
+<script>
+// ══════════════════════════════════════════════════════
+//  DATA
+// ══════════════════════════════════════════════════════
+const CHARS=[
+  {id:'hacker',name:'The Hacker',gender:'Woman',color:'#00C8FF',
+   rooms:['cctv','server'],roomLabel:'Server Rooms & CCTV Hubs',
+   restrict:'Carries only 1 loot item',token:'Blackout',
+   tdesc:'Plunges a target room into total darkness for 20s — guards inside are blinded.',
+   bA:{skin:'#C68642',hair:'#1a1a1a',top:'#1a3a4a',acc:'#00C8FF'},
+   bB:{skin:'#F5CBA7',hair:'#5c3317',top:'#2a1a4a',acc:'#00C8FF'}},
+  {id:'acrobat',name:'The Acrobat',gender:'Woman',color:'#00E676',
+   rooms:['laser','vents'],roomLabel:'Laser Vaults & Ventilation Shafts',
+   restrict:'Lightweight loot only · 25% faster',token:'Smokebomb',
+   tdesc:'Instantly escapes a guard confrontation with zero penalty.',
+   bA:{skin:'#8D5524',hair:'#0a0a0a',top:'#1a2e1a',acc:'#00E676'},
+   bB:{skin:'#FDBCB4',hair:'#c87941',top:'#1a1a2e',acc:'#00E676'}},
+  {id:'techie',name:'The Techie',gender:'Man',color:'#FFB300',
+   rooms:['laser','fuse'],roomLabel:'Laser Vaults & Fuse Boxes',
+   restrict:'Takes 40s to bag items (double)',token:'Overdrive',
+   tdesc:'All puzzles and lock times drop to 0s for 15 seconds.',
+   bA:{skin:'#8D5524',hair:'#3d2b1f',top:'#2a1a00',acc:'#FFB300'},
+   bB:{skin:'#C68642',hair:'#1a1a1a',top:'#1a1a2a',acc:'#FFB300'}},
+  {id:'muscle',name:'The Muscle',gender:'Man',color:'#FF6B35',
+   rooms:['storage','gallery'],roomLabel:'Heavy Storage & Main Gallery',
+   restrict:'Smash noise alerts nearby guards',token:'Takedown',
+   tdesc:'Silently knocks out a guard for 45 seconds.',
+   bA:{skin:'#8D5524',hair:'#1a0a00',top:'#1a0a00',acc:'#FF6B35'},
+   bB:{skin:'#C68642',hair:'#2a1a00',top:'#2a0a00',acc:'#FF6B35'}},
+  {id:'source',name:'Inside Source',gender:'Woman',color:'#B388FF',
+   rooms:['maint','vip','loading'],roomLabel:'Maintenance, VIP Lounge & Loading Docks',
+   restrict:'Low-tier loot only · 10s steal time',token:'Master Key',
+   tdesc:'Instantly unlocks any door on the map for any teammate.',
+   bA:{skin:'#F5CBA7',hair:'#2c1810',top:'#1a1a3a',acc:'#B388FF'},
+   bB:{skin:'#8D5524',hair:'#1a1a1a',top:'#2a1a2a',acc:'#B388FF'}},
+  {id:'driver',name:'The Driver',gender:'Man',color:'#FF4757',
+   rooms:['loading','vents'],roomLabel:'Loading Docks & Ventilation Shafts',
+   restrict:'Cannot steal — logistics only',token:'Adrenaline Dump',
+   tdesc:'Blasts a siren giving all teammates 50% speed boost for 20 seconds.',
+   bA:{skin:'#C68642',hair:'#2a2a2a',top:'#1a0000',acc:'#FF4757'},
+   bB:{skin:'#8D5524',hair:'#1a1a1a',top:'#0a0a1a',acc:'#FF4757'}},
+];
+
+// All rooms visible to everyone — restricted rooms still walkable but loot locked
+const ROOMS=[
+  {id:'cctv',    name:'CCTV Hub',      col:0,row:0, fill:'#08111e', border:'#102030', roles:['hacker'],   loot:[]},
+  {id:'server',  name:'Server Room',   col:1,row:0, fill:'#080d1e', border:'#101828', roles:['hacker'],   loot:[{name:'Digital Assets',val:600000,weight:'light',icon:'💾'}]},
+  {id:'laser',   name:'Laser Vault',   col:2,row:0, fill:'#0e0820', border:'#1a1030', roles:['acrobat','techie'], loot:[{name:'Crown Jewels',val:900000,weight:'light',icon:'💎'},{name:'Ruby Pendant',val:350000,weight:'light',icon:'🔴'}]},
+  {id:'fuse',    name:'Fuse Box',      col:0,row:1, fill:'#111000', border:'#1e1c00', roles:['techie'],   loot:[]},
+  {id:'gallery', name:'Main Gallery',  col:1,row:1, fill:'#100e00', border:'#1e1a00', roles:['muscle'],   loot:[{name:'Gold Artifact',val:700000,weight:'heavy',icon:'🏺'},{name:'Ancient Coins',val:300000,weight:'light',icon:'🪙'},{name:'Silk Painting',val:400000,weight:'medium',icon:'🖼️'}]},
+  {id:'storage', name:'Heavy Storage', col:2,row:1, fill:'#110800', border:'#200e00', roles:['muscle'],   loot:[{name:'Gold Bars',val:1200000,weight:'heavy',icon:'🥇'},{name:'Marble Statue',val:800000,weight:'heavy',icon:'🗿'}]},
+  {id:'vip',     name:'VIP Lounge',    col:0,row:2, fill:'#0e0812', border:'#1a1020', roles:['source'],   loot:[{name:'Registry Cash',val:200000,weight:'light',icon:'💵'},{name:'Wall Painting',val:350000,weight:'medium',icon:'🎨'}]},
+  {id:'maint',   name:'Maintenance',   col:1,row:2, fill:'#080e08', border:'#101a10', roles:['source'],   loot:[]},
+  {id:'vents',   name:'Ventilation',   col:2,row:2, fill:'#08080e', border:'#10101a', roles:['acrobat','driver'], loot:[]},
+  {id:'loading', name:'Loading Docks', col:1,row:3, fill:'#0e0e0e', border:'#1a1a1a', roles:['source','driver'], loot:[], isExit:true},
+];
+
+const CORRIDORS=[
+  ['cctv','server'],['server','laser'],
+  ['cctv','fuse'],['server','gallery'],['laser','storage'],
+  ['fuse','gallery'],['gallery','storage'],
+  ['fuse','vip'],['gallery','maint'],['storage','vents'],
+  ['vip','maint'],['maint','vents'],
+  ['maint','loading'],['vip','loading'],
+];
+
+const GUARD_PATHS=[
+  ['gallery','server','laser','storage','gallery'],
+  ['fuse','vip','maint','gallery','fuse'],
+  ['cctv','server','gallery','maint','vip','cctv'],
+  ['storage','vents','maint','loading','gallery','storage'],
+];
+
+const SCALE={
+  3:{target:1500000,tgtStr:'$1.5M',ai:'slow'},
+  4:{target:2200000,tgtStr:'$2.2M',ai:'standard'},
+  5:{target:3000000,tgtStr:'$3.0M',ai:'random'},
+  6:{target:4000000,tgtStr:'$4.0M',ai:'fast'},
+};
+
+// ══════════════════════════════════════════════════════
+//  APP STATE
+// ══════════════════════════════════════════════════════
+const MOCK=[
+  {nick:'Ghost',charId:'hacker',locked:true,color:'#00C8FF'},
+  {nick:'Viper',charId:'muscle',locked:false,color:'#FF6B35'},
+];
+let G={roomCode:'',myNick:'',isHost:false,myCharId:null,myStyle:0,players:[],pendingId:null,pendingStyle:0};
+
+// Game runtime
+let GS={
+  running:false,timeLeft:420,timerIv:null,
+  targetLoot:1500000,vanLoot:0,
+  guardTriggers:0,bribesCount:0,
+  myPos:{roomId:'gallery',x:0,y:0,vx:0,vy:0},
+  myInventory:[null,null,null,null],
+  arrested:false,arrestPermanent:false,
+  confrontActive:false,confrontIv:null,confrontN:0,
+  roomLoots:{},guards:[],
+  interactTarget:null,
+  actionHeld:false,actionProgress:0,actionIv:null,
+  tokenUsed:false,
+  speedBoost:0,  // seconds remaining for adrenaline
+  darknessRoom:null,darknessTimer:0,
+  screenShake:0,
+  aiMode:'standard',
+};
+
+// ══════════════════════════════════════════════════════
+//  NAVIGATION
+// ══════════════════════════════════════════════════════
+function show(id){document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));document.getElementById(id).classList.add('active')}
+function goHome(){stopGame();show('home')}
+function goJoin(){show('join')}
+function goLobby(){stopGame();G.myCharId=null;G.players.forEach(p=>{if(p.nick===G.players[0]?.nick){p.charId=null;p.locked=false}});show('lobby');renderLobby()}
+
+function goCreate(){
+  G.roomCode=rndCode();G.myNick='You (Host)';G.isHost=true;
+  G.players=[{nick:'You (Host)',charId:null,locked:false,color:'#F5C842'},...JSON.parse(JSON.stringify(MOCK))];
+  show('lobby');renderLobby();
+}
+function doJoin(){
+  const code=document.getElementById('join-code').value.trim();
+  const nick=document.getElementById('join-nick').value.trim();
+  if(code.length<4){notif('Enter a 4-letter room code','alert');return}
+  if(!nick){notif('Enter your nickname','alert');return}
+  G.roomCode=code;G.myNick=nick;G.isHost=false;
+  G.players=[{nick,charId:null,locked:false,color:'#F5C842'},...JSON.parse(JSON.stringify(MOCK))];
+  show('lobby');renderLobby();
+}
+function rndCode(){return Array.from({length:4},()=>'ABCDEFGHJKLMNPQRSTUVWXYZ'[Math.floor(Math.random()*23)]).join('')}
+
+// ══════════════════════════════════════════════════════
+//  LOBBY
+// ══════════════════════════════════════════════════════
+function renderLobby(){
+  document.getElementById('disp-code').textContent=G.roomCode;
+  document.getElementById('disp-link').textContent=`ghostthefloor.app/${G.roomCode}`;
+  renderGrid();renderPlayers();updateMatch();
+}
+function renderGrid(){
+  const others=G.players.filter((_,i)=>i>0);
+  document.getElementById('char-grid').innerHTML=CHARS.map(c=>{
+    const isMine=G.myCharId===c.id;
+    const takenP=others.find(p=>p.charId===c.id);
+    let cls='char-card'+(isMine?' mine':takenP?' taken':'');
+    return`<div class="${cls}" onclick="openModal('${c.id}')">
+      <div class="char-portrait">${charSVG(c,0)}</div>
+      <div class="color-bar" style="background:${c.color}"></div>
+      <div class="char-info">
+        <div class="char-name" style="color:${isMine?c.color:'var(--offwhite)'}">${c.name}</div>
+        <div class="char-gender">${c.gender}</div>
+        <div class="char-rooms-text">${c.roomLabel.replace(' & ','<br>')}</div>
+        <div class="token-pill">${c.token}</div>
+      </div>
+      ${takenP?`<div class="taken-overlay"><div class="taken-name-lbl" style="color:${takenP.color}">${takenP.nick}</div><div style="font-size:8px;letter-spacing:2px;text-transform:uppercase;color:var(--muted)">Claimed</div></div>`:''}
+      ${isMine?`<div class="check-badge"><svg width="10" height="10" viewBox="0 0 10 10"><polyline points="1,5 4,8 9,2" stroke="#0D0F1A" stroke-width="2.2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></div>`:''}
+    </div>`;
+  }).join('');
+}
+function renderPlayers(){
+  const max=6,cnt=G.players.length;
+  document.getElementById('player-list').innerHTML=
+    G.players.map(p=>{
+      const c=CHARS.find(x=>x.id===p.charId);
+      const sc=p.locked?'s-ready':p.charId?'s-picking':'s-waiting';
+      return`<div class="player-row"><div class="player-dot" style="background:${p.color}"></div>
+        <div><div class="player-nick">${p.nick}</div><div class="player-role-lbl">${c?c.name:'No role'}</div></div>
+        <div class="p-status ${sc}">${p.locked?'Ready':p.charId?'Picking':'Waiting'}</div></div>`;
+    }).join('')+Array.from({length:max-cnt},()=>`<div class="empty-row"><div class="empty-dot"></div><div style="font-size:12px;color:var(--muted)">Open slot</div></div>`).join('');
+  document.getElementById('disp-count').textContent=`${cnt}/6`;
+  const locked=G.players.filter(p=>p.locked).length,total=G.players.length;
+  const allReady=locked===total&&total>=3;
+  document.getElementById('start-btn').disabled=!allReady;
+  document.getElementById('ready-txt').textContent=allReady?`${total} players ready — let's go`:total<3?`Need at least 3 players (${total} joined)`:`${locked}/${total} locked in`;
+  document.getElementById('disp-status').textContent=allReady?'All crew ready':'Waiting for crew';
+}
+function updateMatch(){
+  const n=G.players.length,s=SCALE[n]||SCALE[3];
+  document.getElementById('ms-p').textContent=n;
+  document.getElementById('ms-t').textContent=s.tgtStr;
+  document.getElementById('ms-a').textContent={slow:'Slow patrols',standard:'Standard',random:'Random routes',fast:'Fast + cameras'}[s.ai];
+}
+
+// ══════════════════════════════════════════════════════
+//  CHARACTER MODAL
+// ══════════════════════════════════════════════════════
+function openModal(id){
+  const me=G.players[0];if(me.locked){notif('Already locked in');return}
+  const tp=G.players.find((p,i)=>i>0&&p.charId===id);
+  if(tp){notif(`${tp.nick} already claimed this role`,'alert');return}
+  G.pendingId=id;G.pendingStyle=0;
+  const c=CHARS.find(x=>x.id===id);
+  document.getElementById('modal-cname').textContent=c.name;
+  document.getElementById('modal-crole').textContent=c.gender;
+  document.getElementById('m-rooms').textContent=c.roomLabel;
+  document.getElementById('m-restrict').textContent=c.restrict;
+  document.getElementById('m-tname').textContent='⚡ '+c.token;
+  document.getElementById('m-tdesc').textContent=c.tdesc;
+  document.getElementById('modal-port').innerHTML=`<svg viewBox="0 0 80 107" xmlns="http://www.w3.org/2000/svg" style="width:80px;height:107px">${buildChar(c,c.bA)}</svg>`;
+  document.querySelectorAll('.style-opt').forEach((b,i)=>b.classList.toggle('on',i===0));
+  document.getElementById('char-modal').classList.add('open');
+}
+function pickStyle(idx,btn){
+  G.pendingStyle=idx;document.querySelectorAll('.style-opt').forEach(b=>b.classList.remove('on'));btn.classList.add('on');
+  const c=CHARS.find(x=>x.id===G.pendingId);
+  document.getElementById('modal-port').innerHTML=`<svg viewBox="0 0 80 107" xmlns="http://www.w3.org/2000/svg" style="width:80px;height:107px">${buildChar(c,idx===0?c.bA:c.bB)}</svg>`;
+}
+function closeModal(){document.getElementById('char-modal').classList.remove('open');G.pendingId=null}
+function confirmChar(){
+  if(!G.pendingId)return;
+  G.myCharId=G.pendingId;G.myStyle=G.pendingStyle;
+  G.players[0].charId=G.pendingId;G.players[0].locked=true;
+  const tb=document.getElementById('token-btn');
+  const c=CHARS.find(x=>x.id===G.myCharId);
+  if(tb&&c)tb.textContent=`⚡ ${c.token}`;
+  closeModal();renderLobby();
+  notif('Locked in as '+CHARS.find(c=>c.id===G.myCharId).name);
+}
+
+// ══════════════════════════════════════════════════════
+//  GAME START
+// ══════════════════════════════════════════════════════
+let canvas,ctx,miniCanvas,miniCtx,W,H;
+const RW=162,RH=112,GAP=14,MGNTOP=28,MGNLEFT=16;
+
+function doStart(){
+  const n=G.players.length,s=SCALE[Math.min(n,6)]||SCALE[3];
+  GS={
+    running:true,timeLeft:420,timerIv:null,
+    targetLoot:s.target,vanLoot:0,
+    guardTriggers:0,bribesCount:0,
+    myPos:{roomId:'gallery',x:0,y:0,vx:0,vy:0},
+    myInventory:[null,null,null,null],
+    arrested:false,arrestPermanent:false,
+    confrontActive:false,confrontIv:null,confrontN:0,
+    roomLoots:{},guards:[],
+    interactTarget:null,
+    actionHeld:false,actionProgress:0,actionIv:null,
+    tokenUsed:false,
+    speedBoost:0,darknessRoom:null,darknessTimer:0,
+    screenShake:0,
+    aiMode:s.ai,
+  };
+  ROOMS.forEach(r=>{GS.roomLoots[r.id]=r.loot.map(l=>({...l,stolen:false,id:Math.random()}))});
+  GUARD_PATHS.forEach((path,i)=>{
+    const rc=roomCenter(ROOMS.find(r=>r.id===path[0]));
+    GS.guards.push({pathIdx:i,stepIdx:0,x:rc.x,y:rc.y,roomId:path[0],knocked:0,alertTimer:0,patrolWait:0});
+  });
+  const gc=roomCenter(ROOMS.find(r=>r.id==='gallery'));
+  GS.myPos={roomId:'gallery',x:gc.x,y:gc.y,vx:0,vy:0};
+
+  // Update token button
+  const c=CHARS.find(x=>x.id===G.myCharId)||CHARS[0];
+  document.getElementById('token-btn').textContent=`⚡ ${c.token}`;
+  document.getElementById('token-btn').disabled=false;
+  document.getElementById('pwr-btn').textContent='⚡';
+  document.getElementById('pwr-btn').classList.remove('used');
+
+  show('game');
+  initCanvas();
+  startTimer();
+  requestAnimationFrame(gameLoop);
+  updateHUD();
+}
+
+function stopGame(){
+  GS.running=false;
+  if(GS.timerIv)clearInterval(GS.timerIv);
+  if(GS.confrontIv)clearInterval(GS.confrontIv);
+  if(GS.actionIv)clearInterval(GS.actionIv);
+  ['cf-overlay','arrest-overlay','end-overlay'].forEach(id=>document.getElementById(id).classList.remove('open'));
+}
+
+// ══════════════════════════════════════════════════════
+//  CANVAS
+// ══════════════════════════════════════════════════════
+function initCanvas(){
+  canvas=document.getElementById('gc');
+  miniCanvas=document.getElementById('mc');
+  const area=document.getElementById('map-area');
+  W=area.clientWidth;H=area.clientHeight;
+  canvas.width=W;canvas.height=H;
+  ctx=canvas.getContext('2d');
+  miniCtx=miniCanvas.getContext('2d');
+}
+
+function roomPos(room){
+  const totalW=3*RW+2*GAP;
+  const startX=Math.max(MGNLEFT,(W-totalW)/2);
+  const startY=MGNTOP;
+  return{x:startX+room.col*(RW+GAP),y:startY+room.row*(RH+GAP)};
+}
+function roomCenter(room){const p=roomPos(room);return{x:p.x+RW/2,y:p.y+RH/2}}
+function getRoomAt(x,y){return ROOMS.find(r=>{const p=roomPos(r);return x>=p.x&&x<=p.x+RW&&y>=p.y&&y<=p.y+RH})}
+
+// ══════════════════════════════════════════════════════
+//  DRAW
+// ══════════════════════════════════════════════════════
+function draw(){
+  ctx.clearRect(0,0,W,H);
+  // Corridors
+  ctx.strokeStyle='#1C2040';ctx.lineWidth=16;ctx.lineCap='round';
+  CORRIDORS.forEach(([a,b])=>{
+    const ra=ROOMS.find(r=>r.id===a),rb=ROOMS.find(r=>r.id===b);
+    if(!ra||!rb)return;
+    const ca=roomCenter(ra),cb=roomCenter(rb);
+    ctx.beginPath();ctx.moveTo(ca.x,ca.y);ctx.lineTo(cb.x,cb.y);ctx.stroke();
+  });
+  // Rooms
+  ROOMS.forEach(r=>{
+    const {x,y}=roomPos(r);
+    const isMyRoom=r.id===GS.myPos.roomId;
+    const isDark=GS.darknessRoom===r.id&&GS.darknessTimer>0;
+    // Floor
+    ctx.fillStyle=isDark?'#020204':r.fill;ctx.fillRect(x,y,RW,RH);
+    // Border
+    ctx.strokeStyle=isMyRoom?'#F5C842':r.isExit?'#00B894':r.border;
+    ctx.lineWidth=isMyRoom?2:1;ctx.strokeRect(x,y,RW,RH);
+    // Room name
+    ctx.font=`700 9px 'Barlow Condensed',sans-serif`;ctx.textAlign='center';
+    ctx.fillStyle=isMyRoom?'#F5C842':r.isExit?'#00B894':'#3A3D55';
+    ctx.fillText(r.name.toUpperCase(),x+RW/2,y+13);
+    // Role indicator dots
+    r.roles.forEach((roleId,i)=>{
+      const rc=CHARS.find(c=>c.id===roleId);
+      if(!rc)return;
+      ctx.fillStyle=rc.color+'66';
+      ctx.beginPath();ctx.arc(x+6+i*10,y+RH-7,3,0,Math.PI*2);ctx.fill();
+    });
+    // Exit label
+    if(r.isExit){
+      ctx.fillStyle='#00B894';ctx.font='8px Barlow,sans-serif';
+      ctx.fillText('🚐 GETAWAY VAN',x+RW/2,y+RH-10);
+    }
+    // Loot items
+    if(!isDark){
+      const loots=(GS.roomLoots[r.id]||[]).filter(l=>!l.stolen);
+      loots.slice(0,4).forEach((l,i)=>{
+        const cols=Math.min(loots.length,2);
+        const lx=x+RW/2+(i%cols-cols/2+.5)*(RW/(cols+1));
+        const ly=y+RH/2+(Math.floor(i/cols)-.3)*24;
+        ctx.font='14px serif';ctx.textAlign='center';ctx.fillText(l.icon,lx,ly+4);
+        const wc=l.weight==='heavy'?'#D63031':l.weight==='medium'?'#C9A030':'#555';
+        ctx.fillStyle=wc;ctx.font='7px Barlow,sans-serif';
+        ctx.fillText('$'+(l.val/1000).toFixed(0)+'k',lx,ly+15);
+      });
+    }
+  });
+  drawGuards();
+  drawPlayer();
+}
+
+function drawGuards(){
+  GS.guards.forEach((g,i)=>{
+    if(g.knocked>0){
+      // Knocked out — draw X
+      ctx.save();ctx.translate(g.x,g.y);
+      ctx.fillStyle='rgba(100,100,100,0.4)';
+      ctx.beginPath();ctx.arc(0,0,10,0,Math.PI*2);ctx.fill();
+      ctx.fillStyle='#555';ctx.font='12px serif';ctx.textAlign='center';ctx.fillText('💤',0,5);
+      ctx.restore();return;
+    }
+    ctx.save();ctx.translate(g.x,g.y);
+    // Glow when alert
+    if(g.alertTimer>0){
+      ctx.shadowBlur=14;ctx.shadowColor='#D63031';
+    }
+    ctx.fillStyle=g.alertTimer>0?'#D63031':'#882222';
+    ctx.beginPath();ctx.arc(0,0,11,0,Math.PI*2);ctx.fill();
+    ctx.shadowBlur=0;
+    ctx.font='13px serif';ctx.textAlign='center';ctx.fillText('👮',0,5);
+    if(g.alertTimer>0){
+      ctx.fillStyle='#FF4444';ctx.font='bold 10px Barlow Condensed,sans-serif';
+      ctx.fillText('!',0,-17);
+    }
+    ctx.restore();
+  });
+}
+
+function drawPlayer(){
+  const c=CHARS.find(x=>x.id===G.myCharId)||CHARS[3];
+  const px=GS.myPos.x,py=GS.myPos.y;
+  ctx.save();
+  // Screen shake
+  if(GS.screenShake>0){ctx.translate((Math.random()-.5)*GS.screenShake*6,(Math.random()-.5)*GS.screenShake*4)}
+  ctx.translate(px,py);
+  // Shadow
+  ctx.fillStyle='rgba(0,0,0,0.35)';ctx.beginPath();ctx.ellipse(0,9,11,4,0,0,Math.PI*2);ctx.fill();
+  // Speed boost aura
+  if(GS.speedBoost>0){
+    ctx.strokeStyle=c.color+'55';ctx.lineWidth=4;
+    ctx.beginPath();ctx.arc(0,-4,18,0,Math.PI*2);ctx.stroke();
+  }
+  // Player circle
+  ctx.fillStyle=GS.arrested?'#333':'#0D0F1A';ctx.beginPath();ctx.arc(0,-4,12,0,Math.PI*2);ctx.fill();
+  ctx.strokeStyle=GS.arrested?'#555':c.color;ctx.lineWidth=2;ctx.stroke();
+  ctx.font='15px serif';ctx.textAlign='center';ctx.fillText(GS.arrested?'🔒':'🧍',0,1);
+  // Nick tag
+  if(!GS.arrested){
+    ctx.fillStyle=c.color;ctx.font=`bold 8px 'Barlow Condensed',sans-serif`;
+    ctx.fillText(G.myNick.substring(0,7).toUpperCase(),0,-20);
+  }
+  // Action progress arc
+  if(GS.actionProgress>0){
+    ctx.strokeStyle=c.color;ctx.lineWidth=3;ctx.lineCap='round';
+    ctx.beginPath();ctx.arc(0,-4,17,-Math.PI/2,-Math.PI/2+Math.PI*2*GS.actionProgress);ctx.stroke();
+  }
+  ctx.restore();
+}
+
+// Minimap
+function drawMinimap(){
+  const mw=miniCanvas.width,mh=miniCanvas.height;
+  miniCtx.clearRect(0,0,mw,mh);
+  miniCtx.fillStyle='rgba(13,15,26,.9)';miniCtx.fillRect(0,0,mw,mh);
+  const scaleX=mw/(3*RW+2*GAP+MGNLEFT*2);
+  const scaleY=mh/(4*(RH+GAP)+MGNTOP);
+  ROOMS.forEach(r=>{
+    const {x,y}=roomPos(r);
+    const mx=x*scaleX,my=y*scaleY,mRW=RW*scaleX,mRH=RH*scaleY;
+    miniCtx.fillStyle=r.id===GS.myPos.roomId?'#2A2D55':r.isExit?'#002a1a':'#131625';
+    miniCtx.fillRect(mx,my,mRW,mRH);
+    if(r.isExit){miniCtx.fillStyle='#00B894';miniCtx.font='6px sans-serif';miniCtx.textAlign='center';miniCtx.fillText('VAN',mx+mRW/2,my+mRH/2+2)}
+  });
+  // My dot
+  miniCtx.fillStyle=CHARS.find(c=>c.id===G.myCharId)?.color||'#F5C842';
+  miniCtx.beginPath();miniCtx.arc(GS.myPos.x*scaleX,GS.myPos.y*scaleY,3,0,Math.PI*2);miniCtx.fill();
+  // Guard dots
+  GS.guards.forEach(g=>{
+    if(g.knocked>0)return;
+    miniCtx.fillStyle=g.alertTimer>0?'#D63031':'#882222';
+    miniCtx.beginPath();miniCtx.arc(g.x*scaleX,g.y*scaleY,2.5,0,Math.PI*2);miniCtx.fill();
+  });
+}
+
+// ══════════════════════════════════════════════════════
+//  GAME LOOP
+// ══════════════════════════════════════════════════════
+let lastTS=0;
+function gameLoop(ts){
+  if(!GS.running)return;
+  const dt=Math.min((ts-lastTS)/1000,.05);lastTS=ts;
+  if(!GS.arrested&&!GS.confrontActive){
+    movePlayer(dt);
+    moveGuards(dt);
+    checkGuardCollision();
+    checkInteractable();
+  }
+  // Timers
+  if(GS.speedBoost>0)GS.speedBoost=Math.max(0,GS.speedBoost-dt);
+  if(GS.darknessTimer>0)GS.darknessTimer=Math.max(0,GS.darknessTimer-dt);
+  if(GS.screenShake>0)GS.screenShake=Math.max(0,GS.screenShake-dt*3);
+  // Resize check
+  const area=document.getElementById('map-area');
+  if(area&&(W!==area.clientWidth||H!==area.clientHeight))initCanvas();
+  draw();
+  drawMinimap();
+  requestAnimationFrame(gameLoop);
+}
+
+// ══════════════════════════════════════════════════════
+//  MOVEMENT
+// ══════════════════════════════════════════════════════
+const BASE_SPD=95;
+let joyActive=false,joyDelta={x:0,y:0};
+
+function movePlayer(dt){
+  const c=CHARS.find(x=>x.id===G.myCharId)||CHARS[3];
+  let spd=BASE_SPD;
+  // Role speed bonus
+  if(G.myCharId==='acrobat')spd*=1.25;
+  // Speed boost token
+  if(GS.speedBoost>0)spd*=1.5;
+  // Weight penalty (Muscle immune)
+  if(G.myCharId!=='muscle'){
+    const hasHeavy=GS.myInventory.some(i=>i&&i.weight==='heavy');
+    const hasMed=GS.myInventory.some(i=>i&&i.weight==='medium');
+    if(hasHeavy)spd*=.7;
+    else if(hasMed)spd*=.9;
+  }
+  if(joyActive){GS.myPos.vx=joyDelta.x*spd;GS.myPos.vy=joyDelta.y*spd}
+  else{GS.myPos.vx*=.75;GS.myPos.vy*=.75}
+
+  let nx=GS.myPos.x+GS.myPos.vx*dt;
+  let ny=GS.myPos.y+GS.myPos.vy*dt;
+
+  // Map bounds
+  const totalW=3*RW+2*GAP,totalH=4*(RH+GAP);
+  const sx=Math.max(MGNLEFT,(W-totalW)/2);
+  nx=Math.max(sx+8,Math.min(sx+totalW-8,nx));
+  ny=Math.max(MGNTOP+8,Math.min(MGNTOP+totalH-8,ny));
+
+  GS.myPos.x=nx;GS.myPos.y=ny;
+  const room=getRoomAt(nx,ny);
+  if(room){
+    GS.myPos.roomId=room.id;
+    document.getElementById('hud-room').textContent=room.name;
+  }
+}
+
+// ══════════════════════════════════════════════════════
+//  GUARD AI
+// ══════════════════════════════════════════════════════
+function guardSpeed(){return{slow:28,standard:40,random:44,fast:56}[GS.aiMode]||40}
+
+function moveGuards(dt){
+  GS.guards.forEach(g=>{
+    if(g.knocked>0){g.knocked=Math.max(0,g.knocked-dt);return}
+    if(g.patrolWait>0){g.patrolWait=Math.max(0,g.patrolWait-dt);return}
+    // Random route shifts (5-player AI mode)
+    if(GS.aiMode==='random'&&Math.random()<.0005){g.stepIdx=(g.stepIdx+1)%GUARD_PATHS[g.pathIdx].length}
+    const path=GUARD_PATHS[g.pathIdx];
+    const tRoom=ROOMS.find(r=>r.id===path[g.stepIdx]);
+    if(!tRoom)return;
+    const tc=roomCenter(tRoom);
+    const dx=tc.x-g.x,dy=tc.y-g.y,dist=Math.sqrt(dx*dx+dy*dy);
+    const spd=guardSpeed();
+    if(dist<5){
+      g.stepIdx=(g.stepIdx+1)%path.length;
+      g.roomId=path[g.stepIdx];
+      g.patrolWait=g.alertTimer>0?.2:.8; // brief pause at each room
+    } else {
+      g.x+=dx/dist*spd*dt;g.y+=dy/dist*spd*dt;
+    }
+    if(g.alertTimer>0)g.alertTimer=Math.max(0,g.alertTimer-dt);
+  });
+}
+
+// Sound detection — if Muscle smashes, guards within 2 room hops investigate
+function checkSoundAlert(){
+  const myRoomId=GS.myPos.roomId;
+  GS.guards.forEach(g=>{
+    if(g.knocked>0)return;
+    // Graph distance check (simple: within 2 corridor hops)
+    const dist=roomGraphDist(g.roomId,myRoomId);
+    if(dist<=2){
+      g.alertTimer=8;
+      // Redirect guard toward player
+      const pathToPlayer=GUARD_PATHS[g.pathIdx].indexOf(myRoomId);
+      if(pathToPlayer!==-1)g.stepIdx=pathToPlayer;
+    }
+  });
+  showSoundBanner();
+}
+
+function roomGraphDist(aId,bId){
+  if(aId===bId)return 0;
+  // BFS on corridor graph
+  const adj={};
+  CORRIDORS.forEach(([x,y])=>{
+    if(!adj[x])adj[x]=[];if(!adj[y])adj[y]=[];
+    adj[x].push(y);adj[y].push(x);
+  });
+  const visited=new Set([aId]),queue=[{id:aId,d:0}];
+  while(queue.length){
+    const {id,d}=queue.shift();
+    for(const nb of(adj[id]||[])){
+      if(nb===bId)return d+1;
+      if(!visited.has(nb)){visited.add(nb);queue.push({id:nb,d:d+1})}
+    }
+  }
+  return 99;
+}
+
+function showSoundBanner(){
+  const b=document.getElementById('sound-banner');
+  b.classList.remove('flash');void b.offsetWidth;b.classList.add('flash');
+}
+
+// ══════════════════════════════════════════════════════
+//  GUARD COLLISION
+// ══════════════════════════════════════════════════════
+function checkGuardCollision(){
+  if(GS.arrested||GS.confrontActive)return;
+  for(const g of GS.guards){
+    if(g.knocked>0)continue;
+    const dx=g.x-GS.myPos.x,dy=g.y-GS.myPos.y;
+    if(Math.sqrt(dx*dx+dy*dy)<24){
+      // Inside Source disguise — no confrontation unless in same room as another player
+      if(G.myCharId==='source'){notif('Staff disguise holds — walk away!');return}
+      triggerConfrontation();return;
+    }
+  }
+}
+
+// ══════════════════════════════════════════════════════
+//  INTERACTION
+// ══════════════════════════════════════════════════════
+function checkInteractable(){
+  const myRoom=ROOMS.find(r=>r.id===GS.myPos.roomId);
+  const prompt=document.getElementById('inter-prompt');
+  const denied=document.getElementById('access-denied');
+  const actBtn=document.getElementById('act-btn');
+  const actIcon=document.getElementById('act-icon');
+
+  // Dropoff at loading docks
+  if(GS.myPos.roomId==='loading'&&GS.myInventory.some(Boolean)){
+    GS.interactTarget={type:'dropoff'};
+    prompt.textContent='Hold ACT — Load loot into van 🚐';
+    prompt.classList.add('show');denied.classList.remove('show');
+    actBtn.classList.add('lit');actIcon.textContent='🚐';return;
+  }
+
+  // Check role access for loot stealing
+  const c=CHARS.find(x=>x.id===G.myCharId)||CHARS[3];
+  const hasAccess=!myRoom||myRoom.roles.includes(G.myCharId)||myRoom.roles.length===0;
+  // Driver cannot steal
+  const canSteal=G.myCharId!=='driver';
+  const loots=(GS.roomLoots[GS.myPos.roomId]||[]).filter(l=>!l.stolen);
+  const invFull=!GS.myInventory.includes(null);
+  const maxInv=G.myCharId==='hacker'?1:4;
+  const invCount=GS.myInventory.filter(Boolean).length;
+
+  if(loots.length>0&&canSteal){
+    if(!hasAccess){
+      denied.classList.add('show');prompt.classList.remove('show');
+      actBtn.classList.remove('lit');actIcon.textContent='⚡';
+      GS.interactTarget=null;return;
+    }
+    if(invCount>=maxInv){
+      prompt.textContent='Inventory full — drop off at Loading Docks';
+      prompt.classList.add('show');denied.classList.remove('show');
+      actBtn.classList.remove('lit');actIcon.textContent='🎒';
+      GS.interactTarget=null;return;
+    }
+    // Acrobat restriction
+    const loot=loots[0];
+    if(G.myCharId==='acrobat'&&loot.weight!=='light'){
+      prompt.textContent=`Acrobat can't carry ${loot.weight} loot`;
+      prompt.classList.add('show');denied.classList.remove('show');
+      actBtn.classList.remove('lit');GS.interactTarget=null;return;
+    }
+    GS.interactTarget=loot;
+    prompt.textContent=`Hold ACT — Steal ${loot.icon} ${loot.name} ($${(loot.val/1000).toFixed(0)}k)`;
+    prompt.classList.add('show');denied.classList.remove('show');
+    actBtn.classList.add('lit');actIcon.textContent='🎒';return;
+  }
+  denied.classList.remove('show');prompt.classList.remove('show');
+  actBtn.classList.remove('lit');actIcon.textContent='⚡';
+  GS.interactTarget=null;
+}
+
+// Action button press/release
+function actPress(e){
+  if(e)e.preventDefault();
+  if(!GS.interactTarget||GS.arrested||GS.confrontActive)return;
+  GS.actionHeld=true;
+  const isDrop=GS.interactTarget.type==='dropoff';
+  const stealTime=G.myCharId==='techie'?40000:G.myCharId==='source'?10000:20000;
+  const duration=isDrop?2500:stealTime;
+  const startT=Date.now();
+  const ring=document.getElementById('prog-ring');
+  const actBtn=document.getElementById('act-btn');
+  actBtn.classList.add('progressing');
+  GS.actionIv=setInterval(()=>{
+    if(!GS.actionHeld||!GS.running){clearActionProgress();return}
+    GS.actionProgress=(Date.now()-startT)/duration;
+    ring.style.background=`conic-gradient(var(--gold) ${GS.actionProgress*360}deg, transparent 0deg)`;
+    if(GS.actionProgress>=1){
+      clearActionProgress();
+      if(isDrop)doDropoff();else{
+        // Muscle smash sound detection
+        if(G.myCharId==='muscle')checkSoundAlert();
+        doSteal(GS.interactTarget);
+      }
+    }
+  },50);
+}
+function actRelease(){
+  GS.actionHeld=false;clearActionProgress();
+}
+function clearActionProgress(){
+  GS.actionProgress=0;
+  if(GS.actionIv)clearInterval(GS.actionIv);
+  const ring=document.getElementById('prog-ring');
+  const actBtn=document.getElementById('act-btn');
+  if(ring)ring.style.background='conic-gradient(var(--gold) 0%, transparent 0%)';
+  if(actBtn)actBtn.classList.remove('progressing');
+}
+
+function doSteal(loot){
+  loot.stolen=true;
+  const slot=GS.myInventory.indexOf(null);
+  if(slot===-1)return;
+  GS.myInventory[slot]=loot;
+  notif(`Grabbed ${loot.icon} ${loot.name}!`);
+  GS.guardTriggers++;
+  updateHUD();renderInventory();
+}
+
+function doDropoff(){
+  const items=GS.myInventory.filter(Boolean);
+  if(!items.length)return;
+  const total=items.reduce((s,i)=>s+i.val,0);
+  GS.vanLoot+=total;
+  GS.myInventory=[null,null,null,null];
+  notif(`💰 Loaded ${fmt(total)} into van!`);
+  GS.screenShake=.4;
+  updateHUD();renderInventory();
+  if(GS.vanLoot>=GS.targetLoot)setTimeout(triggerVictory,400);
+}
+
+function renderInventory(){
+  const bar=document.getElementById('inv-bar');
+  const max=G.myCharId==='hacker'?1:4;
+  bar.innerHTML=Array.from({length:max},(_,i)=>{
+    const item=GS.myInventory[i];
+    const wCls=item?item.weight==='heavy'?' heavy-item':item.weight==='medium'?' medium-item':' filled':'';
+    return`<div class="inv-slot${wCls}">${item?`${item.icon}<div class="wt">${item.weight.substring(0,3).toUpperCase()}</div>`:'+'}</div>`;
+  }).join('');
+}
+
+// ══════════════════════════════════════════════════════
+//  POWER TOKEN
+// ══════════════════════════════════════════════════════
+function useToken(){
+  if(GS.tokenUsed||!GS.running||GS.arrested)return;
+  GS.tokenUsed=true;
+  document.getElementById('token-btn').disabled=true;
+  document.getElementById('pwr-btn').classList.add('used');
+  const c=CHARS.find(x=>x.id===G.myCharId)||CHARS[3];
+  switch(G.myCharId){
+    case 'hacker':
+      // Blackout — darkness in current room
+      GS.darknessRoom=GS.myPos.roomId;GS.darknessTimer=20;
+      notif('🌑 BLACKOUT — room plunged into darkness for 20s!');
+      document.getElementById('dark-overlay').classList.add('on');
+      setTimeout(()=>document.getElementById('dark-overlay').classList.remove('on'),20000);
+      break;
+    case 'acrobat':
+      // Smokebomb — escape current confrontation
+      if(GS.confrontActive){chooseSmokeEscape()}
+      else notif('💨 SMOKEBOMB ready — triggers automatically if caught');
+      break;
+    case 'techie':
+      // Overdrive — fast actions for 15s (handled in steal time check)
+      GS.tokenUsed=false; // reuse mechanism: flag on char
+      GS.overdrive=15;
+      notif('⚙️ OVERDRIVE — all actions instant for 15 seconds!');
+      setTimeout(()=>{GS.over
