@@ -10,23 +10,21 @@
 :root{
   --navy:#0D0F1A;--navy2:#13162A;--navy3:#1C2040;
   --gold:#F5C842;--gold2:#C9A030;
-  --crimson:#D63031;--crimson2:#A32424;
-  --teal:#00B894;--offwhite:#EDE8DC;
+  --crimson:#D63031;--teal:#00B894;--offwhite:#EDE8DC;
   --muted:#7A7A8A;--border:#2A2D45;
 }
-body{background:var(--navy);color:var(--offwhite);font-family:'Barlow',sans-serif;min-height:100vh;overflow:hidden;touch-action:none;user-select:none}
+body{background:var(--navy);color:var(--offwhite);font-family:'Barlow',sans-serif;min-height:100vh;overflow:hidden;user-select:none}
 .screen{display:none;min-height:100vh;flex-direction:column;position:fixed;inset:0;z-index:1}
 .screen.active{display:flex}
 
 /* HOME */
-#home{align-items:center;justify-content:center;overflow:hidden;background:var(--navy)}
+#home{align-items:center;justify-content:center;background:var(--navy)}
 .bg-grid{position:absolute;inset:0;background-image:linear-gradient(var(--border) 1px,transparent 1px),linear-gradient(90deg,var(--border) 1px,transparent 1px);background-size:40px 40px;opacity:.25;pointer-events:none}
 .home-inner{position:relative;z-index:1;text-align:center;padding:2rem}
-.logo-ghost{font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:clamp(58px,14vw,116px);letter-spacing:8px;color:var(--gold);line-height:.85;text-transform:uppercase;text-shadow:0 0 60px rgba(245,200,66,.15)}
+.logo-ghost{font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:clamp(58px,14vw,116px);letter-spacing:8px;color:var(--gold);line-height:.85;text-transform:uppercase}
 .logo-the{font-family:'Barlow Condensed',sans-serif;font-weight:400;font-size:clamp(16px,3.5vw,30px);letter-spacing:16px;color:var(--gold2);text-transform:uppercase;margin:8px 0}
-.logo-floor{font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:clamp(58px,14vw,116px);letter-spacing:8px;color:var(--gold);line-height:.85;text-transform:uppercase;text-shadow:0 0 60px rgba(245,200,66,.15)}
-.logo-sub{font-size:clamp(10px,1.5vw,13px);letter-spacing:10px;color:var(--muted);text-transform:uppercase;margin:1.5rem 0 3rem}
-.tagline{font-size:13px;color:var(--muted);margin-bottom:2.5rem;letter-spacing:1px}
+.logo-floor{font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:clamp(58px,14vw,116px);letter-spacing:8px;color:var(--gold);line-height:.85;text-transform:uppercase}
+.logo-sub{font-size:13px;letter-spacing:10px;color:var(--muted);text-transform:uppercase;margin:1.5rem 0 3rem}
 .btn-gold{background:var(--gold);color:var(--navy);font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:18px;letter-spacing:3px;text-transform:uppercase;border:none;padding:14px 56px;cursor:pointer;transition:all .12s;display:block}
 .btn-gold:hover{background:var(--gold2);transform:translateY(-1px)}
 .btn-outline{background:transparent;color:var(--offwhite);font-family:'Barlow Condensed',sans-serif;font-weight:600;font-size:16px;letter-spacing:2px;text-transform:uppercase;border:1px solid var(--border);padding:12px 48px;cursor:pointer;margin-top:10px;transition:all .12s;display:block}
@@ -36,9 +34,6 @@ body{background:var(--navy);color:var(--offwhite);font-family:'Barlow',sans-seri
 .corner{position:absolute;width:100px;height:100px;border-color:var(--gold2);border-style:solid;opacity:.15}
 .corner.tl{top:24px;left:24px;border-width:2px 0 0 2px}.corner.tr{top:24px;right:24px;border-width:2px 2px 0 0}
 .corner.bl{bottom:24px;left:24px;border-width:0 0 2px 2px}.corner.br{bottom:24px;right:24px;border-width:0 2px 2px 0}
-
-/* NICK SCREEN */
-#nick-screen{align-items:center;justify-content:center;padding:2rem;background:var(--navy)}
 
 /* JOIN */
 #join{align-items:center;justify-content:center;padding:2rem;background:var(--navy)}
@@ -50,7 +45,6 @@ body{background:var(--navy);color:var(--offwhite);font-family:'Barlow',sans-seri
 .field-input:focus{border-color:var(--gold)}
 .code-input{font-family:'Share Tech Mono',monospace;font-size:26px;letter-spacing:10px;text-align:center;text-transform:uppercase}
 .back-link{background:none;border:none;color:var(--muted);font-size:12px;letter-spacing:3px;text-transform:uppercase;cursor:pointer;padding:14px 0 0;font-family:'Barlow',sans-serif;display:block;text-align:center}
-.back-link:hover{color:var(--offwhite)}
 
 /* LOBBY */
 #lobby{padding:0;overflow:hidden;background:var(--navy)}
@@ -59,29 +53,27 @@ body{background:var(--navy);color:var(--offwhite);font-family:'Barlow',sans-seri
 .rc-label{font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--muted)}
 .rc-code{font-family:'Share Tech Mono',monospace;font-size:28px;color:var(--gold);letter-spacing:8px}
 .vdiv{width:1px;height:36px;background:var(--border)}
-.lobby-body{display:grid;grid-template-columns:1fr 270px;flex:1;min-height:0;overflow:hidden}
+.lobby-body{display:grid;grid-template-columns:1fr 280px;flex:1;min-height:0;overflow:hidden}
 @media(max-width:820px){.lobby-body{grid-template-columns:1fr;overflow-y:auto}}
 .char-wrap{padding:1.25rem;overflow-y:auto}
 .section-eye{font-size:10px;letter-spacing:4px;text-transform:uppercase;color:var(--muted);margin-bottom:.9rem}
 .char-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:9px}
 @media(max-width:640px){.char-grid{grid-template-columns:repeat(2,1fr)}}
-.char-card{background:var(--navy2);border:1px solid var(--border);cursor:pointer;transition:border-color .13s,transform .13s,box-shadow .13s;position:relative;overflow:hidden}
+.char-card{background:var(--navy2);border:1px solid var(--border);cursor:pointer;transition:all .13s;position:relative;overflow:hidden}
 .char-card:hover:not(.taken):not(.mine){border-color:var(--gold2);transform:translateY(-2px);box-shadow:0 4px 20px rgba(245,200,66,.1)}
 .char-card.mine{border-color:var(--teal);box-shadow:0 0 0 1px var(--teal)}
 .char-card.taken{opacity:.35;cursor:not-allowed}
-.char-portrait{width:100%;aspect-ratio:3/4}
-.char-portrait svg{width:100%;height:100%;display:block}
+.char-portrait{width:100%;aspect-ratio:3/4;display:flex;align-items:center;justify-content:center;font-size:48px}
 .color-bar{height:3px;width:100%}
 .char-info{padding:7px 9px 9px}
 .char-name{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:15px;letter-spacing:1px;text-transform:uppercase;line-height:1}
-.char-gender{font-size:9px;color:var(--muted);letter-spacing:2px;text-transform:uppercase;margin:2px 0 4px}
-.char-rooms-text{font-size:9px;color:var(--muted);line-height:1.5}
-.token-pill{display:inline-block;background:var(--navy3);border:1px solid var(--border);font-size:8px;letter-spacing:1px;text-transform:uppercase;padding:2px 5px;margin-top:4px;color:var(--gold)}
+.char-rooms-text{font-size:9px;color:var(--muted);line-height:1.5;margin:3px 0}
+.char-restrict{font-size:8px;color:#FF6B35;letter-spacing:.5px;margin-bottom:3px}
+.token-pill{display:inline-block;background:var(--navy3);border:1px solid var(--border);font-size:8px;letter-spacing:1px;text-transform:uppercase;padding:2px 5px;color:var(--gold)}
 .taken-overlay{position:absolute;inset:0;background:rgba(13,15,26,.85);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px}
 .taken-name-lbl{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:17px;letter-spacing:2px;text-transform:uppercase}
 .check-badge{position:absolute;top:7px;right:7px;width:17px;height:17px;background:var(--teal);display:flex;align-items:center;justify-content:center}
 .sidebar{background:var(--navy2);border-left:1px solid var(--border);display:flex;flex-direction:column;overflow:hidden}
-@media(max-width:820px){.sidebar{border-left:none;border-top:1px solid var(--border)}}
 .sb-section{padding:1.1rem 1.4rem;border-bottom:1px solid var(--border);flex-shrink:0}
 .sb-title{font-size:9px;letter-spacing:4px;text-transform:uppercase;color:var(--muted);margin-bottom:.9rem}
 .player-row{display:flex;align-items:center;gap:9px;margin-bottom:9px}
@@ -102,169 +94,157 @@ body{background:var(--navy);color:var(--offwhite);font-family:'Barlow',sans-seri
 /* CHAR MODAL */
 .modal-bg{position:fixed;inset:0;background:rgba(0,0,0,.92);z-index:200;display:none;align-items:center;justify-content:center;padding:1rem}
 .modal-bg.open{display:flex}
-.modal{background:var(--navy2);border:1px solid var(--border);padding:1.75rem;max-width:320px;width:100%;max-height:90vh;overflow-y:auto}
-.modal-port{width:80px;height:107px;background:#0D0F1A;display:block;margin:0 auto 1.1rem;border:1px solid var(--border)}
+.modal{background:var(--navy2);border:1px solid var(--border);padding:1.75rem;max-width:340px;width:100%;max-height:90vh;overflow-y:auto}
+.modal-emoji{font-size:52px;text-align:center;display:block;margin-bottom:.75rem}
 .modal-cname{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:28px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);text-align:center}
 .modal-crole{font-size:10px;letter-spacing:4px;text-transform:uppercase;color:var(--muted);text-align:center;margin-bottom:1.25rem}
-.mdivider{border:none;border-top:1px solid var(--border);margin:1.1rem 0}
-.mdetail{display:flex;justify-content:space-between;font-size:12px;margin-bottom:8px}
-.mdetail-lbl{color:var(--muted)}.mdetail-val{color:var(--offwhite);text-align:right;max-width:60%}
+.mdivider{border:none;border-top:1px solid var(--border);margin:1rem 0}
+.mdetail{display:flex;justify-content:space-between;font-size:12px;margin-bottom:8px;gap:1rem}
+.mdetail-lbl{color:var(--muted);flex-shrink:0}.mdetail-val{color:var(--offwhite);text-align:right}
 .mtoken{background:var(--navy3);border:1px solid var(--gold2);padding:9px 11px;margin:.9rem 0 1.3rem}
 .mtoken-name{font-family:'Barlow Condensed',sans-serif;font-size:14px;color:var(--gold);letter-spacing:1px;text-transform:uppercase}
 .mtoken-desc{font-size:11px;color:var(--muted);margin-top:3px;line-height:1.5}
-.style-row{display:flex;gap:8px;margin-bottom:.9rem}
-.style-opt{flex:1;padding:7px;border:1px solid var(--border);background:var(--navy3);cursor:pointer;font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--muted);font-family:'Barlow Condensed',sans-serif;font-weight:600;text-align:center;transition:all .13s}
-.style-opt.on{border-color:var(--gold);color:var(--gold);background:rgba(245,200,66,.07)}
 .modal-btns{display:grid;grid-template-columns:1fr 1fr;gap:9px}
 .btn-cancel{background:transparent;border:1px solid var(--border);color:var(--muted);font-family:'Barlow Condensed',sans-serif;font-weight:600;font-size:15px;letter-spacing:2px;text-transform:uppercase;padding:11px;cursor:pointer}
-.btn-cancel:hover{border-color:var(--muted);color:var(--offwhite)}
 .btn-confirm{background:var(--gold);color:var(--navy);font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:15px;letter-spacing:2px;text-transform:uppercase;border:none;padding:11px;cursor:pointer}
-.btn-confirm:hover{background:var(--gold2)}
 
-/* GAME SCREEN */
-#game{background:var(--navy);overflow:hidden}
-.game-hud{background:var(--navy2);border-bottom:1px solid var(--border);padding:.55rem 1rem;display:flex;align-items:center;justify-content:space-between;flex-shrink:0;z-index:10;gap:1rem}
-.hud-timer{font-family:'Share Tech Mono',monospace;font-size:30px;color:var(--gold);letter-spacing:4px;min-width:75px;line-height:1}
+/* BRIEFING OVERLAY */
+.brief-overlay{position:fixed;inset:0;background:rgba(0,0,0,.97);z-index:450;display:none;flex-direction:column;align-items:center;justify-content:center;padding:2rem;text-align:center}
+.brief-overlay.open{display:flex}
+.brief-title{font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:clamp(28px,6vw,52px);letter-spacing:4px;color:var(--gold);text-transform:uppercase;margin-bottom:.3rem}
+.brief-sub{font-size:11px;letter-spacing:4px;color:var(--muted);text-transform:uppercase;margin-bottom:1.5rem}
+.brief-box{background:var(--navy2);border:1px solid var(--border);padding:1.4rem 1.8rem;max-width:560px;width:100%;text-align:left;margin-bottom:1.4rem}
+.brief-char-banner{display:flex;align-items:center;gap:1rem;margin-bottom:1rem;padding-bottom:1rem;border-bottom:1px solid var(--border)}
+.brief-char-emoji{font-size:36px}
+.brief-char-name{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:22px;letter-spacing:2px;text-transform:uppercase}
+.brief-char-sub{font-size:10px;color:var(--muted);letter-spacing:2px;text-transform:uppercase;margin-top:2px}
+.brief-rule{font-size:12px;color:var(--muted);line-height:2;display:flex;gap:.6rem}
+.brief-rule span{color:var(--offwhite)}
+.brief-rules-title{font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin:1rem 0 .5rem}
+.brief-controls{display:flex;gap:1.5rem;justify-content:center;margin-bottom:1.4rem;flex-wrap:wrap}
+.ctrl-item{background:var(--navy3);border:1px solid var(--border);padding:8px 14px;font-size:11px;letter-spacing:1px;text-transform:uppercase;color:var(--muted)}
+.ctrl-item kbd{color:var(--gold);font-family:'Share Tech Mono',monospace;font-size:13px}
+.ready-count{font-size:12px;color:var(--muted);letter-spacing:2px;text-transform:uppercase;margin-bottom:1rem}
+.ready-btn{background:var(--teal);color:var(--navy);font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:20px;letter-spacing:3px;text-transform:uppercase;border:none;padding:16px 64px;cursor:pointer;transition:all .13s}
+.ready-btn:hover{background:#00a07e}
+.ready-btn.is-ready{background:var(--navy3);color:var(--muted);border:1px solid var(--border);cursor:not-allowed}
+
+/* GAME */
+#game{background:#000;overflow:hidden}
+.game-hud{background:var(--navy2);border-bottom:1px solid var(--border);padding:.5rem 1rem;display:flex;align-items:center;justify-content:space-between;flex-shrink:0;z-index:10;gap:.75rem;flex-wrap:wrap}
+.hud-timer{font-family:'Share Tech Mono',monospace;font-size:28px;color:var(--gold);letter-spacing:4px;min-width:70px;line-height:1}
 .hud-timer.danger{color:var(--crimson);animation:blink .6s infinite alternate}
 @keyframes blink{0%{opacity:1}100%{opacity:.3}}
 .hud-center{text-align:center;flex:1}
-.hud-loot-text{font-size:11px;color:var(--muted);letter-spacing:1px}
-.hud-loot-text strong{color:var(--gold)}
-.hud-room{font-size:9px;color:var(--muted);letter-spacing:2px;text-transform:uppercase;margin-top:2px}
+.hud-personal{font-size:13px;color:var(--offwhite);font-family:'Share Tech Mono',monospace}
+.hud-personal span{color:var(--gold)}
+.hud-total{font-size:10px;color:var(--muted);margin-top:1px}
+.hud-room-lbl{font-size:9px;color:var(--muted);letter-spacing:2px;text-transform:uppercase;margin-top:2px}
 .hud-right{display:flex;align-items:center;gap:6px;flex-wrap:wrap;justify-content:flex-end}
-.hud-pdot{width:9px;height:9px;border-radius:50%;flex-shrink:0}
-.hud-p{display:flex;align-items:center;gap:4px;font-size:10px;opacity:.55}
+.hud-p{display:flex;align-items:center;gap:4px;font-size:10px;opacity:.5}
 .hud-p.me{opacity:1}
+.hud-pdot{width:8px;height:8px;border-radius:50%}
 .token-btn{background:var(--navy3);border:1px solid var(--border);color:var(--gold);font-family:'Barlow Condensed',sans-serif;font-size:11px;letter-spacing:1px;text-transform:uppercase;padding:4px 10px;cursor:pointer;transition:all .12s;white-space:nowrap}
 .token-btn:hover{background:rgba(245,200,66,.12);border-color:var(--gold)}
 .token-btn:disabled{opacity:.3;cursor:not-allowed}
 
-/* MAP */
+/* MAP CANVAS */
 .map-area{flex:1;position:relative;overflow:hidden}
-canvas#gc{display:block;position:absolute;inset:0;image-rendering:pixelated}
+canvas#gc{display:block;width:100%;height:100%}
+
+/* PROMPTS */
+.game-prompt{position:absolute;bottom:16px;left:50%;transform:translateX(-50%);background:var(--navy2);border:1px solid var(--gold);padding:8px 18px;font-size:12px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);z-index:15;white-space:nowrap;opacity:0;transition:opacity .2s;pointer-events:none;text-align:center}
+.game-prompt.show{opacity:1}
+.game-prompt.deny{border-color:var(--crimson);color:var(--crimson);background:rgba(214,48,49,.1)}
+.steal-bar-wrap{position:absolute;bottom:48px;left:50%;transform:translateX(-50%);width:220px;height:6px;background:var(--navy3);border:1px solid var(--border);border-radius:3px;overflow:hidden;opacity:0;transition:opacity .2s;z-index:15;pointer-events:none}
+.steal-bar-wrap.show{opacity:1}
+.steal-bar-fill{height:100%;background:var(--gold);width:0%;transition:none;border-radius:3px}
 
 /* MINIMAP */
-.minimap{position:absolute;top:8px;right:8px;background:rgba(13,15,26,.85);border:1px solid var(--border);padding:3px;z-index:12}
+.minimap-wrap{position:absolute;top:8px;right:8px;background:rgba(13,15,26,.9);border:1px solid var(--border);padding:3px;z-index:12}
 canvas#mc{display:block}
 
-/* LOOT PROGRESS */
-.loot-progress{position:absolute;top:8px;left:50%;transform:translateX(-50%);background:rgba(13,15,26,.88);border:1px solid var(--border);padding:5px 14px;z-index:12;font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--muted);white-space:nowrap;display:flex;align-items:center;gap:8px}
-.loot-bar-wrap{width:100px;height:4px;background:var(--navy3);border-radius:2px;overflow:hidden}
+/* VAN PROGRESS */
+.van-prog{position:absolute;top:8px;left:50%;transform:translateX(-50%);background:rgba(13,15,26,.9);border:1px solid var(--border);padding:5px 14px;z-index:12;font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--muted);display:flex;align-items:center;gap:8px;white-space:nowrap}
+.loot-bar-wrap{width:90px;height:4px;background:var(--navy3);border-radius:2px;overflow:hidden}
 .loot-bar-fill{height:100%;background:var(--gold);border-radius:2px;transition:width .3s}
 
-/* INTERACTION PROMPT */
-.inter-prompt{position:absolute;bottom:130px;left:50%;transform:translateX(-50%);background:var(--navy2);border:1px solid var(--gold);padding:7px 14px;font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);z-index:15;white-space:nowrap;opacity:0;transition:opacity .2s;pointer-events:none}
-.inter-prompt.show{opacity:1}
-
-/* ACCESS DENIED */
-.access-denied{position:absolute;bottom:130px;left:50%;transform:translateX(-50%);background:rgba(214,48,49,.15);border:1px solid var(--crimson);padding:7px 14px;font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--crimson);z-index:15;white-space:nowrap;opacity:0;transition:opacity .2s;pointer-events:none}
-.access-denied.show{opacity:1}
-
-/* INVENTORY */
-.inv-bar{position:absolute;bottom:128px;left:50%;transform:translateX(-50%);display:flex;gap:5px;z-index:14;pointer-events:none}
-.inv-slot{width:38px;height:38px;background:rgba(13,15,26,.8);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:17px;border-radius:2px;flex-direction:column}
-.inv-slot.filled{border-color:var(--gold)}
-.inv-slot .wt{font-size:7px;color:var(--muted);letter-spacing:1px;line-height:1;margin-top:1px}
-.inv-slot.heavy-item{border-color:var(--crimson)}
-.inv-slot.medium-item{border-color:var(--gold2)}
-
-/* JOYSTICK */
-.joy-zone{position:absolute;bottom:20px;left:20px;width:116px;height:116px;z-index:20;touch-action:none}
-.joy-base{position:absolute;inset:0;border-radius:50%;background:rgba(255,255,255,.04);border:1.5px solid rgba(255,255,255,.1)}
-.joy-knob{position:absolute;width:46px;height:46px;border-radius:50%;background:rgba(245,200,66,.65);border:2px solid var(--gold);top:50%;left:50%;transform:translate(-50%,-50%);transition:none}
-
-/* ACTION + TOKEN BTNS */
-.act-btn{position:absolute;bottom:30px;right:26px;width:66px;height:66px;border-radius:50%;background:rgba(28,32,64,.9);border:2px solid var(--border);display:flex;align-items:center;justify-content:center;z-index:20;cursor:pointer;font-family:'Barlow Condensed',sans-serif;font-size:10px;letter-spacing:1px;text-transform:uppercase;color:var(--muted);flex-direction:column;gap:2px;touch-action:manipulation}
-.act-btn.lit{background:var(--gold);border-color:var(--gold);color:var(--navy)}
-.act-icon{font-size:22px;line-height:1}
-.progress-ring{position:absolute;inset:-3px;border-radius:50%;background:conic-gradient(var(--gold) 0%, transparent 0%);opacity:0;transition:opacity .1s}
-.act-btn.progressing .progress-ring{opacity:1}
-.pwr-btn{position:absolute;bottom:108px;right:26px;width:46px;height:46px;border-radius:50%;background:rgba(28,32,64,.9);border:2px solid var(--gold2);display:flex;align-items:center;justify-content:center;z-index:20;cursor:pointer;font-size:18px;touch-action:manipulation}
-.pwr-btn.used{border-color:var(--border);opacity:.4;cursor:not-allowed}
-
-/* OVERDRIVE INDICATOR */
-.overdrive-bar{position:absolute;top:44px;left:50%;transform:translateX(-50%);background:rgba(255,179,0,.15);border:1px solid #FFB300;padding:4px 12px;font-size:10px;letter-spacing:2px;text-transform:uppercase;color:#FFB300;z-index:12;display:none;white-space:nowrap}
-.overdrive-bar.active{display:block}
-
-/* OVERLAYS */
-/* CONFRONTATION */
-.cf-overlay{position:fixed;inset:0;background:rgba(0,0,0,.96);z-index:300;display:none;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:2rem}
-.cf-overlay.open{display:flex}
-.cf-guard-icon{font-size:70px;margin-bottom:.5rem;animation:guardBob 1s ease-in-out infinite alternate}
-@keyframes guardBob{from{transform:scale(1) rotate(-2deg)}to{transform:scale(1.08) rotate(2deg)}}
-.cf-alert{font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:clamp(30px,8vw,58px);letter-spacing:4px;color:var(--crimson);text-transform:uppercase}
-.cf-sub{font-size:11px;letter-spacing:4px;text-transform:uppercase;color:var(--muted);margin-bottom:1.5rem}
-.cf-count{font-family:'Share Tech Mono',monospace;font-size:clamp(72px,18vw,108px);color:var(--crimson);line-height:1;margin-bottom:1.5rem;transition:color .1s}
-.cf-count.urgent{color:#FF6B6B;animation:countPulse .25s ease infinite alternate}
-@keyframes countPulse{from{transform:scale(1)}to{transform:scale(1.06)}}
-.cf-btns{display:grid;grid-template-columns:1fr 1fr;gap:14px;width:100%;max-width:380px}
-.cf-btn{padding:18px 12px;font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:18px;letter-spacing:2px;text-transform:uppercase;border:none;cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:5px;transition:transform .1s}
-.cf-btn:active{transform:scale(.96)}
-.cf-btn .icon{font-size:30px}
-.cf-btn .sub{font-size:10px;letter-spacing:2px;opacity:.8;font-weight:400}
-.btn-bribe{background:var(--gold);color:var(--navy)}
-.btn-kill{background:var(--crimson);color:#fff}
-.cf-warning{font-size:11px;color:var(--muted);margin-top:1.25rem;letter-spacing:2px;text-transform:uppercase}
-
-/* ARREST */
-.arrest-overlay{position:fixed;inset:0;background:#05050a;z-index:400;display:none;flex-direction:column;align-items:center;justify-content:center;filter:grayscale(1) brightness(.8)}
-.arrest-overlay.open{display:flex}
-.detained-stamp{font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:clamp(44px,11vw,80px);color:var(--crimson);letter-spacing:6px;text-transform:uppercase;border:5px solid var(--crimson);padding:8px 24px;transform:rotate(-7deg);text-shadow:0 0 30px rgba(214,48,49,.4)}
-.arrest-nick{font-size:14px;letter-spacing:4px;text-transform:uppercase;color:#555;margin-top:2rem}
-.arrest-release{font-size:12px;color:#444;margin-top:.75rem;letter-spacing:2px;text-transform:uppercase}
-.arrest-release .hl{color:#888}
-
-/* SOUND ALERT BANNER */
-.sound-banner{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);background:rgba(214,48,49,.15);border:1px solid var(--crimson);padding:8px 20px;font-family:'Barlow Condensed',sans-serif;font-size:14px;letter-spacing:3px;text-transform:uppercase;color:var(--crimson);z-index:30;pointer-events:none;opacity:0;transition:opacity .2s;white-space:nowrap}
-.sound-banner.flash{opacity:1;animation:soundFlash 1.2s forwards}
+/* SOUND BANNER */
+.sound-banner{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);background:rgba(214,48,49,.15);border:1px solid var(--crimson);padding:8px 20px;font-family:'Barlow Condensed',sans-serif;font-size:14px;letter-spacing:3px;text-transform:uppercase;color:var(--crimson);z-index:30;pointer-events:none;opacity:0;white-space:nowrap}
+.sound-banner.flash{opacity:1;animation:soundFlash 1.5s forwards}
 @keyframes soundFlash{0%{opacity:1}70%{opacity:1}100%{opacity:0}}
 
-/* DARKNESS OVERLAY */
-.dark-overlay{position:absolute;inset:0;background:rgba(0,0,0,.88);z-index:11;pointer-events:none;opacity:0;transition:opacity .4s}
+/* DARK OVERLAY */
+.dark-overlay{position:absolute;inset:0;background:rgba(0,0,0,.9);z-index:11;pointer-events:none;opacity:0;transition:opacity .4s}
 .dark-overlay.on{opacity:1}
+
+/* CONFRONTATION */
+.cf-overlay{position:fixed;inset:0;background:rgba(0,0,0,.97);z-index:300;display:none;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:2rem}
+.cf-overlay.open{display:flex}
+.cf-guard-icon{font-size:64px;margin-bottom:.5rem;animation:guardBob 1s ease-in-out infinite alternate}
+@keyframes guardBob{from{transform:scale(1) rotate(-2deg)}to{transform:scale(1.08) rotate(2deg)}}
+.cf-alert{font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:clamp(28px,7vw,52px);letter-spacing:4px;color:var(--crimson);text-transform:uppercase}
+.cf-sub{font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--muted);margin-bottom:1.2rem}
+.cf-count{font-family:'Share Tech Mono',monospace;font-size:clamp(64px,16vw,100px);color:var(--crimson);line-height:1;margin-bottom:1.2rem}
+.cf-count.urgent{animation:countPulse .25s ease infinite alternate}
+@keyframes countPulse{from{transform:scale(1)}to{transform:scale(1.06)}}
+.cf-btns{display:grid;grid-template-columns:1fr 1fr;gap:12px;width:100%;max-width:400px}
+.cf-btns.three{grid-template-columns:1fr 1fr 1fr}
+.cf-btn{padding:16px 10px;font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:16px;letter-spacing:2px;text-transform:uppercase;border:none;cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:4px}
+.cf-btn .icon{font-size:26px}
+.cf-btn .sub{font-size:9px;letter-spacing:1px;opacity:.8;font-weight:400}
+.btn-bribe{background:var(--gold);color:var(--navy)}
+.btn-kill{background:var(--crimson);color:#fff}
+.btn-smoke{background:#00E676;color:#0D0F1A}
+.cf-warning{font-size:11px;color:var(--muted);margin-top:1rem;letter-spacing:2px;text-transform:uppercase}
+
+/* ARREST */
+.arrest-overlay{position:fixed;inset:0;background:#05050a;z-index:400;display:none;flex-direction:column;align-items:center;justify-content:center;filter:grayscale(1) brightness(.7)}
+.arrest-overlay.open{display:flex}
+.detained-stamp{font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:clamp(44px,11vw,80px);color:var(--crimson);letter-spacing:6px;text-transform:uppercase;border:5px solid var(--crimson);padding:8px 24px;transform:rotate(-7deg)}
+.arrest-sub{font-size:13px;letter-spacing:4px;text-transform:uppercase;color:#555;margin-top:2rem}
+.arrest-rel{font-size:11px;color:#444;margin-top:.6rem;letter-spacing:2px;text-transform:uppercase}
+.arrest-rel .hl{color:#888}
 
 /* ENDGAME */
 .end-overlay{position:fixed;inset:0;background:rgba(0,0,0,.97);z-index:500;display:none;flex-direction:column;align-items:center;justify-content:center;padding:2rem;text-align:center;overflow-y:auto}
 .end-overlay.open{display:flex}
-.end-icon{font-size:68px;margin-bottom:.8rem}
-.end-title{font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:clamp(36px,9vw,68px);letter-spacing:4px;text-transform:uppercase;margin-bottom:.4rem}
-.end-sub{font-size:12px;letter-spacing:4px;text-transform:uppercase;color:var(--muted);margin-bottom:1.75rem}
-.end-box{background:var(--navy2);border:1px solid var(--border);padding:1.5rem 2rem;margin-bottom:1.75rem;min-width:280px;max-width:400px;width:100%}
-.end-row{display:flex;justify-content:space-between;font-size:13px;color:var(--muted);line-height:2.3}
+.end-icon{font-size:64px;margin-bottom:.6rem}
+.end-title{font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:clamp(32px,8vw,64px);letter-spacing:4px;text-transform:uppercase;margin-bottom:.3rem}
+.end-sub{font-size:11px;letter-spacing:4px;text-transform:uppercase;color:var(--muted);margin-bottom:1.5rem}
+.end-box{background:var(--navy2);border:1px solid var(--border);padding:1.4rem 1.8rem;margin-bottom:1.5rem;min-width:260px;max-width:480px;width:100%}
+.end-row{display:flex;justify-content:space-between;font-size:13px;color:var(--muted);line-height:2.2}
 .end-row span{color:var(--offwhite)}
 .end-row span.good{color:var(--teal)}
 .end-row span.bad{color:var(--crimson)}
-.pbar-wrap{height:5px;background:var(--navy3);border-radius:3px;margin-top:1rem;overflow:hidden}
+.pbar-wrap{height:5px;background:var(--navy3);border-radius:3px;margin-top:.8rem;overflow:hidden}
 .pbar-fill{height:100%;border-radius:3px;transition:width 1.2s ease}
-.end-badges{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin-bottom:1.5rem}
-.badge{background:var(--navy3);border:1px solid var(--gold2);padding:6px 12px;font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--gold)}
+.end-player-rows{max-width:480px;width:100%;margin-bottom:1.2rem}
+.end-p-row{display:flex;justify-content:space-between;align-items:center;font-size:12px;color:var(--muted);padding:.4rem 0;border-bottom:1px solid var(--border)}
+.end-p-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0;margin-right:8px}
+.end-badges{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin-bottom:1.2rem}
+.badge{background:var(--navy3);border:1px solid var(--gold2);padding:5px 12px;font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--gold)}
 .end-actions{display:flex;gap:10px;flex-wrap:wrap;justify-content:center}
 
 /* NOTIF */
-.notif{position:fixed;top:16px;left:50%;transform:translateX(-50%);background:var(--navy2);border:1px solid var(--border);border-left:3px solid var(--gold);color:var(--offwhite);font-family:'Barlow Condensed',sans-serif;font-weight:600;font-size:13px;letter-spacing:2px;text-transform:uppercase;padding:8px 20px;z-index:600;opacity:0;transition:opacity .2s;pointer-events:none;white-space:nowrap;max-width:90vw;overflow:hidden;text-overflow:ellipsis}
+.notif{position:fixed;top:16px;left:50%;transform:translateX(-50%);background:var(--navy2);border:1px solid var(--border);border-left:3px solid var(--gold);color:var(--offwhite);font-family:'Barlow Condensed',sans-serif;font-weight:600;font-size:13px;letter-spacing:2px;text-transform:uppercase;padding:8px 18px;z-index:600;opacity:0;transition:opacity .2s;pointer-events:none;white-space:nowrap;max-width:90vw;overflow:hidden;text-overflow:ellipsis}
 .notif.show{opacity:1}
 .notif.alert{border-left-color:var(--crimson)}
+.notif.good{border-left-color:var(--teal)}
 
-/* TEAMMATE SPRITES */
-.teammate-sprite{position:absolute;pointer-events:none;z-index:8;transition:left .1s,top .1s}
-
-/* SHAKE */
-@keyframes shake{0%,100%{transform:translateX(0)}20%{transform:translateX(-6px)}40%{transform:translateX(6px)}60%{transform:translateX(-4px)}80%{transform:translateX(4px)}}
-.shaking{animation:shake .35s ease}
-
-/* CONNECTION STATUS */
+/* CONN */
 .conn-status{position:fixed;bottom:8px;left:8px;font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--muted);z-index:999;font-family:'Share Tech Mono',monospace}
 .conn-status.connected{color:var(--teal)}
 .conn-status.disconnected{color:var(--crimson)}
+
+/* OVERDRIVE BAR */
+.overdrive-bar{position:absolute;top:40px;left:50%;transform:translateX(-50%);background:rgba(255,179,0,.15);border:1px solid #FFB300;padding:3px 12px;font-size:10px;letter-spacing:2px;text-transform:uppercase;color:#FFB300;z-index:12;display:none;white-space:nowrap}
+.overdrive-bar.active{display:block}
 </style>
 <script src="/socket.io/socket.io.js"></script>
 </head>
 <body>
-
-<!-- CONNECTION STATUS -->
 <div class="conn-status" id="conn-status">Connecting...</div>
-
-<!-- NOTIF -->
 <div class="notif" id="notif"></div>
 
 <!-- HOME -->
@@ -276,8 +256,7 @@ canvas#mc{display:block}
     <div class="logo-ghost">Ghost</div>
     <div class="logo-the">the</div>
     <div class="logo-floor">Floor</div>
-    <div class="logo-sub">A Cooperative Heist Game</div>
-    <div class="tagline">3–6 players &nbsp;·&nbsp; 7 minutes &nbsp;·&nbsp; one shot</div>
+    <div class="logo-sub">A Cooperative Heist · 3–6 Players · 7 Minutes</div>
     <div class="home-btns">
       <button class="btn-gold" onclick="goCreate()">Create Room</button>
       <div class="or-sep">— or —</div>
@@ -310,13 +289,8 @@ canvas#mc{display:block}
       <div class="vdiv"></div>
       <div><div class="rc-label">Players</div><div style="font-family:'Share Tech Mono',monospace;font-size:20px;color:var(--offwhite)" id="disp-count">1/6</div></div>
       <div class="vdiv"></div>
-<div>
-  <div class="rc-label">Link</div>
-  <div style="display:flex;align-items:center;gap:6px">
-    <div style="font-size:11px;color:var(--muted);font-family:'Share Tech Mono',monospace" id="disp-link">—</div>
-    <button onclick="copyLink()" style="background:var(--navy3);border:1px solid var(--border);color:var(--gold);font-size:9px;letter-spacing:2px;text-transform:uppercase;padding:3px 8px;cursor:pointer;font-family:'Barlow Condensed',sans-serif" id="copy-btn">Copy</button>
-  </div>
-</div>    </div>
+      <div><div class="rc-label">Link</div><div style="font-size:11px;color:var(--muted);font-family:'Share Tech Mono',monospace" id="disp-link">—</div></div>
+    </div>
     <div style="text-align:right"><div class="rc-label">Status</div><div style="font-size:12px;color:var(--gold)" id="disp-status">Waiting for crew</div></div>
   </div>
   <div class="lobby-body">
@@ -332,8 +306,6 @@ canvas#mc{display:block}
         <div class="match-row"><span>Loot Target</span><span style="color:var(--gold)" id="ms-t">—</span></div>
         <div class="match-row"><span>Guard AI</span><span style="color:var(--offwhite)" id="ms-a">—</span></div>
         <div class="match-row"><span>Time Limit</span><span style="color:var(--crimson)">7:00</span></div>
-        <div class="match-row"><span>Rooms</span><span style="color:var(--offwhite)">10</span></div>
-        <div class="match-row"><span>Guards</span><span style="color:var(--offwhite)">4</span></div>
       </div>
       <div class="host-area">
         <button class="start-btn" id="start-btn" disabled onclick="doStart()">Start Heist</button>
@@ -346,16 +318,13 @@ canvas#mc{display:block}
 <!-- CHAR MODAL -->
 <div class="modal-bg" id="char-modal">
   <div class="modal">
-    <div class="modal-port" id="modal-port"></div>
+    <div class="modal-emoji" id="modal-emoji"></div>
     <div class="modal-cname" id="modal-cname"></div>
     <div class="modal-crole" id="modal-crole"></div>
-    <div class="style-row">
-      <button class="style-opt on" onclick="pickStyle(0,this)">Style A</button>
-      <button class="style-opt" onclick="pickStyle(1,this)">Style B</button>
-    </div>
     <hr class="mdivider">
-    <div class="mdetail"><span class="mdetail-lbl">Rooms</span><span class="mdetail-val" id="m-rooms"></span></div>
-    <div class="mdetail"><span class="mdetail-lbl">Restriction</span><span class="mdetail-val" id="m-restrict"></span></div>
+    <div class="mdetail"><span class="mdetail-lbl">Access</span><span class="mdetail-val" id="m-rooms"></span></div>
+    <div class="mdetail"><span class="mdetail-lbl">Restriction</span><span class="mdetail-val" id="m-restrict" style="color:#FF6B35"></span></div>
+    <div class="mdetail"><span class="mdetail-lbl">Steal Time</span><span class="mdetail-val" id="m-steal"></span></div>
     <div class="mtoken"><div class="mtoken-name" id="m-tname"></div><div class="mtoken-desc" id="m-tdesc"></div></div>
     <div class="modal-btns">
       <button class="btn-cancel" onclick="closeModal()">Cancel</button>
@@ -364,39 +333,57 @@ canvas#mc{display:block}
   </div>
 </div>
 
+<!-- BRIEFING -->
+<div class="brief-overlay" id="brief-overlay">
+  <div class="brief-title">Briefing</div>
+  <div class="brief-sub">Read your role — then confirm ready</div>
+  <div class="brief-box">
+    <div class="brief-char-banner">
+      <div class="brief-char-emoji" id="brief-emoji"></div>
+      <div><div class="brief-char-name" id="brief-charname"></div><div class="brief-char-sub" id="brief-charsub"></div></div>
+    </div>
+    <div class="brief-rules-title">Your Mission</div>
+    <div id="brief-char-rules"></div>
+    <div class="brief-rules-title" style="margin-top:1.2rem">Global Rules</div>
+    <div class="brief-rule">🏃 <span>Move with WASD or Arrow Keys</span></div>
+    <div class="brief-rule">🎒 <span>Walk into your room and hold E or Space to steal (3s light / 4.5s medium / 6s heavy)</span></div>
+    <div class="brief-rule">🚐 <span>Bring loot to Loading Docks to deposit into the van</span></div>
+    <div class="brief-rule">🚨 <span>If a guard enters your room, you have 9 seconds to Bribe or Take Down</span></div>
+    <div class="brief-rule">👁️ <span>You can only see teammates in your same room or hallway</span></div>
+    <div class="brief-rule">⚡ <span>Press Q to use your power token (one use only)</span></div>
+  </div>
+  <div class="brief-controls">
+    <div class="ctrl-item"><kbd>WASD</kbd> or <kbd>↑↓←→</kbd> Move</div>
+    <div class="ctrl-item"><kbd>E</kbd> or <kbd>Space</kbd> Steal / Drop</div>
+    <div class="ctrl-item"><kbd>Q</kbd> Power Token</div>
+  </div>
+  <div class="ready-count" id="brief-ready-count">0 / 0 ready</div>
+  <button class="ready-btn" id="ready-btn" onclick="clickReady()">I'm Ready</button>
+</div>
+
 <!-- GAME -->
 <div class="screen" id="game">
   <div class="game-hud">
     <div class="hud-timer" id="hud-timer">7:00</div>
     <div class="hud-center">
-      <div class="hud-loot-text">Van: <strong id="hl-van">$0</strong> / <strong id="hl-tgt">$1.5M</strong></div>
-      <div class="hud-room" id="hud-room">Main Gallery</div>
+      <div class="hud-personal">My haul: <span id="hl-personal">$0</span></div>
+      <div class="hud-total" id="hl-total-wrap" style="display:none">Team van: <span id="hl-van">$0</span> / <span id="hl-tgt">$1.5M</span></div>
+      <div class="hud-room-lbl" id="hud-room">—</div>
     </div>
     <div class="hud-right">
       <div id="hud-players"></div>
-      <button class="token-btn" id="token-btn" onclick="useToken()" disabled>⚡ Token</button>
+      <button class="token-btn" id="token-btn" onclick="useToken()" disabled>⚡ —</button>
     </div>
   </div>
   <div class="map-area" id="map-area">
     <canvas id="gc"></canvas>
-    <canvas id="mc" class="minimap" width="120" height="90"></canvas>
-    <div class="loot-progress" id="loot-progress">
-      Van <span id="lp-pct">0%</span>
-      <div class="loot-bar-wrap"><div class="loot-bar-fill" id="lp-fill" style="width:0%"></div></div>
-    </div>
-    <div class="inter-prompt" id="inter-prompt">Hold ACT to steal</div>
-    <div class="access-denied" id="access-denied">🚫 No Access — Wrong Role</div>
-    <div class="inv-bar" id="inv-bar"></div>
-    <div class="sound-banner" id="sound-banner">🔊 Guards Alerted — Sound Detected!</div>
+    <div class="minimap-wrap"><canvas id="mc" width="130" height="110"></canvas></div>
+    <div class="van-prog">Van <span id="lp-pct">0%</span><div class="loot-bar-wrap"><div class="loot-bar-fill" id="lp-fill" style="width:0%"></div></div></div>
+    <div class="game-prompt" id="game-prompt"></div>
+    <div class="steal-bar-wrap" id="steal-bar-wrap"><div class="steal-bar-fill" id="steal-bar-fill"></div></div>
+    <div class="sound-banner" id="sound-banner">🔊 Guards Alerted!</div>
     <div class="dark-overlay" id="dark-overlay"></div>
     <div class="overdrive-bar" id="overdrive-bar">⚙️ OVERDRIVE ACTIVE</div>
-    <div class="joy-zone" id="joy-zone"><div class="joy-base"></div><div class="joy-knob" id="joy-knob"></div></div>
-    <div class="act-btn" id="act-btn" ontouchstart="actPress(event)" ontouchend="actRelease()" onmousedown="actPress(event)" onmouseup="actRelease()">
-      <div class="progress-ring" id="prog-ring"></div>
-      <div class="act-icon" id="act-icon">⚡</div>
-      <div style="font-size:9px;letter-spacing:1px;text-transform:uppercase">ACT</div>
-    </div>
-    <div class="pwr-btn" id="pwr-btn" ontouchstart="event.preventDefault();useToken()" onclick="useToken()" title="Power Token">⚡</div>
   </div>
 </div>
 
@@ -404,24 +391,24 @@ canvas#mc{display:block}
 <div class="cf-overlay" id="cf-overlay">
   <div class="cf-guard-icon">🚨</div>
   <div class="cf-alert">Caught!</div>
-  <div class="cf-sub">Guard has eyes on you — decide now</div>
+  <div class="cf-sub" id="cf-sub">Guard has eyes on you — decide now</div>
   <div class="cf-count" id="cf-count">9</div>
-  <div class="cf-btns">
+  <div class="cf-btns" id="cf-btns">
     <button class="cf-btn btn-bribe" onclick="chooseBribe()">
-      <div class="icon">💰</div><div>Bribe</div><div class="sub">+$500k target · guard walks</div>
+      <div class="icon">💰</div><div>Bribe</div><div class="sub">+$500k target</div>
     </button>
     <button class="cf-btn btn-kill" onclick="chooseKill()">
-      <div class="icon">👊</div><div>Take Down</div><div class="sub">−30 seconds · silent alarm</div>
+      <div class="icon">👊</div><div>Take Down</div><div class="sub">−30 seconds</div>
     </button>
   </div>
-  <div class="cf-warning">Timer hits 0 → permanent arrest</div>
+  <div class="cf-warning">Timer hits 0 → arrested</div>
 </div>
 
 <!-- ARREST -->
 <div class="arrest-overlay" id="arrest-overlay">
   <div class="detained-stamp">Detained</div>
-  <div class="arrest-nick" id="arrest-nick">You've been arrested</div>
-  <div class="arrest-release" id="arrest-release">Released at <span class="hl">1:00</span> remaining</div>
+  <div class="arrest-sub" id="arrest-sub">You've been arrested</div>
+  <div class="arrest-rel" id="arrest-rel">Released at <span class="hl">1:00</span> remaining</div>
 </div>
 
 <!-- ENDGAME -->
@@ -430,13 +417,14 @@ canvas#mc{display:block}
   <div class="end-title" id="end-title">Heist Complete</div>
   <div class="end-sub" id="end-sub">The crew ghosted the floor</div>
   <div class="end-box">
-    <div class="end-row">Loot Secured <span id="e-loot">$0</span></div>
+    <div class="end-row">Van Loot <span id="e-loot">$0</span></div>
     <div class="end-row">Target <span id="e-target">$1.5M</span></div>
-    <div class="end-row">Time Remaining <span id="e-time">0:00</span></div>
-    <div class="end-row">Guards Triggered <span id="e-guards">0</span></div>
+    <div class="end-row">Time Left <span id="e-time">0:00</span></div>
+    <div class="end-row">Guard Incidents <span id="e-guards">0</span></div>
     <div class="end-row">Bribes Paid <span id="e-bribes">0</span></div>
     <div class="pbar-wrap"><div class="pbar-fill" id="e-pbar" style="width:0%"></div></div>
   </div>
+  <div class="end-player-rows" id="end-player-rows"></div>
   <div class="end-badges" id="end-badges"></div>
   <div class="end-actions">
     <button class="btn-gold" onclick="goHome()">Play Again</button>
@@ -446,1038 +434,1142 @@ canvas#mc{display:block}
 
 <script>
 // ══════════════════════════════════════════════════════
-//  SOCKET.IO — connect immediately on page load
+//  SOCKET
 // ══════════════════════════════════════════════════════
 const socket = io();
 const connEl = document.getElementById('conn-status');
+socket.on('connect',()=>{connEl.textContent='● Connected';connEl.className='conn-status connected'});
+socket.on('disconnect',()=>{connEl.textContent='● Disconnected';connEl.className='conn-status disconnected';notif('Lost connection','alert')});
 
-socket.on('connect', () => {
-  connEl.textContent = '● Connected';
-  connEl.className = 'conn-status connected';
+socket.on('room_update',(room)=>{
+  G.players=room.players;
+  const me=room.players.find(p=>p.id===socket.id);
+  if(me)G.isHost=me.isHost;
+  if(document.getElementById('lobby').classList.contains('active'))renderLobby();
+  if(document.getElementById('brief-overlay').classList.contains('open'))updateBriefReady(room);
 });
-socket.on('disconnect', () => {
-  connEl.textContent = '● Disconnected';
-  connEl.className = 'conn-status disconnected';
-  notif('Lost connection to server', 'alert');
+socket.on('char_taken',()=>{notif('That role was just taken','alert');closeModal();renderGrid()});
+socket.on('error',(msg)=>notif(msg,'alert'));
+socket.on('game_start',(room)=>{
+  G.players=room.players;
+  const me=room.players.find(p=>p.id===socket.id);
+  if(me){G.myCharId=me.charId;G.myStyle=me.style||0;G.isHost=me.isHost;}
+  showBriefing(room);
 });
-socket.on('connect_error', () => {
-  connEl.textContent = '● Connection failed';
-  connEl.className = 'conn-status disconnected';
+socket.on('brief_ready_update',(data)=>{
+  updateBriefReady(data);
 });
-
-// ── Server → client events ──────────────────────────
-
-// Room state updated (player joined, char selected, etc.)
-socket.on('room_update', (room) => {
-  G.players = room.players;
-  // Sync our own isHost status in case we inherited it
-  const me = room.players.find(p => p.id === socket.id);
-  if (me) G.isHost = me.isHost;
-  if (document.getElementById('lobby').classList.contains('active')) {
-    renderLobby();
-  }
+socket.on('all_ready',()=>{
+  document.getElementById('brief-overlay').classList.remove('open');
+  beginGame();
 });
-
-// Another player tried to claim a character we were viewing
-socket.on('char_taken', (charId) => {
-  notif('That role was just taken — pick another', 'alert');
-  closeModal();
-  renderGrid();
+socket.on('other_player_move',({id,x,y,tileX,tileY,zone})=>{
+  if(!GS.others[id])GS.others[id]={x,y,tileX,tileY,zone};
+  else{GS.others[id].x=x;GS.others[id].y=y;GS.others[id].tileX=tileX;GS.others[id].tileY=tileY;GS.others[id].zone=zone;}
 });
-
-// Server error (room full, not found, etc.)
-socket.on('error', (msg) => {
-  notif(msg, 'alert');
+socket.on('loot_stolen',({zoneId,lootIdx})=>{
+  if(GS.zoneLoot[zoneId])GS.zoneLoot[zoneId][lootIdx].stolen=true;
 });
-
-// Host started the game
-socket.on('game_start', (room) => {
-  G.players = room.players;
-  const me = room.players.find(p => p.id === socket.id);
-  if (me) {
-    G.myCharId = me.charId;
-    G.myStyle  = me.style || 0;
-    G.isHost   = me.isHost;
-  }
-  startGame(room);
+socket.on('hall_loot_dropped',({x,y,val,icon,weight,byId})=>{
+  GS.hallDrops.push({x,y,val,icon,weight,id:byId+'_'+Date.now(),pickedUp:false});
 });
-
-// Another player moved
-socket.on('other_player_move', ({ id, x, y, roomId }) => {
-  if (!GS.otherPlayers[id]) GS.otherPlayers[id] = { x, y, roomId };
-  GS.otherPlayers[id].x = x;
-  GS.otherPlayers[id].y = y;
-  GS.otherPlayers[id].roomId = roomId;
-});
-
-// Loot stolen by any player
-socket.on('loot_stolen', ({ roomId, lootId }) => {
-  const loot = (GS.roomLoots[roomId] || []).find(l => l.id === lootId);
-  if (loot) loot.stolen = true;
-});
-
-// Loot dropped at van by any player
-socket.on('loot_dropoff', ({ id, amount }) => {
-  GS.vanLoot += amount;
+socket.on('loot_deposited',({playerId,amount,vanTotal})=>{
+  GS.vanLoot=vanTotal;
   updateHUD();
-  if (id !== socket.id) {
-    const p = G.players.find(x => x.id === id);
-    notif(`💰 ${p ? p.nick : 'Teammate'} loaded ${fmt(amount)} into van!`);
+  if(playerId!==socket.id){
+    const p=G.players.find(x=>x.id===playerId);
+    notif(`💰 ${p?p.nick:'Teammate'} deposited ${fmt(amount)}`,'good');
   }
-  if (GS.vanLoot >= GS.targetLoot) setTimeout(triggerVictory, 400);
+  if(GS.vanLoot>=GS.targetLoot)setTimeout(triggerVictory,400);
 });
-
-// Timer sync from host
-socket.on('timer_sync', ({ timeLeft }) => {
-  if (!G.isHost) {
-    GS.timeLeft = timeLeft;
-    updateTimerDisplay();
+socket.on('player_personal_update',({playerId,personal})=>{
+  const p=G.players.find(x=>x.id===playerId);
+  if(p)p.personal=personal;
+});
+socket.on('timer_sync',({timeLeft})=>{if(!G.isHost){GS.timeLeft=timeLeft;updateTimerDisplay();}});
+socket.on('guard_update',({guards})=>{if(!G.isHost)GS.guards=guards;});
+socket.on('teammate_confronted',({id})=>{
+  const p=G.players.find(x=>x.id===id);
+  notif(`🚨 ${p?p.nick:'Teammate'} caught by guard!`,'alert');
+});
+socket.on('confrontation_resolved',({id,outcome})=>{
+  if(id===socket.id)return;
+  const p=G.players.find(x=>x.id===id);
+  const name=p?p.nick:'Teammate';
+  if(outcome==='bribe'){GS.targetLoot+=500000;notif(`💸 ${name} bribed — target +$500k`,'alert');updateHUD();}
+  else if(outcome==='kill'){if(G.isHost){GS.timeLeft=Math.max(0,GS.timeLeft-30);updateTimerDisplay();}notif(`👊 ${name} took down guard — −30s`,'alert');}
+  else if(outcome==='arrested')notif(`🔒 ${name} arrested!`,'alert');
+  else if(outcome==='smoke')notif(`💨 ${name} used Smokebomb — escaped!`);
+});
+socket.on('token_activated',({id,tokenId,targetZone})=>{
+  if(id===socket.id)return;
+  const p=G.players.find(x=>x.id===id);
+  applyTokenEffect(tokenId,targetZone,p?p.nick:'Teammate');
+});
+socket.on('riot_call',()=>{
+  // All guards rush to muscle's location — handled host-side, non-host just sees notif
+  notif('🚨 RIOT CALL — all guards converging!','alert');
+});
+socket.on('riot_resolved',()=>{
+  GS.guards.forEach(g=>{g.knocked=15;});
+  notif('💥 Guards knocked out for 15s!','alert');
+});
+socket.on('confrontation_auto_resolved',()=>{
+  if(GS.confrontActive){
+    clearInterval(GS.confrontIv);
+    GS.confrontActive=false;
+    document.getElementById('cf-overlay').classList.remove('open');
+    notif('💥 Muscle riot cleared your deal!','good');
   }
 });
-
-// Guard positions from host
-socket.on('guard_update', ({ guards }) => {
-  if (!G.isHost) GS.guards = guards;
-});
-
-// A teammate was caught
-socket.on('teammate_confronted', ({ id }) => {
-  const p = G.players.find(x => x.id === id);
-  notif(`🚨 ${p ? p.nick : 'Teammate'} caught by a guard!`, 'alert');
-});
-
-// Confrontation resolved by a teammate
-socket.on('confrontation_resolved', ({ id, outcome }) => {
-  if (id === socket.id) return; // we handle our own
-  const p = G.players.find(x => x.id === id);
-  const name = p ? p.nick : 'Teammate';
-  if (outcome === 'bribe') {
-    GS.targetLoot += 500000;
-    notif(`💸 ${name} bribed a guard — target +$500k`, 'alert');
-    updateHUD();
-  } else if (outcome === 'kill') {
-    if (G.isHost) {
-      GS.timeLeft = Math.max(0, GS.timeLeft - 30);
-      updateTimerDisplay();
-    }
-    notif(`👊 ${name} took down a guard — −30s`, 'alert');
-  } else if (outcome === 'arrested') {
-    notif(`🔒 ${name} was arrested!`, 'alert');
-  }
-});
-
-// Token activated by any player
-socket.on('token_activated', ({ id, tokenId, targetRoom }) => {
-  if (id === socket.id) return;
-  const p = G.players.find(x => x.id === id);
-  applyTokenEffect(tokenId, targetRoom, p ? p.nick : 'Teammate');
-});
-
-// Game over from server
-socket.on('game_over', ({ result }) => {
-  if (result === 'victory') triggerVictory();
+socket.on('game_over',({result})=>{
+  if(result==='victory')triggerVictory();
   else triggerDefeat(result);
 });
-
-// A player disconnected — room_update handles roster, this is just a notif
-socket.on('player_disconnected', ({ nick }) => {
-  notif(`${nick} left the heist`, 'alert');
+socket.on('master_key_grant',({toId,zone})=>{
+  if(toId===socket.id){
+    GS.masterKeyZones.add(zone);
+    notif(`🔑 Inside Source granted you access to ${zone}!`,'good');
+  }
 });
 
 // ══════════════════════════════════════════════════════
-//  DATA
+//  CHARACTER DATA
 // ══════════════════════════════════════════════════════
-const CHARS = [
-  {id:'hacker', name:'The Hacker',  gender:'Woman', color:'#00C8FF',
-   rooms:['cctv','server'], roomLabel:'Server Rooms & CCTV Hubs',
-   restrict:'Carries only 1 loot item', token:'Blackout',
-   tdesc:'Plunges a target room into total darkness for 20s — guards inside are blinded.',
-   bA:{skin:'#C68642',hair:'#1a1a1a',top:'#1a3a4a',acc:'#00C8FF'},
-   bB:{skin:'#F5CBA7',hair:'#5c3317',top:'#2a1a4a',acc:'#00C8FF'}},
-  {id:'acrobat', name:'The Acrobat', gender:'Woman', color:'#00E676',
-   rooms:['laser','vents'], roomLabel:'Laser Vaults & Ventilation Shafts',
-   restrict:'Lightweight loot only · 25% faster', token:'Smokebomb',
-   tdesc:'Instantly escapes a guard confrontation with zero penalty.',
-   bA:{skin:'#8D5524',hair:'#0a0a0a',top:'#1a2e1a',acc:'#00E676'},
-   bB:{skin:'#FDBCB4',hair:'#c87941',top:'#1a1a2e',acc:'#00E676'}},
-  {id:'techie', name:'The Techie',  gender:'Man',   color:'#FFB300',
-   rooms:['laser','fuse'], roomLabel:'Laser Vaults & Fuse Boxes',
-   restrict:'Takes 40s to bag items (double)', token:'Overdrive',
-   tdesc:'Overclocks all tools — lock times drop to 0s for 15 seconds.',
-   bA:{skin:'#8D5524',hair:'#3d2b1f',top:'#2a1a00',acc:'#FFB300'},
-   bB:{skin:'#C68642',hair:'#1a1a1a',top:'#1a1a2a',acc:'#FFB300'}},
-  {id:'muscle', name:'The Muscle',  gender:'Man',   color:'#FF6B35',
-   rooms:['storage','gallery'], roomLabel:'Heavy Storage & Main Gallery',
-   restrict:'Smash noise alerts nearby guards', token:'Takedown',
-   tdesc:'Silently knocks out the nearest guard for 45 seconds.',
-   bA:{skin:'#8D5524',hair:'#1a0a00',top:'#1a0a00',acc:'#FF6B35'},
-   bB:{skin:'#C68642',hair:'#2a1a00',top:'#2a0a00',acc:'#FF6B35'}},
-  {id:'source', name:'Inside Source',gender:'Woman', color:'#B388FF',
-   rooms:['maint','vip','loading'], roomLabel:'Maintenance, VIP Lounge & Loading Docks',
-   restrict:'Low-tier loot only · 10s steal time', token:'Master Key',
-   tdesc:'Instantly unlocks any role-restricted room for all teammates for 30 seconds.',
-   bA:{skin:'#F5CBA7',hair:'#2c1810',top:'#1a1a3a',acc:'#B388FF'},
-   bB:{skin:'#8D5524',hair:'#1a1a1a',top:'#2a1a2a',acc:'#B388FF'}},
-  {id:'driver', name:'The Driver',  gender:'Man',   color:'#FF4757',
-   rooms:['loading','vents'], roomLabel:'Loading Docks & Ventilation Shafts',
-   restrict:'Cannot steal — logistics only', token:'Adrenaline Dump',
-   tdesc:'Blasts a siren giving all teammates 50% speed boost for 20 seconds.',
-   bA:{skin:'#C68642',hair:'#2a2a2a',top:'#1a0000',acc:'#FF4757'},
-   bB:{skin:'#8D5524',hair:'#1a1a1a',top:'#0a0a1a',acc:'#FF4757'}},
+const CHARS=[
+  {id:'hacker',  name:'The Hacker',   emoji:'💻', color:'#00C8FF',
+   access:['cctv','server'],
+   accessLabel:'CCTV Hub & Server Room',
+   restrict:'Carries 1 loot item only',
+   stealNote:'Light items only (3s)',
+   token:'Blackout',
+   tdesc:'Plunges current room into darkness for 20s — guards inside are blinded.',
+   rules:[
+     '🖥️ Enter CCTV Hub to see ALL guard & teammate positions on map',
+     '💾 Enter Server Room and hold E to hack $600k directly into personal haul',
+     '🌑 Use Blackout token to blind guards in your current room for 20s',
+     '📦 You can only carry 1 loot item at a time',
+   ]},
+  {id:'acrobat', name:'The Acrobat',  emoji:'🤸', color:'#00E676',
+   access:['laser','vents'],
+   accessLabel:'Laser Vault & Ventilation Shafts',
+   restrict:'Lightweight loot only · 25% faster',
+   stealNote:'Light only (3s)',
+   token:'Smokebomb',
+   tdesc:'Appears as 3rd option in any confrontation — use it to escape with zero penalty. 2 uses.',
+   rules:[
+     '⚡ Move 25% faster than all other players',
+     '💎 Access Laser Vault and Ventilation Shafts',
+     '💨 Smokebomb appears as a button in confrontation — 2 uses',
+     '🪶 Can only carry lightweight loot',
+   ]},
+  {id:'techie',  name:'The Techie',   emoji:'🛠️', color:'#FFB300',
+   access:['laser','fuse'],
+   accessLabel:'Laser Vault & Fuse Box',
+   restrict:'40s steal time (double)',
+   stealNote:'All weights (6s/9s/12s×2)',
+   token:'Overdrive',
+   tdesc:'Drops all steal times to 0s for 15 seconds.',
+   rules:[
+     '⚡ Access Laser Vault and Fuse Box',
+     '🔧 Takes double time to bag items (patience pays off)',
+     '⚙️ Overdrive token: instant steal for 15 seconds',
+   ]},
+  {id:'muscle',  name:'The Muscle',   emoji:'💪', color:'#FF6B35',
+   access:['storage','gallery'],
+   accessLabel:'Heavy Storage & Main Gallery',
+   restrict:'Smashing creates noise',
+   stealNote:'All weights (3s/4.5s/6s)',
+   token:'Riot Call',
+   tdesc:'Draws ALL guards to your room. You knock them all out for 15s. Any active teammate confrontation is auto-resolved safe.',
+   rules:[
+     '🏋️ Access Heavy Storage and Main Gallery',
+     '📦 Can carry up to 4 items with NO speed penalty',
+     '🔊 Smashing cases alerts guards within 2 rooms',
+     '🚨 Riot Call: pulls all guards to you, knocks them out 15s, clears teammate deals',
+   ]},
+  {id:'source',  name:'Inside Source', emoji:'🔑', color:'#B388FF',
+   access:['vip','maint','loading','any'],
+   accessLabel:'VIP Lounge + roam freely + grant access',
+   restrict:'Caught only if carrying >$700k',
+   stealNote:'VIP loot only (3s)',
+   token:'Master Key',
+   tdesc:'Grants the nearest teammate instant access to any one room of your choice.',
+   rules:[
+     '🕵️ Guards ignore you unless you carry over $700k total',
+     '🛒 Push a cart — auto-collect loot teammates drop in hallways',
+     '🏪 Steal from VIP Lounge only',
+     '🔑 Master Key: grant nearest teammate access to any room',
+     '🚪 You can enter ANY room to open it for a teammate',
+   ]},
+  {id:'driver',  name:'The Driver',   emoji:'🛞', color:'#FF4757',
+   access:['loading','vents','halls'],
+   accessLabel:'Loading Docks, Vents & Hallways',
+   restrict:'Cannot enter museum rooms to steal',
+   stealNote:'Hall & vent loot only (3s)',
+   token:'Adrenaline Dump',
+   tdesc:'50% speed boost for ALL players (including you) for 20 seconds.',
+   rules:[
+     '🚗 Access Loading Docks, Ventilation and all Hallways',
+     '🖼️ Steal light loot found in hallways and vents',
+     '📦 Pick up loot teammates drop in hallways',
+     '👁️ Only caught by guards if they are very close in a hall',
+     '🚀 Adrenaline Dump: everyone gets 50% speed for 20s',
+     '📊 Only you can see the team van total on your HUD',
+   ]},
 ];
 
-const ROOMS = [
-  {id:'cctv',    name:'CCTV Hub',      col:0,row:0, fill:'#08111e', border:'#102030', roles:['hacker'],            loot:[]},
-  {id:'server',  name:'Server Room',   col:1,row:0, fill:'#080d1e', border:'#101828', roles:['hacker'],            loot:[{name:'Digital Assets',  val:600000,weight:'light', icon:'💾'}]},
-  {id:'laser',   name:'Laser Vault',   col:2,row:0, fill:'#0e0820', border:'#1a1030', roles:['acrobat','techie'],  loot:[{name:'Crown Jewels',    val:900000,weight:'light', icon:'💎'},{name:'Ruby Pendant', val:350000,weight:'light',icon:'🔴'}]},
-  {id:'fuse',    name:'Fuse Box',      col:0,row:1, fill:'#111000', border:'#1e1c00', roles:['techie'],            loot:[]},
-  {id:'gallery', name:'Main Gallery',  col:1,row:1, fill:'#100e00', border:'#1e1a00', roles:['muscle'],            loot:[{name:'Gold Artifact',   val:700000,weight:'heavy', icon:'🏺'},{name:'Ancient Coins',val:300000,weight:'light',icon:'🪙'},{name:'Silk Painting',val:400000,weight:'medium',icon:'🖼️'}]},
-  {id:'storage', name:'Heavy Storage', col:2,row:1, fill:'#110800', border:'#200e00', roles:['muscle'],            loot:[{name:'Gold Bars',       val:1200000,weight:'heavy',icon:'🥇'},{name:'Marble Statue',val:800000,weight:'heavy',icon:'🗿'}]},
-  {id:'vip',     name:'VIP Lounge',    col:0,row:2, fill:'#0e0812', border:'#1a1020', roles:['source'],            loot:[{name:'Registry Cash',   val:200000,weight:'light', icon:'💵'},{name:'Wall Painting',val:350000,weight:'medium',icon:'🎨'}]},
-  {id:'maint',   name:'Maintenance',   col:1,row:2, fill:'#080e08', border:'#101a10', roles:['source'],            loot:[]},
-  {id:'vents',   name:'Ventilation',   col:2,row:2, fill:'#08080e', border:'#10101a', roles:['acrobat','driver'],  loot:[]},
-  {id:'loading', name:'Loading Docks', col:1,row:3, fill:'#0e0e0e', border:'#1a1a1a', roles:['source','driver'],   loot:[], isExit:true},
+// ══════════════════════════════════════════════════════
+//  MAP DEFINITION — tile-based
+//  Each zone: rooms + connecting hallways
+//  Grid coords in tiles (each tile = rendered px / TILE)
+// ══════════════════════════════════════════════════════
+const TILE=40; // pixels per tile
+
+// Zones: rooms and halls on a grid
+// cols 0-14, rows 0-18
+const ZONES=[
+  // ROW 0 — top rooms
+  {id:'cctv',    type:'room', label:'CCTV Hub',      col:0, row:0, w:4, h:3, roles:['hacker'],           loot:[],                                                fill:'#08111e',border:'#102030'},
+  {id:'server',  type:'room', label:'Server Room',   col:5, row:0, w:4, h:3, roles:['hacker'],           loot:[{name:'Digital Assets',val:600000,weight:'light',icon:'💾',hackOnly:true}], fill:'#080d1e',border:'#101828'},
+  {id:'laser',   type:'room', label:'Laser Vault',   col:10,row:0, w:4, h:3, roles:['acrobat','techie'], loot:[{name:'Crown Jewels',val:900000,weight:'light',icon:'💎'},{name:'Ruby Pendant',val:350000,weight:'light',icon:'🔴'}], fill:'#0e0820',border:'#1a1030'},
+  // halls row 3
+  {id:'h_top',   type:'hall', label:'Top Corridor',  col:0, row:3, w:14,h:1, roles:[],                  loot:[{name:'Hall Painting',val:150000,weight:'light',icon:'🖼️'},{name:'Display Case',val:120000,weight:'light',icon:'📿'}], fill:'#0a0a14',border:'#1a1a2a'},
+  // ROW 4 — mid rooms
+  {id:'fuse',    type:'room', label:'Fuse Box',      col:0, row:4, w:4, h:3, roles:['techie'],           loot:[],                                                fill:'#111000',border:'#1e1c00'},
+  {id:'gallery', type:'room', label:'Main Gallery',  col:5, row:4, w:4, h:3, roles:['muscle'],           loot:[{name:'Gold Artifact',val:700000,weight:'heavy',icon:'🏺'},{name:'Ancient Coins',val:300000,weight:'light',icon:'🪙'},{name:'Silk Painting',val:400000,weight:'medium',icon:'🖼️'}], fill:'#100e00',border:'#1e1a00'},
+  {id:'storage', type:'room', label:'Heavy Storage', col:10,row:4, w:4, h:3, roles:['muscle'],           loot:[{name:'Gold Bars',val:1200000,weight:'heavy',icon:'🥇'},{name:'Marble Statue',val:800000,weight:'heavy',icon:'🗿'}],  fill:'#110800',border:'#200e00'},
+  // halls row 7
+  {id:'h_mid',   type:'hall', label:'Mid Corridor',  col:0, row:7, w:14,h:1, roles:[],                  loot:[{name:'Bronze Vase',val:130000,weight:'light',icon:'🏺'},{name:'Framed Photo',val:90000,weight:'light',icon:'🖼️'}],  fill:'#0a0a14',border:'#1a1a2a'},
+  // ROW 8 — lower rooms
+  {id:'vip',     type:'room', label:'VIP Lounge',    col:0, row:8, w:4, h:3, roles:['source'],           loot:[{name:'Registry Cash',val:200000,weight:'light',icon:'💵'},{name:'Wall Painting',val:350000,weight:'medium',icon:'🎨'}], fill:'#0e0812',border:'#1a1020'},
+  {id:'maint',   type:'room', label:'Maintenance',   col:5, row:8, w:4, h:3, roles:['source'],           loot:[],                                                fill:'#080e08',border:'#101a10'},
+  {id:'vents',   type:'room', label:'Ventilation',   col:10,row:8, w:4, h:3, roles:['acrobat','driver'], loot:[{name:'Smuggled Watch',val:250000,weight:'light',icon:'⌚'},{name:'Gem Pouch',val:180000,weight:'light',icon:'💍'}],   fill:'#08080e',border:'#10101a'},
+  // halls row 11
+  {id:'h_bot',   type:'hall', label:'Bottom Corridor',col:0,row:11,w:14,h:1, roles:[],                  loot:[{name:'Corridor Art',val:110000,weight:'light',icon:'🎭'}],                                                           fill:'#0a0a14',border:'#1a1a2a'},
+  // ROW 12 — loading
+  {id:'loading', type:'room', label:'Loading Docks', col:4, row:12,w:6, h:3, roles:['source','driver','all'], loot:[], fill:'#0e0e0e',border:'#1a1a1a',isExit:true},
+  // Vertical connectors (left side)
+  {id:'vc_left_top', type:'hall',label:'Left Shaft', col:0, row:3, w:1, h:1,roles:[],loot:[],fill:'#0a0a14',border:'#1a1a2a'},
+  {id:'vc_left_mid', type:'hall',label:'Left Shaft', col:0, row:7, w:1, h:1,roles:[],loot:[],fill:'#0a0a14',border:'#1a1a2a'},
+  // Vertical connectors (mid)
+  {id:'vc_mid_top',  type:'hall',label:'Center Shaft',col:7,row:3, w:1, h:1,roles:[],loot:[],fill:'#0a0a14',border:'#1a1a2a'},
+  {id:'vc_mid_mid',  type:'hall',label:'Center Shaft',col:7,row:7, w:1, h:1,roles:[],loot:[],fill:'#0a0a14',border:'#1a1a2a'},
+  // Vertical connectors (right)
+  {id:'vc_right_top',type:'hall',label:'Right Shaft', col:12,row:3,w:1, h:1,roles:[],loot:[],fill:'#0a0a14',border:'#1a1a2a'},
+  {id:'vc_right_mid',type:'hall',label:'Right Shaft', col:12,row:7,w:1, h:1,roles:[],loot:[],fill:'#0a0a14',border:'#1a1a2a'},
+  {id:'vc_exit',     type:'hall',label:'Exit Shaft',  col:7, row:11,w:1, h:1,roles:[],loot:[],fill:'#0a0a14',border:'#1a1a2a'},
 ];
 
-const CORRIDORS = [
-  ['cctv','server'],['server','laser'],
-  ['cctv','fuse'],['server','gallery'],['laser','storage'],
-  ['fuse','gallery'],['gallery','storage'],
-  ['fuse','vip'],['gallery','maint'],['storage','vents'],
-  ['vip','maint'],['maint','vents'],
-  ['maint','loading'],['vip','loading'],
+// Guard patrol paths (zone ids)
+const GUARD_PATHS=[
+  ['gallery','h_mid','vip','h_bot','loading','h_bot','maint','h_mid','gallery'],
+  ['server','h_top','laser','h_top','cctv','h_top','server'],
+  ['storage','h_mid','gallery','h_top','server','h_top','gallery','h_mid','storage'],
+  ['vents','h_mid','maint','h_bot','loading','h_bot','vip','h_mid','vents'],
 ];
 
-const GUARD_PATHS = [
-  ['gallery','server','laser','storage','gallery'],
-  ['fuse','vip','maint','gallery','fuse'],
-  ['cctv','server','gallery','maint','vip','cctv'],
-  ['storage','vents','maint','loading','gallery','storage'],
-];
-
-const SCALE = {
-  3:{target:1500000,  tgtStr:'$1.5M', ai:'slow'},
-  4:{target:2200000,  tgtStr:'$2.2M', ai:'standard'},
-  5:{target:3000000,  tgtStr:'$3.0M', ai:'random'},
-  6:{target:4000000,  tgtStr:'$4.0M', ai:'fast'},
+const SCALE={
+  3:{target:1500000,tgtStr:'$1.5M',ai:'slow'},
+  4:{target:2200000,tgtStr:'$2.2M',ai:'standard'},
+  5:{target:3000000,tgtStr:'$3.0M',ai:'random'},
+  6:{target:4000000,tgtStr:'$4.0M',ai:'fast'},
 };
 
 // ══════════════════════════════════════════════════════
 //  APP STATE
 // ══════════════════════════════════════════════════════
-let G = {
-  roomCode:'', myNick:'', isHost:false,
-  myCharId:null, myStyle:0,
-  players:[], pendingId:null, pendingStyle:0,
-};
-
-let GS = {
-  running:false, timeLeft:420, timerIv:null,
-  targetLoot:1500000, vanLoot:0,
-  guardTriggers:0, bribesCount:0,
-  myPos:{roomId:'gallery', x:0, y:0, vx:0, vy:0},
-  myInventory:[null,null,null,null],
-  arrested:false, arrestPermanent:false,
-  confrontActive:false, confrontIv:null, confrontN:0,
-  roomLoots:{}, guards:[],
-  interactTarget:null,
-  actionHeld:false, actionProgress:0, actionIv:null,
-  tokenUsed:false,
-  speedBoost:0,
-  overdrive:0,
-  masterKeyActive:false, masterKeyTimer:0,
-  darknessRoom:null, darknessTimer:0,
-  screenShake:0,
+let G={roomCode:'',myNick:'',isHost:false,myCharId:null,players:[],pendingId:null};
+let GS={
+  running:false,timeLeft:420,timerIv:null,
+  targetLoot:1500000,vanLoot:0,
+  guardTriggers:0,bribesCount:0,
+  myPos:{zoneId:'gallery',x:0,y:0,vx:0,vy:0},
+  myPersonal:0,
+  myInventory:[],
+  arrested:false,arrestPermanent:false,
+  confrontActive:false,confrontIv:null,confrontN:0,
+  zoneLoot:{},hallDrops:[],
+  guards:[],
+  others:{},
+  stealHeld:false,stealProgress:0,stealIv:null,stealTarget:null,
+  tokenUsed:false,smokebombUses:2,
+  speedBoost:0,overdrive:0,
+  masterKeyZones:new Set(),
+  darknessZone:null,darknessTimer:0,
+  masterKeyActive:false,masterKeyTimer:0,
+  hackingActive:false,
+  riotActive:false,
   aiMode:'standard',
-  otherPlayers:{},  // id → {x, y, roomId, charId, nick, color}
-  lastMoveSent:0,
+  lastSyncT:0,
+  hackingCCTV:false,
 };
-
-// ══════════════════════════════════════════════════════
-//  SVG CHARACTER DRAWING
-// ══════════════════════════════════════════════════════
-function buildChar(c, pal) {
-  const s = pal.skin, h = pal.hair, t = pal.top, a = pal.acc;
-  return `
-    <rect x="28" y="55" width="24" height="35" rx="3" fill="${t}"/>
-    <circle cx="40" cy="42" r="14" fill="${s}"/>
-    <path d="M26 40 Q40 25 54 40" fill="${h}"/>
-    <rect x="30" y="90" width="8" height="17" rx="2" fill="${t}"/>
-    <rect x="42" y="90" width="8" height="17" rx="2" fill="${t}"/>
-    <rect x="18" y="57" width="8" height="26" rx="3" fill="${t}"/>
-    <rect x="54" y="57" width="8" height="26" rx="3" fill="${t}"/>
-    <circle cx="35" cy="42" r="2.5" fill="#1a1a2a"/>
-    <circle cx="45" cy="42" r="2.5" fill="#1a1a2a"/>
-    <path d="M35 50 Q40 53 45 50" stroke="#1a1a2a" stroke-width="1.5" fill="none" stroke-linecap="round"/>
-    <rect x="30" y="68" width="20" height="3" rx="1" fill="${a}" opacity=".8"/>
-  `;
-}
-
-function charSVG(c, style) {
-  const pal = style === 0 ? c.bA : c.bB;
-  return `<svg viewBox="0 0 80 107" xmlns="http://www.w3.org/2000/svg">${buildChar(c, pal)}</svg>`;
-}
 
 // ══════════════════════════════════════════════════════
 //  NAVIGATION
 // ══════════════════════════════════════════════════════
-function show(id) {
-  document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
-  document.getElementById(id).classList.add('active');
-}
-
-function goHome() {
-  stopGame();
-  show('home');
-}
-
-function goJoin() { show('join'); }
-
-function goCreate() {
-  const nick = prompt('Your nickname (host):');
-  if (!nick || !nick.trim()) return;
-  G.myNick = nick.trim().substring(0, 14);
-  G.isHost = true;
-  socket.emit('create_room', { nick: G.myNick });
-
-  // Server will send room_update with the generated code
-  socket.once('room_update', (room) => {
-    G.roomCode = room.code;
-    G.players  = room.players;
-    document.getElementById('disp-code').textContent = room.code;
-    document.getElementById('disp-link').textContent = `${location.host}?room=${room.code}`;
-    show('lobby');
-    renderLobby();
+function show(id){document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));document.getElementById(id).classList.add('active')}
+function goHome(){stopGame();show('home')}
+function goJoin(){show('join')}
+function goCreate(){
+  const nick=prompt('Your nickname (host):');
+  if(!nick||!nick.trim())return;
+  G.myNick=nick.trim().substring(0,14);G.isHost=true;
+  socket.emit('create_room',{nick:G.myNick});
+  socket.once('room_update',(room)=>{
+    G.roomCode=room.code;G.players=room.players;
+    document.getElementById('disp-code').textContent=room.code;
+    document.getElementById('disp-link').textContent=`${location.host}?room=${room.code}`;
+    show('lobby');renderLobby();
   });
 }
-
-function doJoin() {
-  const code = document.getElementById('join-code').value.trim().toUpperCase();
-  const nick  = document.getElementById('join-nick').value.trim();
-  if (code.length < 4) { notif('Enter a 4-letter room code', 'alert'); return; }
-  if (!nick)           { notif('Enter your nickname', 'alert');         return; }
-
-  G.myNick  = nick.substring(0, 14);
-  G.isHost  = false;
-  G.roomCode = code;
-
-  socket.emit('join_room', { code, nick: G.myNick });
-
-  socket.once('room_update', (room) => {
-    G.roomCode = room.code;
-    G.players  = room.players;
-    document.getElementById('disp-code').textContent = room.code;
-    document.getElementById('disp-link').textContent = `${location.host}?room=${room.code}`;
-    show('lobby');
-    renderLobby();
+function doJoin(){
+  const code=document.getElementById('join-code').value.trim().toUpperCase();
+  const nick=document.getElementById('join-nick').value.trim();
+  if(code.length<4){notif('Enter 4-letter code','alert');return;}
+  if(!nick){notif('Enter nickname','alert');return;}
+  G.myNick=nick.substring(0,14);G.isHost=false;G.roomCode=code;
+  socket.emit('join_room',{code,nick:G.myNick});
+  socket.once('room_update',(room)=>{
+    G.roomCode=room.code;G.players=room.players;
+    document.getElementById('disp-code').textContent=room.code;
+    document.getElementById('disp-link').textContent=`${location.host}?room=${room.code}`;
+    show('lobby');renderLobby();
   });
 }
-
-// Auto-join if URL has ?room=CODE
-window.addEventListener('DOMContentLoaded', () => {
-  const params = new URLSearchParams(location.search);
-  const code   = params.get('room');
-  if (code) {
-    document.getElementById('join-code').value = code.toUpperCase();
-    show('join');
-    document.getElementById('join-nick').focus();
-  }
+window.addEventListener('DOMContentLoaded',()=>{
+  const p=new URLSearchParams(location.search);
+  const c=p.get('room');
+  if(c){document.getElementById('join-code').value=c.toUpperCase();show('join');document.getElementById('join-nick').focus();}
 });
 
 // ══════════════════════════════════════════════════════
 //  LOBBY
 // ══════════════════════════════════════════════════════
-function renderLobby() {
-  document.getElementById('disp-code').textContent = G.roomCode;
-  document.getElementById('disp-link').textContent = `${location.host}?room=${G.roomCode}`;
-  renderGrid();
-  renderPlayers();
-  updateMatch();
-
-  // Only host sees Start button active
-  const startBtn = document.getElementById('start-btn');
-  if (!G.isHost) {
-    startBtn.disabled = true;
-    startBtn.textContent = 'Waiting for host...';
-  } else {
-    startBtn.textContent = 'Start Heist';
-  }
+function renderLobby(){
+  document.getElementById('disp-code').textContent=G.roomCode;
+  document.getElementById('disp-link').textContent=`${location.host}?room=${G.roomCode}`;
+  renderGrid();renderPlayers();updateMatch();
+  const sb=document.getElementById('start-btn');
+  if(!G.isHost){sb.disabled=true;sb.textContent='Waiting for host...';}
+  else sb.textContent='Start Heist';
 }
-
-function renderGrid() {
-  const mySocketId = socket.id;
-  document.getElementById('char-grid').innerHTML = CHARS.map(c => {
-    const myPlayer  = G.players.find(p => p.id === mySocketId);
-    const isMine    = myPlayer && myPlayer.charId === c.id;
-    const takenP    = G.players.find(p => p.id !== mySocketId && p.charId === c.id);
-    let cls = 'char-card' + (isMine ? ' mine' : takenP ? ' taken' : '');
-    return `<div class="${cls}" onclick="openModal('${c.id}')">
-      <div class="char-portrait">${charSVG(c, 0)}</div>
+function renderGrid(){
+  const myId=socket.id;
+  document.getElementById('char-grid').innerHTML=CHARS.map(c=>{
+    const myP=G.players.find(p=>p.id===myId);
+    const isMine=myP&&myP.charId===c.id;
+    const takenP=G.players.find(p=>p.id!==myId&&p.charId===c.id);
+    let cls='char-card'+(isMine?' mine':takenP?' taken':'');
+    return`<div class="${cls}" onclick="openModal('${c.id}')">
+      <div class="char-portrait" style="background:${c.color}18;font-size:40px">${c.emoji}</div>
       <div class="color-bar" style="background:${c.color}"></div>
       <div class="char-info">
-        <div class="char-name" style="color:${isMine ? c.color : 'var(--offwhite)'}">${c.name}</div>
-        <div class="char-gender">${c.gender}</div>
-        <div class="char-rooms-text">${c.roomLabel.replace(' & ', '<br>')}</div>
-        <div class="token-pill">${c.token}</div>
+        <div class="char-name" style="color:${isMine?c.color:'var(--offwhite)'}">${c.name}</div>
+        <div class="char-rooms-text">${c.accessLabel}</div>
+        <div class="char-restrict">${c.restrict}</div>
+        <div class="token-pill">⚡ ${c.token}</div>
       </div>
-      ${takenP ? `<div class="taken-overlay"><div class="taken-name-lbl" style="color:${takenP.color}">${takenP.nick}</div><div style="font-size:8px;letter-spacing:2px;text-transform:uppercase;color:var(--muted)">Claimed</div></div>` : ''}
-      ${isMine  ? `<div class="check-badge"><svg width="10" height="10" viewBox="0 0 10 10"><polyline points="1,5 4,8 9,2" stroke="#0D0F1A" stroke-width="2.2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></div>` : ''}
+      ${takenP?`<div class="taken-overlay"><div class="taken-name-lbl" style="color:${takenP.color}">${takenP.nick}</div><div style="font-size:8px;letter-spacing:2px;text-transform:uppercase;color:var(--muted)">Claimed</div></div>`:''}
+      ${isMine?`<div class="check-badge"><svg width="10" height="10" viewBox="0 0 10 10"><polyline points="1,5 4,8 9,2" stroke="#0D0F1A" stroke-width="2.2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></div>`:''}
     </div>`;
   }).join('');
 }
-
-function renderPlayers() {
-  const max = 6, cnt = G.players.length;
-  document.getElementById('player-list').innerHTML =
-    G.players.map(p => {
-      const c   = CHARS.find(x => x.id === p.charId);
-      const sc  = p.locked ? 's-ready' : p.charId ? 's-picking' : 's-waiting';
-      const isMe = p.id === socket.id;
-      return `<div class="player-row">
+function renderPlayers(){
+  const max=6,cnt=G.players.length;
+  document.getElementById('player-list').innerHTML=
+    G.players.map(p=>{
+      const c=CHARS.find(x=>x.id===p.charId);
+      const sc=p.locked?'s-ready':p.charId?'s-picking':'s-waiting';
+      const isMe=p.id===socket.id;
+      return`<div class="player-row">
         <div class="player-dot" style="background:${p.color}"></div>
-        <div><div class="player-nick">${p.nick}${isMe ? ' (you)' : ''}${p.isHost ? ' 👑' : ''}</div><div class="player-role-lbl">${c ? c.name : 'No role'}</div></div>
-        <div class="p-status ${sc}">${p.locked ? 'Ready' : p.charId ? 'Picking' : 'Waiting'}</div>
+        <div><div class="player-nick">${p.nick}${isMe?' (you)':''}${p.isHost?' 👑':''}</div><div class="player-role-lbl">${c?c.name:'No role'}</div></div>
+        <div class="p-status ${sc}">${p.locked?'Ready':p.charId?'Picking':'Waiting'}</div>
       </div>`;
-    }).join('') +
-    Array.from({length: max - cnt}, () =>
-      `<div class="empty-row"><div class="empty-dot"></div><div style="font-size:12px;color:var(--muted)">Open slot</div></div>`
-    ).join('');
-
-  document.getElementById('disp-count').textContent = `${cnt}/6`;
-
-  if (G.isHost) {
-    const locked = G.players.filter(p => p.locked).length;
-    const total  = G.players.length;
-    const allReady = locked === total && total >= 3;
-    document.getElementById('start-btn').disabled = !allReady;
-    document.getElementById('ready-txt').textContent =
-      allReady ? `${total} players ready — let's go` :
-      total < 3 ? `Need at least 3 players (${total} joined)` :
-      `${locked}/${total} locked in`;
-    document.getElementById('disp-status').textContent = allReady ? 'All crew ready' : 'Waiting for crew';
-  } else {
-    document.getElementById('ready-txt').textContent = 'Waiting for host to start';
+    }).join('')+
+    Array.from({length:max-cnt},()=>`<div class="empty-row"><div class="empty-dot"></div><div style="font-size:12px;color:var(--muted)">Open slot</div></div>`).join('');
+  document.getElementById('disp-count').textContent=`${cnt}/6`;
+  if(G.isHost){
+    const locked=G.players.filter(p=>p.locked).length,total=G.players.length;
+    const ok=locked===total&&total>=3;
+    document.getElementById('start-btn').disabled=!ok;
+    document.getElementById('ready-txt').textContent=ok?`${total} ready — let's go`:total<3?`Need 3+ players`:`${locked}/${total} locked in`;
+    document.getElementById('disp-status').textContent=ok?'All crew ready':'Waiting for crew';
+  }else{
+    document.getElementById('ready-txt').textContent='Waiting for host';
   }
+  updateMatch();
 }
-
-function updateMatch() {
-  const n = G.players.length, s = SCALE[n] || SCALE[3];
-  document.getElementById('ms-p').textContent = n;
-  document.getElementById('ms-t').textContent = s.tgtStr;
-  document.getElementById('ms-a').textContent = {slow:'Slow patrols', standard:'Standard', random:'Random routes', fast:'Fast + cameras'}[s.ai];
+function updateMatch(){
+  const n=G.players.length,s=SCALE[n]||SCALE[3];
+  document.getElementById('ms-p').textContent=n;
+  document.getElementById('ms-t').textContent=s.tgtStr;
+  document.getElementById('ms-a').textContent={slow:'Slow',standard:'Standard',random:'Random',fast:'Fast+Cams'}[s.ai];
 }
 
 // ══════════════════════════════════════════════════════
-//  CHARACTER MODAL
+//  CHAR MODAL
 // ══════════════════════════════════════════════════════
-function openModal(id) {
-  const me = G.players.find(p => p.id === socket.id);
-  if (me && me.locked) { notif('Already locked in'); return; }
-  const takenP = G.players.find(p => p.id !== socket.id && p.charId === id);
-  if (takenP) { notif(`${takenP.nick} already claimed this role`, 'alert'); return; }
-
-  G.pendingId    = id;
-  G.pendingStyle = 0;
-  const c = CHARS.find(x => x.id === id);
-  document.getElementById('modal-cname').textContent  = c.name;
-  document.getElementById('modal-crole').textContent  = c.gender;
-  document.getElementById('m-rooms').textContent      = c.roomLabel;
-  document.getElementById('m-restrict').textContent   = c.restrict;
-  document.getElementById('m-tname').textContent      = '⚡ ' + c.token;
-  document.getElementById('m-tdesc').textContent      = c.tdesc;
-  document.getElementById('modal-port').innerHTML =
-    `<svg viewBox="0 0 80 107" xmlns="http://www.w3.org/2000/svg" style="width:80px;height:107px">${buildChar(c, c.bA)}</svg>`;
-  document.querySelectorAll('.style-opt').forEach((b, i) => b.classList.toggle('on', i === 0));
+function openModal(id){
+  const me=G.players.find(p=>p.id===socket.id);
+  if(me&&me.locked){notif('Already locked in');return;}
+  const tp=G.players.find(p=>p.id!==socket.id&&p.charId===id);
+  if(tp){notif(`${tp.nick} claimed this role`,'alert');return;}
+  G.pendingId=id;
+  const c=CHARS.find(x=>x.id===id);
+  document.getElementById('modal-emoji').textContent=c.emoji;
+  document.getElementById('modal-cname').textContent=c.name;
+  document.getElementById('modal-crole').textContent=c.accessLabel;
+  document.getElementById('m-rooms').textContent=c.accessLabel;
+  document.getElementById('m-restrict').textContent=c.restrict;
+  document.getElementById('m-steal').textContent=c.stealNote;
+  document.getElementById('m-tname').textContent='⚡ '+c.token;
+  document.getElementById('m-tdesc').textContent=c.tdesc;
   document.getElementById('char-modal').classList.add('open');
 }
-
-function pickStyle(idx, btn) {
-  G.pendingStyle = idx;
-  document.querySelectorAll('.style-opt').forEach(b => b.classList.remove('on'));
-  btn.classList.add('on');
-  const c = CHARS.find(x => x.id === G.pendingId);
-  document.getElementById('modal-port').innerHTML =
-    `<svg viewBox="0 0 80 107" xmlns="http://www.w3.org/2000/svg" style="width:80px;height:107px">${buildChar(c, idx === 0 ? c.bA : c.bB)}</svg>`;
-}
-
-function closeModal() {
-  document.getElementById('char-modal').classList.remove('open');
-  G.pendingId = null;
-}
-
-function confirmChar() {
-  if (!G.pendingId) return;
-  // Tell server
-  socket.emit('select_char', { charId: G.pendingId, style: G.pendingStyle });
-  // Optimistically update local state
-  G.myCharId = G.pendingId;
-  G.myStyle  = G.pendingStyle;
-  const c  = CHARS.find(x => x.id === G.myCharId);
-  const tb = document.getElementById('token-btn');
-  if (tb && c) tb.textContent = `⚡ ${c.token}`;
+function closeModal(){document.getElementById('char-modal').classList.remove('open');G.pendingId=null;}
+function confirmChar(){
+  if(!G.pendingId)return;
+  socket.emit('select_char',{charId:G.pendingId,style:0});
+  G.myCharId=G.pendingId;
+  const c=CHARS.find(x=>x.id===G.myCharId);
   closeModal();
-  notif('Locked in as ' + c.name);
+  notif('Locked in as '+c.name,'good');
 }
-
-// ══════════════════════════════════════════════════════
-//  GAME START
-// ══════════════════════════════════════════════════════
-function doStart() {
-  // Client-side guard: host only, min 3 players all locked
-  if (!G.isHost) return;
-  const locked = G.players.filter(p => p.locked).length;
-  if (locked < 3 || locked !== G.players.length) {
-    notif('All players must lock in first', 'alert'); return;
-  }
+function doStart(){
+  if(!G.isHost)return;
+  const locked=G.players.filter(p=>p.locked).length;
+  if(locked<3||locked!==G.players.length){notif('All players must lock in','alert');return;}
   socket.emit('start_game');
 }
 
-let canvas, ctx, miniCanvas, miniCtx, W, H;
-const RW = 162, RH = 112, GAP = 14, MGNTOP = 28, MGNLEFT = 16;
-
-function startGame(room) {
-  const n = room.players.length;
-  const s = SCALE[Math.min(n, 6)] || SCALE[3];
-
-  GS = {
-    running:true, timeLeft:420, timerIv:null,
-    targetLoot:s.target, vanLoot:0,
-    guardTriggers:0, bribesCount:0,
-    myPos:{roomId:'gallery', x:0, y:0, vx:0, vy:0},
-    myInventory:[null,null,null,null],
-    arrested:false, arrestPermanent:false,
-    confrontActive:false, confrontIv:null, confrontN:0,
-    roomLoots:{}, guards:[],
-    interactTarget:null,
-    actionHeld:false, actionProgress:0, actionIv:null,
-    tokenUsed:false,
-    speedBoost:0, overdrive:0,
-    masterKeyActive:false, masterKeyTimer:0,
-    darknessRoom:null, darknessTimer:0,
-    screenShake:0,
-    aiMode:s.ai,
-    otherPlayers:{},
-    lastMoveSent:0,
-  };
-
-  // Seed room loots with stable IDs
-  ROOMS.forEach(r => {
-    GS.roomLoots[r.id] = r.loot.map(l => ({...l, stolen:false, id: r.id + '_' + l.name}));
-  });
-
-  // Init guards (host drives guard AI)
-  GUARD_PATHS.forEach((path, i) => {
-    const rc = roomCenter(ROOMS.find(r => r.id === path[0]));
-    GS.guards.push({pathIdx:i, stepIdx:0, x:rc.x, y:rc.y, roomId:path[0], knocked:0, alertTimer:0, patrolWait:0});
-  });
-
-  // Start position: gallery center
-  const gc = roomCenter(ROOMS.find(r => r.id === 'gallery'));
-  GS.myPos = {roomId:'gallery', x:gc.x, y:gc.y, vx:0, vy:0};
-
-  // Build otherPlayers map from room data
-  room.players.forEach(p => {
-    if (p.id !== socket.id) {
-      const rc2 = roomCenter(ROOMS.find(r => r.id === 'gallery'));
-      GS.otherPlayers[p.id] = {x:rc2.x + Math.random()*30-15, y:rc2.y + Math.random()*30-15, roomId:'gallery'};
-    }
-  });
-
-  // Token button
-  const c = CHARS.find(x => x.id === G.myCharId) || CHARS[0];
-  document.getElementById('token-btn').textContent = `⚡ ${c.token}`;
-  document.getElementById('token-btn').disabled    = false;
-  document.getElementById('pwr-btn').textContent   = '⚡';
-  document.getElementById('pwr-btn').classList.remove('used');
-
-  show('game');
+// ══════════════════════════════════════════════════════
+//  BRIEFING
+// ══════════════════════════════════════════════════════
+let myReady=false;
+function showBriefing(room){
+  show('game'); // show game canvas behind briefing
   initCanvas();
-  if (G.isHost) startTimer();
-  requestAnimationFrame(gameLoop);
-  updateHUD();
-  renderInventory();
-  initJoystick();
+  document.getElementById('brief-overlay').classList.add('open');
+  const c=CHARS.find(x=>x.id===G.myCharId)||CHARS[0];
+  document.getElementById('brief-emoji').textContent=c.emoji;
+  document.getElementById('brief-charname').textContent=c.name;
+  document.getElementById('brief-charsub').textContent=c.accessLabel;
+  document.getElementById('brief-char-rules').innerHTML=c.rules.map(r=>`<div class="brief-rule">${r}</div>`).join('');
+  // Driver sees van total
+  if(G.myCharId==='driver'){
+    document.getElementById('hl-total-wrap').style.display='block';
+  }
+  myReady=false;
+  updateBriefReady(room);
 }
-
-function stopGame() {
-  GS.running = false;
-  if (GS.timerIv)    clearInterval(GS.timerIv);
-  if (GS.confrontIv) clearInterval(GS.confrontIv);
-  if (GS.actionIv)   clearInterval(GS.actionIv);
-  ['cf-overlay','arrest-overlay','end-overlay'].forEach(id =>
-    document.getElementById(id).classList.remove('open')
-  );
+function updateBriefReady(data){
+  const players=data.players||G.players;
+  const readyCount=players.filter(p=>p.briefReady).length;
+  const total=players.length;
+  document.getElementById('brief-ready-count').textContent=`${readyCount} / ${total} ready`;
+}
+function clickReady(){
+  if(myReady)return;
+  myReady=true;
+  document.getElementById('ready-btn').classList.add('is-ready');
+  document.getElementById('ready-btn').textContent='Waiting for crew...';
+  socket.emit('player_brief_ready');
 }
 
 // ══════════════════════════════════════════════════════
-//  CANVAS
+//  CANVAS + MAP RENDERING
 // ══════════════════════════════════════════════════════
-function initCanvas() {
-  canvas     = document.getElementById('gc');
-  miniCanvas = document.getElementById('mc');
-  const area = document.getElementById('map-area');
-  W = area.clientWidth;
-  H = area.clientHeight;
-  canvas.width  = W;
-  canvas.height = H;
-  ctx     = canvas.getContext('2d');
-  miniCtx = miniCanvas.getContext('2d');
+let canvas,ctx,miniCanvas,miniCtx,W,H,mapOffX,mapOffY,mapScale;
+
+function initCanvas(){
+  canvas=document.getElementById('gc');
+  miniCanvas=document.getElementById('mc');
+  const area=document.getElementById('map-area');
+  W=area.clientWidth;H=area.clientHeight;
+  canvas.width=W;canvas.height=H;
+  ctx=canvas.getContext('2d');
+  miniCtx=miniCanvas.getContext('2d');
+  calcMapScale();
 }
 
-function roomPos(room) {
-  const totalW = 3 * RW + 2 * GAP;
-  const startX = Math.max(MGNLEFT, (W - totalW) / 2);
-  const startY = MGNTOP;
-  return {x: startX + room.col * (RW + GAP), y: startY + room.row * (RH + GAP)};
+function calcMapScale(){
+  // map grid: 14 cols × 15 rows in tiles
+  const gridW=14,gridH=15;
+  const scaleX=(W-40)/(gridW*TILE);
+  const scaleY=(H-40)/(gridH*TILE);
+  mapScale=Math.min(scaleX,scaleY,1.4);
+  mapOffX=(W-gridW*TILE*mapScale)/2;
+  mapOffY=(H-gridH*TILE*mapScale)/2;
 }
-function roomCenter(room) {
-  const p = roomPos(room);
-  return {x: p.x + RW / 2, y: p.y + RH / 2};
+
+function tileToScreen(tx,ty){
+  return{x:mapOffX+tx*TILE*mapScale, y:mapOffY+ty*TILE*mapScale};
 }
-function getRoomAt(x, y) {
-  return ROOMS.find(r => {
-    const p = roomPos(r);
-    return x >= p.x && x <= p.x + RW && y >= p.y && y <= p.y + RH;
+function zoneRect(z){
+  const {x,y}=tileToScreen(z.col,z.row);
+  return{x,y,w:z.w*TILE*mapScale,h:z.h*TILE*mapScale};
+}
+function zoneCenterScreen(z){
+  const r=zoneRect(z);
+  return{x:r.x+r.w/2,y:r.y+r.h/2};
+}
+function getZoneAt(sx,sy){
+  return ZONES.find(z=>{
+    const r=zoneRect(z);
+    return sx>=r.x&&sx<=r.x+r.w&&sy>=r.y&&sy<=r.y+r.h;
   });
 }
 
-// ══════════════════════════════════════════════════════
-//  DRAW
-// ══════════════════════════════════════════════════════
-function draw() {
-  ctx.clearRect(0, 0, W, H);
-  // Corridors
-  ctx.strokeStyle = '#1C2040'; ctx.lineWidth = 16; ctx.lineCap = 'round';
-  CORRIDORS.forEach(([a, b]) => {
-    const ra = ROOMS.find(r => r.id === a), rb = ROOMS.find(r => r.id === b);
-    if (!ra || !rb) return;
-    const ca = roomCenter(ra), cb = roomCenter(rb);
-    ctx.beginPath(); ctx.moveTo(ca.x, ca.y); ctx.lineTo(cb.x, cb.y); ctx.stroke();
-  });
+function draw(){
+  ctx.clearRect(0,0,W,H);
+  ctx.fillStyle='#050508';ctx.fillRect(0,0,W,H);
 
-  // Rooms
-  ROOMS.forEach(r => {
-    const {x, y} = roomPos(r);
-    const isMyRoom  = r.id === GS.myPos.roomId;
-    const isDark    = GS.darknessRoom === r.id && GS.darknessTimer > 0;
-    const unlocked  = GS.masterKeyActive;
+  ZONES.forEach(z=>{
+    const r=zoneRect(z);
+    const isMyZone=z.id===GS.myPos.zoneId;
+    const isDark=GS.darknessZone===z.id&&GS.darknessTimer>0;
 
-    ctx.fillStyle = isDark ? '#020204' : r.fill;
-    ctx.fillRect(x, y, RW, RH);
+    // Fill
+    ctx.fillStyle=isDark?'#010103':z.fill;
+    ctx.fillRect(r.x,r.y,r.w,r.h);
 
-    ctx.strokeStyle = isMyRoom ? '#F5C842' : r.isExit ? '#00B894' : unlocked ? '#B388FF55' : r.border;
-    ctx.lineWidth   = isMyRoom ? 2 : 1;
-    ctx.strokeRect(x, y, RW, RH);
+    // Border
+    const unlocked=canIAccessZone(z.id);
+    ctx.strokeStyle=isMyZone?'#F5C842':z.isExit?'#00B894':unlocked&&z.type==='room'?z.border+'cc':z.border;
+    ctx.lineWidth=isMyZone?2.5:1;
+    ctx.strokeRect(r.x,r.y,r.w,r.h);
 
-    ctx.font      = `700 9px 'Barlow Condensed',sans-serif`;
-    ctx.textAlign = 'center';
-    ctx.fillStyle = isMyRoom ? '#F5C842' : r.isExit ? '#00B894' : '#3A3D55';
-    ctx.fillText(r.name.toUpperCase(), x + RW / 2, y + 13);
+    if(!isDark){
+      // Zone label
+      ctx.font=`bold ${Math.max(8,10*mapScale)}px 'Barlow Condensed',sans-serif`;
+      ctx.textAlign='center';
+      ctx.fillStyle=isMyZone?'#F5C842':z.isExit?'#00B894':z.type==='hall'?'#2a2d45':'#3A3D55';
+      ctx.fillText(z.label.toUpperCase(),r.x+r.w/2,r.y+Math.max(10,12*mapScale));
 
-    // Role indicator dots
-    r.roles.forEach((roleId, i) => {
-      const rc = CHARS.find(c => c.id === roleId);
-      if (!rc) return;
-      ctx.fillStyle = rc.color + '66';
-      ctx.beginPath(); ctx.arc(x + 6 + i * 10, y + RH - 7, 3, 0, Math.PI * 2); ctx.fill();
-    });
+      // Access indicator for rooms
+      if(z.type==='room'&&!z.isExit){
+        const myC=CHARS.find(c=>c.id===G.myCharId);
+        const accessible=canIAccessZone(z.id);
+        if(accessible){
+          ctx.fillStyle='#00B89444';
+          ctx.fillRect(r.x+1,r.y+1,6*mapScale,6*mapScale);
+        }
+      }
 
-    if (r.isExit) {
-      ctx.fillStyle = '#00B894'; ctx.font = '8px Barlow,sans-serif';
-      ctx.fillText('🚐 GETAWAY VAN', x + RW / 2, y + RH - 10);
+      // Exit label
+      if(z.isExit){
+        ctx.fillStyle='#00B894';
+        ctx.font=`${Math.max(7,9*mapScale)}px Barlow,sans-serif`;
+        ctx.fillText('🚐 GETAWAY VAN',r.x+r.w/2,r.y+r.h-8*mapScale);
+      }
+
+      // Loot in zone
+      drawZoneLoot(z,r);
     }
 
-    // Loot items
-    if (!isDark) {
-      const loots = (GS.roomLoots[r.id] || []).filter(l => !l.stolen);
-      loots.slice(0, 4).forEach((l, i) => {
-        const cols = Math.min(loots.length, 2);
-        const lx   = x + RW / 2 + (i % cols - cols / 2 + .5) * (RW / (cols + 1));
-        const ly   = y + RH / 2 + (Math.floor(i / cols) - .3) * 24;
-        ctx.font      = '14px serif'; ctx.textAlign = 'center';
-        ctx.fillText(l.icon, lx, ly + 4);
-        ctx.fillStyle = l.weight === 'heavy' ? '#D63031' : l.weight === 'medium' ? '#C9A030' : '#555';
-        ctx.font      = '7px Barlow,sans-serif';
-        ctx.fillText('$' + (l.val / 1000).toFixed(0) + 'k', lx, ly + 15);
+    // Role dots
+    if(z.type==='room'&&z.roles.length>0&&z.roles[0]!=='all'){
+      z.roles.forEach((rid,i)=>{
+        const rc=CHARS.find(c=>c.id===rid);
+        if(!rc)return;
+        ctx.fillStyle=rc.color+'88';
+        ctx.beginPath();ctx.arc(r.x+6+i*10*mapScale,r.y+r.h-6,3*mapScale,0,Math.PI*2);ctx.fill();
       });
     }
   });
 
   drawGuards();
-  drawOtherPlayers();
-  drawPlayer();
+  drawOtherPlayersOnMap();
+  drawMyPlayer();
 }
 
-function drawGuards() {
-  GS.guards.forEach(g => {
-    if (g.knocked > 0) {
-      ctx.save(); ctx.translate(g.x, g.y);
-      ctx.fillStyle = 'rgba(100,100,100,0.4)';
-      ctx.beginPath(); ctx.arc(0, 0, 10, 0, Math.PI * 2); ctx.fill();
-      ctx.fillStyle = '#555'; ctx.font = '12px serif'; ctx.textAlign = 'center';
-      ctx.fillText('💤', 0, 5);
-      ctx.restore(); return;
+function drawZoneLoot(z,r){
+  const loots=(GS.zoneLoot[z.id]||[]).filter(l=>!l.stolen);
+  if(!loots.length)return;
+  const cols=Math.min(loots.length,3);
+  loots.slice(0,6).forEach((l,i)=>{
+    const col=i%cols,row=Math.floor(i/cols);
+    const lx=r.x+r.w*(col+1)/(cols+1);
+    const ly=r.y+r.h/2+(row-0.5)*22*mapScale;
+    const fs=Math.max(12,16*mapScale);
+    ctx.font=`${fs}px serif`;ctx.textAlign='center';
+    ctx.fillText(l.icon,lx,ly);
+    // Value label — large and clear
+    ctx.fillStyle=l.weight==='heavy'?'#D63031':l.weight==='medium'?'#C9A030':'#00B894';
+    ctx.font=`bold ${Math.max(8,10*mapScale)}px 'Barlow Condensed',sans-serif`;
+    ctx.fillText('$'+(l.val/1000).toFixed(0)+'k',lx,ly+Math.max(10,13*mapScale));
+  });
+  // Hall drops
+  if(z.type==='hall'){
+    GS.hallDrops.filter(d=>!d.pickedUp&&isDropInZone(d,z)).forEach(d=>{
+      ctx.font='14px serif';ctx.textAlign='center';
+      ctx.fillText(d.icon,d.x,d.y);
+      ctx.fillStyle='#FFB300';ctx.font='8px Barlow,sans-serif';
+      ctx.fillText('$'+(d.val/1000).toFixed(0)+'k',d.x,d.y+12);
+    });
+  }
+}
+
+function isDropInZone(d,z){
+  const r=zoneRect(z);
+  return d.x>=r.x&&d.x<=r.x+r.w&&d.y>=r.y&&d.y<=r.y+r.h;
+}
+
+function drawGuards(){
+  GS.guards.forEach(g=>{
+    const isDark=GS.darknessZone===g.zoneId&&GS.darknessTimer>0;
+    // Fog of war — only show guard if in same zone as me, or hacker in cctv
+    const visible=g.zoneId===GS.myPos.zoneId||GS.hackingCCTV||isDark;
+    if(!visible)return;
+
+    ctx.save();ctx.translate(g.x,g.y);
+    if(g.knocked>0){
+      ctx.fillStyle='rgba(50,50,80,0.6)';
+      ctx.beginPath();ctx.arc(0,0,12*mapScale,0,Math.PI*2);ctx.fill();
+      ctx.font=`${Math.max(12,14*mapScale)}px serif`;ctx.textAlign='center';
+      ctx.fillText('💤',0,5*mapScale);
+      ctx.restore();return;
     }
-    ctx.save(); ctx.translate(g.x, g.y);
-    if (g.alertTimer > 0) { ctx.shadowBlur = 14; ctx.shadowColor = '#D63031'; }
-    ctx.fillStyle = g.alertTimer > 0 ? '#D63031' : '#882222';
-    ctx.beginPath(); ctx.arc(0, 0, 11, 0, Math.PI * 2); ctx.fill();
-    ctx.shadowBlur = 0;
-    ctx.font = '13px serif'; ctx.textAlign = 'center'; ctx.fillText('👮', 0, 5);
-    if (g.alertTimer > 0) {
-      ctx.fillStyle = '#FF4444'; ctx.font = 'bold 10px Barlow Condensed,sans-serif';
-      ctx.fillText('!', 0, -17);
+    // Bright blue glowing guard
+    ctx.shadowBlur=g.alertTimer>0?20:12;
+    ctx.shadowColor=g.alertTimer>0?'#FF4444':'#00AAFF';
+    ctx.fillStyle=g.alertTimer>0?'#FF3333':'#0088FF';
+    ctx.beginPath();ctx.arc(0,0,10*mapScale,0,Math.PI*2);ctx.fill();
+    ctx.shadowBlur=0;
+    ctx.font=`${Math.max(10,12*mapScale)}px serif`;ctx.textAlign='center';
+    ctx.fillText('👮',0,4*mapScale);
+    if(g.alertTimer>0){
+      ctx.fillStyle='#FF4444';
+      ctx.font=`bold ${Math.max(8,10*mapScale)}px Barlow Condensed,sans-serif`;
+      ctx.fillText('!',0,-14*mapScale);
     }
     ctx.restore();
   });
 }
 
-function drawOtherPlayers() {
-  G.players.forEach(p => {
-    if (p.id === socket.id) return;
-    const op = GS.otherPlayers[p.id];
-    if (!op) return;
-    const c = CHARS.find(x => x.id === p.charId) || CHARS[0];
-    ctx.save(); ctx.translate(op.x, op.y);
-    ctx.fillStyle = 'rgba(0,0,0,0.25)';
-    ctx.beginPath(); ctx.ellipse(0, 9, 10, 4, 0, 0, Math.PI * 2); ctx.fill();
-    ctx.fillStyle = '#0D0F1A';
-    ctx.beginPath(); ctx.arc(0, -4, 11, 0, Math.PI * 2); ctx.fill();
-    ctx.strokeStyle = c.color; ctx.lineWidth = 2; ctx.stroke();
-    ctx.font = '13px serif'; ctx.textAlign = 'center'; ctx.fillText('🧍', 0, 1);
-    ctx.fillStyle = c.color; ctx.font = `bold 7px 'Barlow Condensed',sans-serif`;
-    ctx.fillText(p.nick.substring(0, 7).toUpperCase(), 0, -18);
+function drawOtherPlayersOnMap(){
+  G.players.forEach(p=>{
+    if(p.id===socket.id)return;
+    const op=GS.others[p.id];if(!op)return;
+    // Fog of war
+    const sameZone=op.zone===GS.myPos.zoneId;
+    const hackerSees=GS.hackingCCTV;
+    if(!sameZone&&!hackerSees)return;
+    const c=CHARS.find(x=>x.id===p.charId)||CHARS[0];
+    ctx.save();ctx.translate(op.x,op.y);
+    // Glowing dot
+    ctx.shadowBlur=14;ctx.shadowColor=c.color;
+    ctx.fillStyle=c.color;
+    ctx.beginPath();ctx.arc(0,0,8*mapScale,0,Math.PI*2);ctx.fill();
+    ctx.shadowBlur=0;
+    // Nick
+    ctx.fillStyle=c.color;
+    ctx.font=`bold ${Math.max(7,8*mapScale)}px 'Barlow Condensed',sans-serif`;
+    ctx.textAlign='center';
+    ctx.fillText(p.nick.substring(0,6).toUpperCase(),0,-14*mapScale);
     ctx.restore();
   });
 }
 
-function drawPlayer() {
-  const c  = CHARS.find(x => x.id === G.myCharId) || CHARS[3];
-  const px = GS.myPos.x, py = GS.myPos.y;
-  ctx.save();
-  if (GS.screenShake > 0) {
-    ctx.translate((Math.random() - .5) * GS.screenShake * 6, (Math.random() - .5) * GS.screenShake * 4);
-  }
-  ctx.translate(px, py);
-  ctx.fillStyle = 'rgba(0,0,0,0.35)';
-  ctx.beginPath(); ctx.ellipse(0, 9, 11, 4, 0, 0, Math.PI * 2); ctx.fill();
-  if (GS.speedBoost > 0) {
-    ctx.strokeStyle = c.color + '55'; ctx.lineWidth = 4;
-    ctx.beginPath(); ctx.arc(0, -4, 18, 0, Math.PI * 2); ctx.stroke();
-  }
-  if (GS.overdrive > 0) {
-    ctx.strokeStyle = '#FFB30088'; ctx.lineWidth = 3;
-    ctx.beginPath(); ctx.arc(0, -4, 20, 0, Math.PI * 2); ctx.stroke();
-  }
-  ctx.fillStyle = GS.arrested ? '#333' : '#0D0F1A';
-  ctx.beginPath(); ctx.arc(0, -4, 12, 0, Math.PI * 2); ctx.fill();
-  ctx.strokeStyle = GS.arrested ? '#555' : c.color; ctx.lineWidth = 2; ctx.stroke();
-  ctx.font = '15px serif'; ctx.textAlign = 'center'; ctx.fillText(GS.arrested ? '🔒' : '🧍', 0, 1);
-  if (!GS.arrested) {
-    ctx.fillStyle = c.color; ctx.font = `bold 8px 'Barlow Condensed',sans-serif`;
-    ctx.fillText(G.myNick.substring(0, 7).toUpperCase(), 0, -20);
-  }
-  if (GS.actionProgress > 0) {
-    ctx.strokeStyle = c.color; ctx.lineWidth = 3; ctx.lineCap = 'round';
-    ctx.beginPath();
-    ctx.arc(0, -4, 17, -Math.PI / 2, -Math.PI / 2 + Math.PI * 2 * GS.actionProgress);
+function drawMyPlayer(){
+  const c=CHARS.find(x=>x.id===G.myCharId)||CHARS[3];
+  ctx.save();ctx.translate(GS.myPos.x,GS.myPos.y);
+  // Glow ring
+  ctx.shadowBlur=GS.speedBoost>0?24:18;
+  ctx.shadowColor=c.color;
+  // Outer ring
+  ctx.strokeStyle=c.color;ctx.lineWidth=2.5;
+  ctx.beginPath();ctx.arc(0,0,11*mapScale,0,Math.PI*2);ctx.stroke();
+  ctx.shadowBlur=0;
+  // Inner fill
+  ctx.fillStyle=GS.arrested?'#333':'#0D0F1A';
+  ctx.beginPath();ctx.arc(0,0,9*mapScale,0,Math.PI*2);ctx.fill();
+  // Emoji
+  ctx.font=`${Math.max(11,13*mapScale)}px serif`;ctx.textAlign='center';
+  ctx.fillText(GS.arrested?'🔒':c.emoji,0,5*mapScale);
+  // Nick
+  ctx.fillStyle=c.color;
+  ctx.font=`bold ${Math.max(8,9*mapScale)}px 'Barlow Condensed',sans-serif`;
+  ctx.fillText(G.myNick.substring(0,7).toUpperCase(),0,-16*mapScale);
+  // Steal progress arc
+  if(GS.stealProgress>0){
+    ctx.strokeStyle=c.color;ctx.lineWidth=3;ctx.lineCap='round';
+    ctx.beginPath();ctx.arc(0,0,17*mapScale,-Math.PI/2,-Math.PI/2+Math.PI*2*GS.stealProgress);
     ctx.stroke();
   }
   ctx.restore();
 }
 
-function drawMinimap() {
-  const mw = miniCanvas.width, mh = miniCanvas.height;
-  miniCtx.clearRect(0, 0, mw, mh);
-  miniCtx.fillStyle = 'rgba(13,15,26,.9)'; miniCtx.fillRect(0, 0, mw, mh);
-  const scaleX = mw / (3 * RW + 2 * GAP + MGNLEFT * 2);
-  const scaleY = mh / (4 * (RH + GAP) + MGNTOP);
-  ROOMS.forEach(r => {
-    const {x, y} = roomPos(r);
-    miniCtx.fillStyle = r.id === GS.myPos.roomId ? '#2A2D55' : r.isExit ? '#002a1a' : '#131625';
-    miniCtx.fillRect(x * scaleX, y * scaleY, RW * scaleX, RH * scaleY);
-    if (r.isExit) {
-      miniCtx.fillStyle = '#00B894'; miniCtx.font = '6px sans-serif'; miniCtx.textAlign = 'center';
-      miniCtx.fillText('VAN', (x + RW / 2) * scaleX, (y + RH / 2) * scaleY + 2);
-    }
+function drawMinimap(){
+  const mw=miniCanvas.width,mh=miniCanvas.height;
+  miniCtx.clearRect(0,0,mw,mh);
+  miniCtx.fillStyle='rgba(13,15,26,.95)';miniCtx.fillRect(0,0,mw,mh);
+  const gridW=14,gridH=15;
+  const sx=mw/gridW,sy=mh/gridH;
+  ZONES.forEach(z=>{
+    const mx=z.col*sx,my=z.row*sy,mw2=z.w*sx,mh2=z.h*sy;
+    miniCtx.fillStyle=z.id===GS.myPos.zoneId?'#2A2D55':z.isExit?'#002a1a':z.type==='hall'?'#111120':'#131625';
+    miniCtx.fillRect(mx,my,mw2,mh2);
   });
-  const myC = CHARS.find(c => c.id === G.myCharId);
-  miniCtx.fillStyle = myC ? myC.color : '#F5C842';
-  miniCtx.beginPath(); miniCtx.arc(GS.myPos.x * scaleX, GS.myPos.y * scaleY, 3, 0, Math.PI * 2); miniCtx.fill();
+  // My dot
+  const myC=CHARS.find(c=>c.id===G.myCharId);
+  miniCtx.shadowBlur=6;miniCtx.shadowColor=myC?myC.color:'#F5C842';
+  miniCtx.fillStyle=myC?myC.color:'#F5C842';
+  const mp=worldToMini(GS.myPos.x,GS.myPos.y,mw,mh);
+  miniCtx.beginPath();miniCtx.arc(mp.x,mp.y,3,0,Math.PI*2);miniCtx.fill();
+  miniCtx.shadowBlur=0;
+  // Others (hacker in cctv sees all)
+  G.players.forEach(p=>{
+    if(p.id===socket.id)return;
+    const op=GS.others[p.id];if(!op)return;
+    if(!GS.hackingCCTV&&op.zone!==GS.myPos.zoneId)return;
+    const pc=CHARS.find(c=>c.id===p.charId);
+    miniCtx.fillStyle=pc?pc.color:'#EDE8DC';
+    const pp=worldToMini(op.x,op.y,mw,mh);
+    miniCtx.beginPath();miniCtx.arc(pp.x,pp.y,2.5,0,Math.PI*2);miniCtx.fill();
+  });
+  // Guards (visible ones)
+  GS.guards.forEach(g=>{
+    if(g.knocked>0)return;
+    if(g.zoneId!==GS.myPos.zoneId&&!GS.hackingCCTV)return;
+    miniCtx.fillStyle=g.alertTimer>0?'#FF3333':'#0088FF';
+    const gp=worldToMini(g.x,g.y,mw,mh);
+    miniCtx.beginPath();miniCtx.arc(gp.x,gp.y,2.5,0,Math.PI*2);miniCtx.fill();
+  });
+}
 
-  G.players.forEach(p => {
-    if (p.id === socket.id) return;
-    const op = GS.otherPlayers[p.id]; if (!op) return;
-    const pc = CHARS.find(c => c.id === p.charId);
-    miniCtx.fillStyle = pc ? pc.color : '#EDE8DC';
-    miniCtx.beginPath(); miniCtx.arc(op.x * scaleX, op.y * scaleY, 2.5, 0, Math.PI * 2); miniCtx.fill();
-  });
-
-  GS.guards.forEach(g => {
-    if (g.knocked > 0) return;
-    miniCtx.fillStyle = g.alertTimer > 0 ? '#D63031' : '#882222';
-    miniCtx.beginPath(); miniCtx.arc(g.x * scaleX, g.y * scaleY, 2.5, 0, Math.PI * 2); miniCtx.fill();
-  });
+function worldToMini(wx,wy,mw,mh){
+  const gridW=14,gridH=15;
+  const totW=gridW*TILE*mapScale,totH=gridH*TILE*mapScale;
+  return{x:((wx-mapOffX)/totW)*mw, y:((wy-mapOffY)/totH)*mh};
 }
 
 // ══════════════════════════════════════════════════════
 //  GAME LOOP
 // ══════════════════════════════════════════════════════
-let lastTS = 0;
-function gameLoop(ts) {
-  if (!GS.running) return;
-  const dt = Math.min((ts - lastTS) / 1000, .05);
-  lastTS = ts;
-
-  if (!GS.arrested && !GS.confrontActive) {
+let lastTS=0;
+function gameLoop(ts){
+  if(!GS.running)return;
+  const dt=Math.min((ts-lastTS)/1000,.05);lastTS=ts;
+  if(!GS.arrested&&!GS.confrontActive){
     movePlayer(dt);
-    if (G.isHost) {
+    if(G.isHost){
       moveGuards(dt);
-      checkGuardCollision();
-      // Broadcast guard positions every ~100ms
-      if (ts - GS.lastMoveSent > 100) {
-        socket.emit('guard_state', { guards: GS.guards });
+      checkGuardCollisions();
+      if(ts-GS.lastSyncT>100){
+        socket.emit('guard_state',{guards:GS.guards});
+        GS.lastSyncT=ts;
       }
     }
-    checkInteractable();
+    checkHallDropPickup();
+    checkZoneInteraction();
   }
-
-  // Timers
-  if (GS.speedBoost   > 0) GS.speedBoost   = Math.max(0, GS.speedBoost   - dt);
-  if (GS.overdrive    > 0) {
-    GS.overdrive = Math.max(0, GS.overdrive - dt);
-    document.getElementById('overdrive-bar').classList.toggle('active', GS.overdrive > 0);
+  // Decay timers
+  if(GS.speedBoost>0)GS.speedBoost=Math.max(0,GS.speedBoost-dt);
+  if(GS.overdrive>0){GS.overdrive=Math.max(0,GS.overdrive-dt);document.getElementById('overdrive-bar').classList.toggle('active',GS.overdrive>0);}
+  if(GS.masterKeyTimer>0){GS.masterKeyTimer=Math.max(0,GS.masterKeyTimer-dt);GS.masterKeyActive=GS.masterKeyTimer>0;}
+  if(GS.darknessTimer>0)GS.darknessTimer=Math.max(0,GS.darknessTimer-dt);
+  if(GS.riotActive){
+    // Check if all guards are at muscle's position
+    // handled server side
   }
-  if (GS.masterKeyTimer > 0) {
-    GS.masterKeyTimer = Math.max(0, GS.masterKeyTimer - dt);
-    GS.masterKeyActive = GS.masterKeyTimer > 0;
+  // Broadcast position ~50ms
+  if(ts-GS.lastSyncT>50){
+    socket.emit('player_move',{x:GS.myPos.x,y:GS.myPos.y,zone:GS.myPos.zoneId});
   }
-  if (GS.darknessTimer > 0) GS.darknessTimer = Math.max(0, GS.darknessTimer - dt);
-  if (GS.screenShake   > 0) GS.screenShake   = Math.max(0, GS.screenShake  - dt * 3);
-
-  // Broadcast my position every ~50ms
-  if (ts - GS.lastMoveSent > 50) {
-    socket.emit('player_move', {x: GS.myPos.x, y: GS.myPos.y, roomId: GS.myPos.roomId});
-    GS.lastMoveSent = ts;
-  }
-
-  // Resize check
-  const area = document.getElementById('map-area');
-  if (area && (W !== area.clientWidth || H !== area.clientHeight)) initCanvas();
-
-  draw();
-  drawMinimap();
+  // Canvas resize check
+  const area=document.getElementById('map-area');
+  if(area&&(W!==area.clientWidth||H!==area.clientHeight)){initCanvas();}
+  draw();drawMinimap();
   requestAnimationFrame(gameLoop);
 }
 
 // ══════════════════════════════════════════════════════
-//  TIMER
+//  MOVEMENT — WASD / Arrow keys
 // ══════════════════════════════════════════════════════
-function startTimer() {
-  GS.timerIv = setInterval(() => {
-    if (!GS.running) return;
-    GS.timeLeft--;
-    // Broadcast timer to all clients
-    socket.emit('timer_tick', { timeLeft: GS.timeLeft });
-    updateTimerDisplay();
-    if (GS.timeLeft <= 0) triggerDefeat('timeout');
-    // Release arrested players at 1:00
-    if (GS.timeLeft === 60) {
-      socket.emit('game_over', { result: 'release_check' });
+const BASE_SPD=110;
+const keys={};
+window.addEventListener('keydown',e=>{
+  keys[e.key]=true;
+  if(e.key==='e'||e.key==='E'||e.key===' ')beginSteal();
+  if(e.key==='q'||e.key==='Q')useToken();
+  e.preventDefault&&['ArrowUp','ArrowDown','ArrowLeft','ArrowRight',' '].includes(e.key)&&e.preventDefault();
+});
+window.addEventListener('keyup',e=>{
+  keys[e.key]=false;
+  if(e.key==='e'||e.key==='E'||e.key===' ')cancelSteal();
+});
+
+function movePlayer(dt){
+  let spd=BASE_SPD*mapScale;
+  if(G.myCharId==='acrobat')spd*=1.25;
+  if(GS.speedBoost>0)spd*=1.5;
+  // Weight penalty (not muscle)
+  if(G.myCharId!=='muscle'){
+    const hasH=GS.myInventory.some(i=>i&&i.weight==='heavy');
+    const hasM=GS.myInventory.some(i=>i&&i.weight==='medium');
+    if(hasH)spd*=.7;else if(hasM)spd*=.9;
+  }
+  let dx=0,dy=0;
+  if(keys['ArrowLeft']||keys['a']||keys['A'])dx=-1;
+  if(keys['ArrowRight']||keys['d']||keys['D'])dx=1;
+  if(keys['ArrowUp']||keys['w']||keys['W'])dy=-1;
+  if(keys['ArrowDown']||keys['s']||keys['S'])dy=1;
+  if(dx!==0&&dy!==0){dx*=0.707;dy*=0.707;}
+  GS.myPos.vx=dx*spd;GS.myPos.vy=dy*spd;
+
+  let nx=GS.myPos.x+GS.myPos.vx*dt;
+  let ny=GS.myPos.y+GS.myPos.vy*dt;
+
+  // Clamp to map bounds
+  const gridW=14,gridH=15;
+  const minX=mapOffX,maxX=mapOffX+gridW*TILE*mapScale;
+  const minY=mapOffY,maxY=mapOffY+gridH*TILE*mapScale;
+  nx=Math.max(minX+8,Math.min(maxX-8,nx));
+  ny=Math.max(minY+8,Math.min(maxY-8,ny));
+
+  // Zone access check — block movement into inaccessible rooms
+  const targetZone=getZoneAt(nx,ny);
+  if(targetZone&&targetZone.type==='room'&&!canIAccessZone(targetZone.id)){
+    // Try sliding along wall
+    const zx=getZoneAt(nx,GS.myPos.y);
+    const zy=getZoneAt(GS.myPos.x,ny);
+    if(!zx||zx.type!=='room'||canIAccessZone(zx.id))nx=nx;
+    else nx=GS.myPos.x;
+    if(!zy||zy.type!=='room'||canIAccessZone(zy.id))ny=ny;
+    else ny=GS.myPos.y;
+  }
+
+  GS.myPos.x=nx;GS.myPos.y=ny;
+  const newZone=getZoneAt(nx,ny);
+  if(newZone){
+    const oldZone=GS.myPos.zoneId;
+    GS.myPos.zoneId=newZone.id;
+    if(oldZone!==newZone.id){
+      // Cancel steal if moved out
+      cancelSteal();
+      document.getElementById('hud-room').textContent=newZone.label;
+      checkHackerCCTV();
     }
-  }, 1000);
-}
-
-function updateTimerDisplay() {
-  const m   = Math.floor(GS.timeLeft / 60);
-  const s   = String(GS.timeLeft % 60).padStart(2, '0');
-  const el  = document.getElementById('hud-timer');
-  el.textContent = `${m}:${s}`;
-  el.classList.toggle('danger', GS.timeLeft <= 60);
-
-  // Release arrested player at 1:00 remaining (non-permanent)
-  if (GS.timeLeft === 60 && GS.arrested && !GS.arrestPermanent) {
-    releaseFromArrest();
   }
 }
 
-// ══════════════════════════════════════════════════════
-//  MOVEMENT
-// ══════════════════════════════════════════════════════
-const BASE_SPD = 95;
-let joyActive = false, joyDelta = {x:0, y:0};
+function canIAccessZone(zoneId){
+  if(zoneId==='loading')return true; // everyone can deposit
+  if(GS.masterKeyActive)return true;
+  if(GS.masterKeyZones.has(zoneId))return true;
+  const z=ZONES.find(x=>x.id===zoneId);
+  if(!z)return false;
+  if(z.type==='hall')return true;
+  if(z.roles.includes('all'))return true;
+  if(z.roles.length===0)return true;
+  if(z.roles.includes(G.myCharId))return true;
+  // Source can enter any room to unlock for teammate
+  if(G.myCharId==='source')return true;
+  return false;
+}
 
-function movePlayer(dt) {
-  let spd = BASE_SPD;
-  if (G.myCharId === 'acrobat') spd *= 1.25;
-  if (GS.speedBoost > 0)        spd *= 1.5;
-  if (G.myCharId !== 'muscle') {
-    const hasHeavy = GS.myInventory.some(i => i && i.weight === 'heavy');
-    const hasMed   = GS.myInventory.some(i => i && i.weight === 'medium');
-    if (hasHeavy) spd *= .7;
-    else if (hasMed) spd *= .9;
+function checkHackerCCTV(){
+  GS.hackingCCTV=(G.myCharId==='hacker'&&GS.myPos.zoneId==='cctv');
+}
+
+// ══════════════════════════════════════════════════════
+//  STEAL INTERACTION
+// ══════════════════════════════════════════════════════
+function checkZoneInteraction(){
+  const z=ZONES.find(x=>x.id===GS.myPos.zoneId);
+  if(!z)return;
+  const prompt=document.getElementById('game-prompt');
+  const myChar=CHARS.find(c=>c.id===G.myCharId);
+
+  // Loading docks — deposit
+  if(z.isExit&&GS.myInventory.length>0){
+    prompt.textContent='Hold E to deposit loot into van 🚐';
+    prompt.classList.add('show');prompt.classList.remove('deny');
+    return;
   }
-  if (joyActive) { GS.myPos.vx = joyDelta.x * spd; GS.myPos.vy = joyDelta.y * spd; }
-  else           { GS.myPos.vx *= .75; GS.myPos.vy *= .75; }
 
-  let nx = GS.myPos.x + GS.myPos.vx * dt;
-  let ny = GS.myPos.y + GS.myPos.vy * dt;
-
-  const totalW = 3 * RW + 2 * GAP, totalH = 4 * (RH + GAP);
-  const sx     = Math.max(MGNLEFT, (W - totalW) / 2);
-  nx = Math.max(sx + 8,       Math.min(sx + totalW - 8, nx));
-  ny = Math.max(MGNTOP + 8,   Math.min(MGNTOP + totalH - 8, ny));
-
-  GS.myPos.x = nx; GS.myPos.y = ny;
-  const room = getRoomAt(nx, ny);
-  if (room) {
-    GS.myPos.roomId = room.id;
-    document.getElementById('hud-room').textContent = room.name;
+  // Hall — drop loot (for teammates to pick up)
+  if(z.type==='hall'&&GS.myInventory.length>0&&G.myCharId!=='source'){
+    prompt.textContent='Hold E to drop loot in hall for Inside Source';
+    prompt.classList.add('show');prompt.classList.remove('deny');
+    return;
   }
-}
 
-// Keyboard support (desktop)
-const keysDown = {};
-window.addEventListener('keydown', e => { keysDown[e.key] = true;  updateKeyJoy(); });
-window.addEventListener('keyup',   e => { keysDown[e.key] = false; updateKeyJoy(); });
-function updateKeyJoy() {
-  const dx = (keysDown['ArrowRight'] || keysDown['d'] ? 1 : 0) - (keysDown['ArrowLeft'] || keysDown['a'] ? 1 : 0);
-  const dy = (keysDown['ArrowDown']  || keysDown['s'] ? 1 : 0) - (keysDown['ArrowUp']   || keysDown['w'] ? 1 : 0);
-  const len = Math.sqrt(dx * dx + dy * dy);
-  if (len > 0) { joyActive = true;  joyDelta = {x: dx / len, y: dy / len}; }
-  else         { joyActive = false; joyDelta = {x: 0, y: 0}; }
-}
-
-// ══════════════════════════════════════════════════════
-//  JOYSTICK (touch)
-// ══════════════════════════════════════════════════════
-function initJoystick() {
-  const zone = document.getElementById('joy-zone');
-  const knob = document.getElementById('joy-knob');
-  let originX = 0, originY = 0, touchId = null;
-
-  zone.addEventListener('touchstart', e => {
-    e.preventDefault();
-    const t = e.changedTouches[0];
-    touchId  = t.identifier;
-    const r  = zone.getBoundingClientRect();
-    originX  = r.left + r.width  / 2;
-    originY  = r.top  + r.height / 2;
-    joyActive = true;
-  }, {passive:false});
-
-  zone.addEventListener('touchmove', e => {
-    e.preventDefault();
-    const t = Array.from(e.changedTouches).find(x => x.identifier === touchId);
-    if (!t) return;
-    const dx  = t.clientX - originX;
-    const dy  = t.clientY - originY;
-    const len = Math.sqrt(dx * dx + dy * dy);
-    const max = 38;
-    const clampedLen = Math.min(len, max);
-    const nx  = len > 0 ? dx / len : 0;
-    const ny  = len > 0 ? dy / len : 0;
-    knob.style.transform = `translate(calc(-50% + ${nx * clampedLen}px), calc(-50% + ${ny * clampedLen}px))`;
-    joyDelta  = {x: nx, y: ny};
-    joyActive = len > 5;
-  }, {passive:false});
-
-  const endJoy = () => {
-    joyActive = false; joyDelta = {x:0, y:0}; touchId = null;
-    knob.style.transform = 'translate(-50%, -50%)';
-  };
-  zone.addEventListener('touchend',    endJoy);
-  zone.addEventListener('touchcancel', endJoy);
-}
-
-// ══════════════════════════════════════════════════════
-//  GUARD AI (host only)
-// ══════════════════════════════════════════════════════
-function guardSpeed() {
-  return {slow:28, standard:40, random:44, fast:56}[GS.aiMode] || 40;
-}
-
-function moveGuards(dt) {
-  GS.guards.forEach(g => {
-    if (g.knocked  > 0) { g.knocked   = Math.max(0, g.knocked   - dt); return; }
-    if (g.patrolWait > 0) { g.patrolWait = Math.max(0, g.patrolWait - dt); return; }
-    if (GS.aiMode === 'random' && Math.random() < .0005) {
-      g.stepIdx = (g.stepIdx + 1) % GUARD_PATHS[g.pathIdx].length;
+  // Source in room — grant access to nearest player
+  if(G.myCharId==='source'&&z.type==='room'&&z.id!=='vip'&&z.id!=='maint'&&z.id!=='loading'){
+    const nearest=findNearestTeammate();
+    if(nearest){
+      prompt.textContent=`E = Grant ${nearest.nick} access to ${z.label}`;
+      prompt.classList.add('show');prompt.classList.remove('deny');
+      return;
     }
-    const path  = GUARD_PATHS[g.pathIdx];
-    const tRoom = ROOMS.find(r => r.id === path[g.stepIdx]);
-    if (!tRoom) return;
-    const tc   = roomCenter(tRoom);
-    const dx   = tc.x - g.x, dy = tc.y - g.y, dist = Math.sqrt(dx * dx + dy * dy);
-    const spd  = guardSpeed();
-    if (dist < 5) {
-      g.stepIdx   = (g.stepIdx + 1) % path.length;
-      g.roomId    = path[g.stepIdx];
-      g.patrolWait = g.alertTimer > 0 ? .2 : .8;
-    } else {
-      g.x += dx / dist * spd * dt;
-      g.y += dy / dist * spd * dt;
+  }
+
+  // Check loot
+  const loots=(GS.zoneLoot[z.id]||[]).filter(l=>!l.stolen);
+  if(loots.length===0){prompt.classList.remove('show','deny');return;}
+
+  // Driver can't steal from rooms
+  if(G.myCharId==='driver'&&z.type==='room'){
+    prompt.textContent='🚫 Driver cannot enter museum rooms';
+    prompt.classList.add('show','deny');return;
+  }
+
+  if(!canIAccessZone(z.id)){
+    prompt.textContent='🚫 No access — wrong role';
+    prompt.classList.add('show','deny');return;
+  }
+
+  const loot=loots[0];
+  // Acrobat/Source restrictions
+  if(G.myCharId==='acrobat'&&loot.weight!=='light'){
+    prompt.textContent=`Acrobat can only carry light loot`;
+    prompt.classList.add('show');prompt.classList.remove('deny');return;
+  }
+  if(G.myCharId==='source'&&z.id!=='vip'){
+    prompt.textContent=`Inside Source can only steal from VIP Lounge`;
+    prompt.classList.add('show','deny');return;
+  }
+
+  // Inventory limit
+  const maxInv=G.myCharId==='hacker'?1:G.myCharId==='driver'?99:4;
+  if(GS.myInventory.length>=maxInv){
+    prompt.textContent=`Inventory full — go to Loading Docks`;
+    prompt.classList.add('show');prompt.classList.remove('deny');return;
+  }
+
+  // Hacker server room special
+  if(G.myCharId==='hacker'&&z.id==='server'&&loot.hackOnly){
+    prompt.textContent=`Hold E to hack ${loot.icon} ${loot.name} — ${fmt(loot.val)}`;
+    prompt.classList.add('show');prompt.classList.remove('deny');
+    GS.stealTarget=loot;return;
+  }
+
+  const stealSec=loot.weight==='heavy'?6:loot.weight==='medium'?4.5:3;
+  const techieMulti=G.myCharId==='techie'?2:1;
+  const actualSec=stealSec*techieMulti;
+  prompt.textContent=`Hold E — Steal ${loot.icon} ${loot.name} ${fmt(loot.val)} (${actualSec}s)`;
+  prompt.classList.add('show');prompt.classList.remove('deny');
+  GS.stealTarget=loot;
+}
+
+function beginSteal(){
+  if(GS.arrested||GS.confrontActive||GS.stealHeld)return;
+  const z=ZONES.find(x=>x.id===GS.myPos.zoneId);
+  if(!z)return;
+
+  // Deposit
+  if(z.isExit&&GS.myInventory.length>0){
+    doDeposit();return;
+  }
+
+  // Drop in hall
+  if(z.type==='hall'&&GS.myInventory.length>0&&G.myCharId!=='source'){
+    doDropInHall();return;
+  }
+
+  // Source grants access
+  if(G.myCharId==='source'&&z.type==='room'&&!['vip','maint','loading'].includes(z.id)){
+    const nearest=findNearestTeammate();
+    if(nearest){
+      socket.emit('source_grant_access',{toId:nearest.id,zone:z.id});
+      notif(`🔑 Granted ${nearest.nick} access to ${z.label}`,'good');
     }
-    if (g.alertTimer > 0) g.alertTimer = Math.max(0, g.alertTimer - dt);
+    return;
+  }
+
+  if(!GS.stealTarget)return;
+
+  GS.stealHeld=true;
+  const loot=GS.stealTarget;
+  const stealSec=loot.weight==='heavy'?6:loot.weight==='medium'?4.5:3;
+  const techieMulti=G.myCharId==='techie'?2:1;
+  let duration=(GS.overdrive>0?0:stealSec*techieMulti)*1000;
+  if(duration===0){doSteal(loot);return;}
+
+  const startT=Date.now();
+  const barWrap=document.getElementById('steal-bar-wrap');
+  const barFill=document.getElementById('steal-bar-fill');
+  barWrap.classList.add('show');
+
+  GS.stealIv=setInterval(()=>{
+    if(!GS.stealHeld||!GS.running){cancelSteal();return;}
+    GS.stealProgress=(Date.now()-startT)/duration;
+    barFill.style.width=(GS.stealProgress*100)+'%';
+    if(GS.stealProgress>=1){cancelSteal();doSteal(loot);}
+  },50);
+}
+
+function cancelSteal(){
+  GS.stealHeld=false;GS.stealProgress=0;
+  if(GS.stealIv)clearInterval(GS.stealIv);
+  document.getElementById('steal-bar-wrap').classList.remove('show');
+  document.getElementById('steal-bar-fill').style.width='0%';
+}
+
+function doSteal(loot){
+  loot.stolen=true;
+  GS.myInventory.push({...loot});
+  // Sync to all
+  const z=ZONES.find(x=>x.id===GS.myPos.zoneId);
+  const idx=(GS.zoneLoot[GS.myPos.zoneId]||[]).indexOf(loot);
+  socket.emit('loot_stolen',{zoneId:GS.myPos.zoneId,lootIdx:idx});
+  // Hacker server room — instant personal
+  if(G.myCharId==='hacker'&&loot.hackOnly){
+    GS.myPersonal+=loot.val;
+    GS.myInventory.pop(); // doesn't go to inventory, direct haul
+    socket.emit('player_personal_update',{personal:GS.myPersonal});
+    notif(`💾 Hacked ${fmt(loot.val)} into personal haul!`,'good');
+    updateHUD();return;
+  }
+  // Muscle sound alert
+  if(G.myCharId==='muscle'&&G.isHost)checkSoundAlert();
+  notif(`Grabbed ${loot.icon} ${loot.name}!`,'good');
+  updateHUD();
+}
+
+function doDeposit(){
+  if(GS.myInventory.length===0)return;
+  const total=GS.myInventory.reduce((s,i)=>s+i.val,0);
+  GS.myPersonal+=total;
+  GS.myInventory=[];
+  socket.emit('loot_deposited',{amount:total});
+  notif(`💰 Deposited ${fmt(total)} into van!`,'good');
+  GS.vanLoot+=total; // optimistic; server confirms
+  updateHUD();
+}
+
+function doDropInHall(){
+  if(GS.myInventory.length===0)return;
+  const item=GS.myInventory.pop();
+  socket.emit('hall_drop',{x:GS.myPos.x,y:GS.myPos.y,val:item.val,icon:item.icon,weight:item.weight});
+  notif(`Dropped ${item.icon} in hall for Source`,'good');
+  updateHUD();
+}
+
+function checkHallDropPickup(){
+  if(G.myCharId!=='source'&&G.myCharId!=='driver')return;
+  const z=ZONES.find(x=>x.id===GS.myPos.zoneId);
+  if(!z)return;
+  GS.hallDrops.forEach(d=>{
+    if(d.pickedUp)return;
+    if(!isDropInZone(d,z))return;
+    const dx=d.x-GS.myPos.x,dy=d.y-GS.myPos.y;
+    if(Math.sqrt(dx*dx+dy*dy)<24*mapScale){
+      d.pickedUp=true;
+      GS.myInventory.push({name:'Hall Loot',val:d.val,icon:d.icon,weight:d.weight});
+      notif(`Picked up ${d.icon} from hall!`,'good');
+      updateHUD();
+    }
   });
 }
 
-function checkSoundAlert() {
-  const myRoomId = GS.myPos.roomId;
-  GS.guards.forEach(g => {
-    if (g.knocked > 0) return;
-    const dist = roomGraphDist(g.roomId, myRoomId);
-    if (dist <= 2) {
-      g.alertTimer = 8;
-      const pathIdx = GUARD_PATHS[g.pathIdx].indexOf(myRoomId);
-      if (pathIdx !== -1) g.stepIdx = pathIdx;
-    }
+function findNearestTeammate(){
+  let nearest=null,dist=Infinity;
+  G.players.forEach(p=>{
+    if(p.id===socket.id)return;
+    const op=GS.others[p.id];if(!op)return;
+    const dx=op.x-GS.myPos.x,dy=op.y-GS.myPos.y;
+    const d=Math.sqrt(dx*dx+dy*dy);
+    if(d<dist){dist=d;nearest=p;}
   });
-  showSoundBanner();
+  return dist<120*mapScale?nearest:null;
+}
+
+// ══════════════════════════════════════════════════════
+//  GUARD AI (host)
+// ══════════════════════════════════════════════════════
+function guardSpd(){return{slow:22,standard:36,random:40,fast:52}[GS.aiMode]||36;}
+
+function initGuards(){
+  GS.guards=[];
+  GUARD_PATHS.forEach((path,i)=>{
+    const startZ=ZONES.find(z=>z.id===path[0]);
+    const c=zoneCenterScreen(startZ);
+    GS.guards.push({pathIdx:i,stepIdx:0,x:c.x,y:c.y,zoneId:path[0],knocked:0,alertTimer:0,wait:0});
+  });
+}
+
+function moveGuards(dt){
+  GS.guards.forEach(g=>{
+    if(g.knocked>0){g.knocked=Math.max(0,g.knocked-dt);return;}
+    if(g.wait>0){g.wait=Math.max(0,g.wait-dt);return;}
+    if(GS.aiMode==='random'&&Math.random()<.001)g.stepIdx=(g.stepIdx+1)%GUARD_PATHS[g.pathIdx].length;
+    const path=GUARD_PATHS[g.pathIdx];
+    const tZone=ZONES.find(z=>z.id===path[g.stepIdx]);
+    if(!tZone)return;
+    const tc=zoneCenterScreen(tZone);
+    const dx=tc.x-g.x,dy=tc.y-g.y,dist=Math.sqrt(dx*dx+dy*dy);
+    const spd=guardSpd()*mapScale;
+    if(dist<6){
+      g.stepIdx=(g.stepIdx+1)%path.length;
+      g.zoneId=path[g.stepIdx];
+      g.wait=g.alertTimer>0?.15:.6;
+    }else{
+      g.x+=dx/dist*spd*dt;g.y+=dy/dist*spd*dt;
+    }
+    if(g.alertTimer>0)g.alertTimer=Math.max(0,g.alertTimer-dt);
+    // Update zone based on position
+    const gz=getZoneAt(g.x,g.y);
+    if(gz)g.zoneId=gz.id;
+  });
+}
+
+function checkSoundAlert(){
+  GS.guards.forEach(g=>{
+    if(g.knocked>0)return;
+    const d=zoneGraphDist(g.zoneId,GS.myPos.zoneId);
+    if(d<=2){g.alertTimer=8;}
+  });
+  const b=document.getElementById('sound-banner');
+  b.classList.remove('flash');void b.offsetWidth;b.classList.add('flash');
   GS.guardTriggers++;
 }
 
-function roomGraphDist(aId, bId) {
-  if (aId === bId) return 0;
-  const adj = {};
-  CORRIDORS.forEach(([x, y]) => {
-    if (!adj[x]) adj[x] = []; if (!adj[y]) adj[y] = [];
-    adj[x].push(y); adj[y].push(x);
+function zoneGraphDist(a,b){
+  if(a===b)return 0;
+  // Build adjacency from GUARD_PATHS
+  const adj={};
+  GUARD_PATHS.forEach(path=>{
+    path.forEach((zid,i)=>{
+      if(!adj[zid])adj[zid]=new Set();
+      if(i>0)adj[zid].add(path[i-1]);
+      if(i<path.length-1)adj[zid].add(path[i+1]);
+    });
   });
-  const visited = new Set([aId]), queue = [{id:aId, d:0}];
-  while (queue.length) {
-    const {id, d} = queue.shift();
-    for (const nb of (adj[id] || [])) {
-      if (nb === bId) return d + 1;
-      if (!visited.has(nb)) { visited.add(nb); queue.push({id:nb, d:d+1}); }
+  const vis=new Set([a]),q=[{id:a,d:0}];
+  while(q.length){
+    const {id,d}=q.shift();
+    for(const nb of(adj[id]||new Set())){
+      if(nb===b)return d+1;
+      if(!vis.has(nb)){vis.add(nb);q.push({id:nb,d:d+1});}
     }
   }
   return 99;
 }
 
-function showSoundBanner() {
-  const b = document.getElementById('sound-banner');
-  b.classList.remove('flash'); void b.offsetWidth; b.classList.add('flash');
-}
-
-// ══════════════════════════════════════════════════════
-//  GUARD COLLISION (host only)
-// ══════════════════════════════════════════════════════
-function checkGuardCollision() {
-  if (GS.arrested || GS.confrontActive) return;
-  for (const g of GS.guards) {
-    if (g.knocked > 0) continue;
-    // Darkness — guard can't see in dark room
-    if (GS.darknessRoom === g.roomId && GS.darknessTimer > 0) continue;
-    const dx = g.x - GS.myPos.x, dy = g.y - GS.myPos.y;
-    if (Math.sqrt(dx * dx + dy * dy) < 24) {
-      // Inside Source disguise
-      if (G.myCharId === 'source') { notif('Staff disguise holds — walk away!'); return; }
-      // Acrobat with smokebomb token
-      if (G.myCharId === 'acrobat' && !GS.tokenUsed) {
-        chooseSmokeEscape(); return;
+function checkGuardCollisions(){
+  if(GS.arrested||GS.confrontActive)return;
+  for(const g of GS.guards){
+    if(g.knocked>0)continue;
+    if(GS.darknessZone===g.zoneId&&GS.darknessTimer>0)continue;
+    // Only catch in same zone (room or hall)
+    if(g.zoneId!==GS.myPos.zoneId)continue;
+    const dx=g.x-GS.myPos.x,dy=g.y-GS.myPos.y;
+    const dist=Math.sqrt(dx*dx+dy*dy);
+    // In halls: need very close proximity
+    const currentZone=ZONES.find(z=>z.id===GS.myPos.zoneId);
+    const catchRadius=(currentZone&&currentZone.type==='hall')?18*mapScale:30*mapScale;
+    if(dist<catchRadius){
+      // Inside Source — only caught if carrying >$700k
+      if(G.myCharId==='source'){
+        const carried=GS.myInventory.reduce((s,i)=>s+i.val,0);
+        if(carried<=700000){notif('Staff disguise holds — walk away!');return;}
       }
-      triggerConfrontation(); return;
+      triggerConfrontation();return;
     }
   }
 }
@@ -1485,481 +1577,317 @@ function checkGuardCollision() {
 // ══════════════════════════════════════════════════════
 //  CONFRONTATION
 // ══════════════════════════════════════════════════════
-function triggerConfrontation() {
-  if (GS.confrontActive) return;
-  GS.confrontActive = true;
-  GS.confrontN      = 9;
-  document.getElementById('cf-overlay').classList.add('open');
-  document.getElementById('cf-count').textContent  = 9;
+function triggerConfrontation(){
+  if(GS.confrontActive)return;
+  GS.confrontActive=true;GS.confrontN=9;
+  document.getElementById('cf-count').textContent=9;
   document.getElementById('cf-count').classList.remove('urgent');
 
-  // Tell teammates
+  // Build buttons
+  const btns=document.getElementById('cf-btns');
+  const hasSmoke=G.myCharId==='acrobat'&&GS.smokebombUses>0;
+  btns.className='cf-btns'+(hasSmoke?' three':'');
+  btns.innerHTML=`
+    <button class="cf-btn btn-bribe" onclick="chooseBribe()"><div class="icon">💰</div><div>Bribe</div><div class="sub">+$500k target</div></button>
+    <button class="cf-btn btn-kill" onclick="chooseKill()"><div class="icon">👊</div><div>Take Down</div><div class="sub">−30 seconds</div></button>
+    ${hasSmoke?`<button class="cf-btn btn-smoke" onclick="chooseSmoke()"><div class="icon">💨</div><div>Smokebomb</div><div class="sub">${GS.smokebombUses} left · zero penalty</div></button>`:''}
+  `;
+
   socket.emit('confrontation_start');
-
-  GS.confrontIv = setInterval(() => {
+  document.getElementById('cf-overlay').classList.add('open');
+  GS.confrontIv=setInterval(()=>{
     GS.confrontN--;
-    const el = document.getElementById('cf-count');
-    el.textContent = GS.confrontN;
-    if (GS.confrontN <= 3) el.classList.add('urgent');
-    if (GS.confrontN <= 0) {
-      clearInterval(GS.confrontIv);
-      triggerArrest(GS.timeLeft <= 60);
-    }
-  }, 1000);
+    const el=document.getElementById('cf-count');
+    el.textContent=GS.confrontN;
+    if(GS.confrontN<=3)el.classList.add('urgent');
+    if(GS.confrontN<=0){clearInterval(GS.confrontIv);triggerArrest(GS.timeLeft<=60);}
+  },1000);
 }
 
-function chooseBribe() {
-  if (!GS.confrontActive) return;
-  clearInterval(GS.confrontIv);
-  GS.confrontActive = false;
+function chooseBribe(){
+  if(!GS.confrontActive)return;
+  clearInterval(GS.confrontIv);GS.confrontActive=false;
   document.getElementById('cf-overlay').classList.remove('open');
-  GS.targetLoot  += 500000;
-  GS.bribesCount ++;
-  GS.guardTriggers++;
-  socket.emit('confrontation_end', { outcome: 'bribe' });
-  notif('💸 Bribed the guard — target +$500k!', 'alert');
+  // Deduct from personal first, then van
+  const cost=500000;
+  if(GS.myPersonal>=cost){GS.myPersonal-=cost;}
+  else{const rem=cost-GS.myPersonal;GS.myPersonal=0;GS.vanLoot=Math.max(0,GS.vanLoot-rem);}
+  GS.targetLoot+=cost;GS.bribesCount++;GS.guardTriggers++;
+  socket.emit('confrontation_end',{outcome:'bribe'});
+  notif('💸 Bribed — target +$500k!','alert');
   updateHUD();
 }
 
-function chooseKill() {
-  if (!GS.confrontActive) return;
-  clearInterval(GS.confrontIv);
-  GS.confrontActive = false;
+function chooseKill(){
+  if(!GS.confrontActive)return;
+  clearInterval(GS.confrontIv);GS.confrontActive=false;
   document.getElementById('cf-overlay').classList.remove('open');
   GS.guardTriggers++;
-  GS.screenShake = .6;
-  socket.emit('confrontation_end', { outcome: 'kill' });
-  // Host deducts 30s; non-host does it on receipt of confrontation_resolved
-  if (G.isHost) {
-    GS.timeLeft = Math.max(0, GS.timeLeft - 30);
-    updateTimerDisplay();
-  }
-  notif('👊 Took down the guard — −30 seconds!', 'alert');
+  socket.emit('confrontation_end',{outcome:'kill'});
+  if(G.isHost){GS.timeLeft=Math.max(0,GS.timeLeft-30);updateTimerDisplay();}
+  notif('👊 Took down guard — −30s!','alert');
 }
 
-function triggerArrest(permanent) {
-  GS.confrontActive = false;
+function chooseSmoke(){
+  if(!GS.confrontActive||GS.smokebombUses<=0)return;
+  clearInterval(GS.confrontIv);GS.confrontActive=false;
   document.getElementById('cf-overlay').classList.remove('open');
-  GS.arrested        = true;
-  GS.arrestPermanent = permanent;
-  socket.emit('confrontation_end', { outcome: 'arrested' });
+  GS.smokebombUses--;
+  socket.emit('confrontation_end',{outcome:'smoke'});
+  notif(`💨 SMOKEBOMB — escaped! (${GS.smokebombUses} left)`,'good');
+}
 
-  // Drop inventory on floor
-  GS.myInventory.forEach((item, i) => {
-    if (item) {
-      const roomLoots = GS.roomLoots[GS.myPos.roomId];
-      if (roomLoots) { item.stolen = false; roomLoots.push(item); }
-    }
+function triggerArrest(permanent){
+  GS.confrontActive=false;
+  document.getElementById('cf-overlay').classList.remove('open');
+  GS.arrested=true;GS.arrestPermanent=permanent;
+  socket.emit('confrontation_end',{outcome:'arrested'});
+  // Drop inventory
+  GS.myInventory.forEach(item=>{
+    GS.hallDrops.push({x:GS.myPos.x,y:GS.myPos.y,val:item.val,icon:item.icon,weight:item.weight,id:'drop_'+Date.now(),pickedUp:false});
+    socket.emit('hall_drop',{x:GS.myPos.x,y:GS.myPos.y,val:item.val,icon:item.icon,weight:item.weight});
   });
-  GS.myInventory = [null, null, null, null];
-  renderInventory();
-
-  const nick = document.getElementById('arrest-nick');
-  const rel  = document.getElementById('arrest-release');
-  nick.textContent = 'You\'ve been arrested';
-  if (permanent) {
-    rel.innerHTML  = 'Permanent arrest — the crew is on their own';
-  } else {
-    rel.innerHTML  = 'Released at <span class="hl">1:00</span> remaining';
-  }
+  GS.myInventory=[];
+  document.getElementById('arrest-sub').textContent="You've been arrested";
+  document.getElementById('arrest-rel').innerHTML=permanent?'Permanent — the crew is on their own':'Released at <span class="hl">1:00</span> remaining';
   document.getElementById('arrest-overlay').classList.add('open');
-  notif('🔒 ARRESTED', 'alert');
+  notif('🔒 ARRESTED','alert');
 }
 
-function releaseFromArrest() {
-  GS.arrested = false;
+function releaseFromArrest(){
+  GS.arrested=false;
   document.getElementById('arrest-overlay').classList.remove('open');
-  notif('🔓 Released — back in action!');
-}
-
-function chooseSmokeEscape() {
-  clearInterval(GS.confrontIv);
-  GS.confrontActive = false;
-  document.getElementById('cf-overlay').classList.remove('open');
-  GS.tokenUsed = true;
-  document.getElementById('token-btn').disabled = true;
-  document.getElementById('pwr-btn').classList.add('used');
-  socket.emit('token_used', { tokenId: 'acrobat', targetRoom: GS.myPos.roomId });
-  notif('💨 SMOKEBOMB — escaped with zero penalty!');
-}
-
-// ══════════════════════════════════════════════════════
-//  INTERACTION
-// ══════════════════════════════════════════════════════
-function checkInteractable() {
-  const myRoom  = ROOMS.find(r => r.id === GS.myPos.roomId);
-  const prompt  = document.getElementById('inter-prompt');
-  const denied  = document.getElementById('access-denied');
-  const actBtn  = document.getElementById('act-btn');
-  const actIcon = document.getElementById('act-icon');
-
-  // Dropoff at loading docks
-  if (GS.myPos.roomId === 'loading' && GS.myInventory.some(Boolean)) {
-    GS.interactTarget = {type:'dropoff'};
-    prompt.textContent = 'Hold ACT — Load loot into van 🚐';
-    prompt.classList.add('show'); denied.classList.remove('show');
-    actBtn.classList.add('lit'); actIcon.textContent = '🚐'; return;
-  }
-
-  const hasAccess  = !myRoom || myRoom.roles.includes(G.myCharId) || myRoom.roles.length === 0 || GS.masterKeyActive;
-  const canSteal   = G.myCharId !== 'driver';
-  const loots      = (GS.roomLoots[GS.myPos.roomId] || []).filter(l => !l.stolen);
-  const maxInv     = G.myCharId === 'hacker' ? 1 : 4;
-  const invCount   = GS.myInventory.filter(Boolean).length;
-
-  if (loots.length > 0 && canSteal) {
-    if (!hasAccess) {
-      denied.classList.add('show'); prompt.classList.remove('show');
-      actBtn.classList.remove('lit'); actIcon.textContent = '⚡';
-      GS.interactTarget = null; return;
-    }
-    if (invCount >= maxInv) {
-      prompt.textContent = 'Inventory full — drop off at Loading Docks';
-      prompt.classList.add('show'); denied.classList.remove('show');
-      actBtn.classList.remove('lit'); actIcon.textContent = '🎒';
-      GS.interactTarget = null; return;
-    }
-    const loot = loots[0];
-    if (G.myCharId === 'acrobat' && loot.weight !== 'light') {
-      prompt.textContent = `Acrobat can't carry ${loot.weight} loot`;
-      prompt.classList.add('show'); denied.classList.remove('show');
-      actBtn.classList.remove('lit'); GS.interactTarget = null; return;
-    }
-    if (G.myCharId === 'source' && loot.weight !== 'light') {
-      prompt.textContent = `Inside Source can only take light loot`;
-      prompt.classList.add('show'); denied.classList.remove('show');
-      actBtn.classList.remove('lit'); GS.interactTarget = null; return;
-    }
-    GS.interactTarget = loot;
-    prompt.textContent = `Hold ACT — Steal ${loot.icon} ${loot.name} ($${(loot.val / 1000).toFixed(0)}k)`;
-    prompt.classList.add('show'); denied.classList.remove('show');
-    actBtn.classList.add('lit'); actIcon.textContent = '🎒'; return;
-  }
-
-  denied.classList.remove('show'); prompt.classList.remove('show');
-  actBtn.classList.remove('lit'); actIcon.textContent = '⚡';
-  GS.interactTarget = null;
-}
-
-function actPress(e) {
-  if (e) e.preventDefault();
-  if (!GS.interactTarget || GS.arrested || GS.confrontActive) return;
-  GS.actionHeld = true;
-  const isDrop = GS.interactTarget.type === 'dropoff';
-  let stealTime = 20000;
-  if (G.myCharId === 'techie') stealTime = GS.overdrive > 0 ? 0 : 40000;
-  else if (G.myCharId === 'source') stealTime = GS.overdrive > 0 ? 0 : 10000;
-  else if (GS.overdrive > 0) stealTime = 0;
-  const duration = isDrop ? 2500 : stealTime;
-
-  if (duration === 0) {
-    // Instant (overdrive)
-    if (isDrop) doDropoff(); else { if (G.myCharId === 'muscle') checkSoundAlert(); doSteal(GS.interactTarget); }
-    return;
-  }
-
-  const startT  = Date.now();
-  const ring    = document.getElementById('prog-ring');
-  const actBtn  = document.getElementById('act-btn');
-  actBtn.classList.add('progressing');
-
-  GS.actionIv = setInterval(() => {
-    if (!GS.actionHeld || !GS.running) { clearActionProgress(); return; }
-    GS.actionProgress = (Date.now() - startT) / duration;
-    ring.style.background = `conic-gradient(var(--gold) ${GS.actionProgress * 360}deg, transparent 0deg)`;
-    if (GS.actionProgress >= 1) {
-      clearActionProgress();
-      if (isDrop) doDropoff();
-      else { if (G.myCharId === 'muscle') checkSoundAlert(); doSteal(GS.interactTarget); }
-    }
-  }, 50);
-}
-
-function actRelease() { GS.actionHeld = false; clearActionProgress(); }
-
-function clearActionProgress() {
-  GS.actionProgress = 0;
-  if (GS.actionIv) clearInterval(GS.actionIv);
-  const ring   = document.getElementById('prog-ring');
-  const actBtn = document.getElementById('act-btn');
-  if (ring)    ring.style.background = 'conic-gradient(var(--gold) 0%, transparent 0%)';
-  if (actBtn)  actBtn.classList.remove('progressing');
-}
-
-function doSteal(loot) {
-  loot.stolen = true;
-  const slot = GS.myInventory.indexOf(null);
-  if (slot === -1) return;
-  GS.myInventory[slot] = loot;
-  // Tell server — all clients will mark this loot stolen
-  socket.emit('loot_stolen', { roomId: GS.myPos.roomId, lootId: loot.id });
-  notif(`Grabbed ${loot.icon} ${loot.name}!`);
-  GS.guardTriggers++;
-  updateHUD();
-  renderInventory();
-}
-
-function doDropoff() {
-  const items = GS.myInventory.filter(Boolean);
-  if (!items.length) return;
-  const total = items.reduce((s, i) => s + i.val, 0);
-  GS.vanLoot      += total;
-  GS.myInventory   = [null, null, null, null];
-  socket.emit('loot_dropoff', { amount: total });
-  notif(`💰 Loaded ${fmt(total)} into van!`);
-  GS.screenShake = .4;
-  updateHUD();
-  renderInventory();
-  if (GS.vanLoot >= GS.targetLoot) setTimeout(triggerVictory, 400);
-}
-
-function renderInventory() {
-  const bar = document.getElementById('inv-bar');
-  const max = G.myCharId === 'hacker' ? 1 : 4;
-  bar.innerHTML = Array.from({length: max}, (_, i) => {
-    const item = GS.myInventory[i];
-    const wCls = item ? (item.weight === 'heavy' ? ' heavy-item' : item.weight === 'medium' ? ' medium-item' : ' filled') : '';
-    return `<div class="inv-slot${wCls}">${item ? `${item.icon}<div class="wt">${item.weight.substring(0, 3).toUpperCase()}</div>` : '+'}</div>`;
-  }).join('');
+  notif('🔓 Released — back in action!','good');
 }
 
 // ══════════════════════════════════════════════════════
 //  POWER TOKENS
 // ══════════════════════════════════════════════════════
-function useToken() {
-  if (GS.tokenUsed || !GS.running || GS.arrested) return;
-  GS.tokenUsed = true;
-  document.getElementById('token-btn').disabled = true;
-  document.getElementById('pwr-btn').classList.add('used');
+function useToken(){
+  if(GS.tokenUsed||!GS.running||GS.arrested)return;
+  // Acrobat's smoke is handled in confrontation, not here
+  if(G.myCharId==='acrobat'){notif('Smokebomb appears automatically in confrontation!');return;}
+  GS.tokenUsed=true;
+  document.getElementById('token-btn').disabled=true;
+  const tz=GS.myPos.zoneId;
 
-  const targetRoom = GS.myPos.roomId;
-
-  switch (G.myCharId) {
-
+  switch(G.myCharId){
     case 'hacker':
-      // Blackout — darkness in current room for 20s
-      GS.darknessRoom  = targetRoom;
-      GS.darknessTimer = 20;
+      GS.darknessZone=tz;GS.darknessTimer=20;
       document.getElementById('dark-overlay').classList.add('on');
-      setTimeout(() => document.getElementById('dark-overlay').classList.remove('on'), 20000);
-      socket.emit('token_used', { tokenId: 'hacker', targetRoom });
-      notif('🌑 BLACKOUT — room plunged into darkness for 20s!');
+      setTimeout(()=>document.getElementById('dark-overlay').classList.remove('on'),20000);
+      socket.emit('token_used',{tokenId:'hacker',targetZone:tz});
+      notif('🌑 BLACKOUT — 20s darkness!','good');
       break;
-
-    case 'acrobat':
-      // Smokebomb — auto-triggers on confrontation; if used manually, escape immediately
-      if (GS.confrontActive) {
-        chooseSmokeEscape();
-        GS.tokenUsed = true; // re-set since chooseSmokeEscape sets it too
-      } else {
-        socket.emit('token_used', { tokenId: 'acrobat', targetRoom });
-        notif('💨 SMOKEBOMB armed — auto-escapes next guard catch!');
-        // Don't mark as fully used yet — keep it armed
-        GS.tokenUsed = false;
-        GS.smokebombArmed = true;
-        document.getElementById('token-btn').style.borderColor = '#00E676';
-      }
-      break;
-
     case 'techie':
-      // Overdrive — instant actions for 15s
-      GS.overdrive = 15;
+      GS.overdrive=15;
       document.getElementById('overdrive-bar').classList.add('active');
-      socket.emit('token_used', { tokenId: 'techie', targetRoom });
-      notif('⚙️ OVERDRIVE — all actions instant for 15 seconds!');
-      setTimeout(() => {
-        document.getElementById('overdrive-bar').classList.remove('active');
-      }, 15000);
+      socket.emit('token_used',{tokenId:'techie',targetZone:tz});
+      notif('⚙️ OVERDRIVE — instant steals for 15s!','good');
       break;
-
     case 'muscle':
-      // Takedown — knock out nearest guard for 45s
-      if (GS.guards.length === 0) { GS.tokenUsed = false; return; }
-      let nearest = null, nearestDist = Infinity;
-      GS.guards.forEach(g => {
-        if (g.knocked > 0) return;
-        const dx = g.x - GS.myPos.x, dy = g.y - GS.myPos.y;
-        const d  = Math.sqrt(dx * dx + dy * dy);
-        if (d < nearestDist) { nearestDist = d; nearest = g; }
-      });
-      if (nearest) {
-        nearest.knocked = 45;
-        socket.emit('token_used', { tokenId: 'muscle', targetRoom });
-        notif('💥 TAKEDOWN — guard knocked out for 45 seconds!');
-      } else {
-        notif('No active guards nearby', 'alert');
-        GS.tokenUsed = false;
-        document.getElementById('token-btn').disabled = false;
-        document.getElementById('pwr-btn').classList.remove('used');
-      }
+      // Riot call — host executes
+      socket.emit('riot_call',{fromZone:tz});
+      if(G.isHost)executeRiotCall(tz);
+      notif('🚨 RIOT CALL — drawing all guards to you!','alert');
       break;
-
     case 'source':
-      // Master Key — unlock all rooms for 30s
-      GS.masterKeyActive = true;
-      GS.masterKeyTimer  = 30;
-      socket.emit('token_used', { tokenId: 'source', targetRoom });
-      notif('🔑 MASTER KEY — all rooms open for 30 seconds!');
-      setTimeout(() => {
-        GS.masterKeyActive = false;
-        notif('🔑 Master Key expired');
-      }, 30000);
+      // Master Key — grant nearest player access to any zone
+      GS.masterKeyActive=true;GS.masterKeyTimer=30;
+      socket.emit('token_used',{tokenId:'source',targetZone:tz});
+      notif('🔑 MASTER KEY — all rooms open 30s!','good');
       break;
-
     case 'driver':
-      // Adrenaline Dump — speed boost for all teammates
-      GS.speedBoost = 20;
-      socket.emit('token_used', { tokenId: 'driver', targetRoom });
-      notif('🚨 ADRENALINE DUMP — 50% speed boost for 20 seconds!');
+      GS.speedBoost=20;
+      socket.emit('token_used',{tokenId:'driver',targetZone:tz});
+      notif('🚨 ADRENALINE DUMP — 50% speed 20s!','good');
       break;
   }
 }
 
-// Apply a token effect received from server (teammate used it)
-function applyTokenEffect(tokenId, targetRoom, senderNick) {
-  switch (tokenId) {
-    case 'hacker':
-      GS.darknessRoom  = targetRoom;
-      GS.darknessTimer = 20;
-      notif(`🌑 ${senderNick} activated BLACKOUT in ${targetRoom}!`);
-      break;
-    case 'techie':
-      GS.overdrive = 15;
-      notif(`⚙️ ${senderNick} activated OVERDRIVE!`);
-      break;
-    case 'muscle':
-      // Host already knocked the guard; non-host just shows notif
-      notif(`💥 ${senderNick} knocked out a guard!`);
-      break;
-    case 'source':
-      GS.masterKeyActive = true;
-      GS.masterKeyTimer  = 30;
-      notif(`🔑 ${senderNick} used MASTER KEY — all rooms open!`);
-      break;
-    case 'driver':
-      GS.speedBoost = 20;
-      notif(`🚨 ${senderNick} activated ADRENALINE DUMP — +50% speed!`);
-      break;
-    case 'acrobat':
-      notif(`💨 ${senderNick} used SMOKEBOMB — escaped a guard!`);
-      break;
+function executeRiotCall(fromZone){
+  if(!G.isHost)return;
+  const muscleZ=ZONES.find(z=>z.id===fromZone);
+  if(!muscleZ)return;
+  const tc=zoneCenterScreen(muscleZ);
+  // Redirect all guards to muscle's zone
+  GS.guards.forEach(g=>{if(g.knocked<=0){g.alertTimer=30;}});
+  // After 5s, knock them all out and auto-resolve confrontations
+  setTimeout(()=>{
+    GS.guards.forEach(g=>g.knocked=15);
+    socket.emit('riot_resolved');
+    socket.emit('confrontation_auto_resolved');
+  },5000);
+}
+
+function applyTokenEffect(tokenId,targetZone,senderNick){
+  switch(tokenId){
+    case 'hacker':GS.darknessZone=targetZone;GS.darknessTimer=20;notif(`🌑 ${senderNick} activated BLACKOUT!`,'alert');break;
+    case 'techie':GS.overdrive=15;notif(`⚙️ ${senderNick} activated OVERDRIVE!`);break;
+    case 'source':GS.masterKeyActive=true;GS.masterKeyTimer=30;notif(`🔑 ${senderNick} used MASTER KEY!`,'good');break;
+    case 'driver':GS.speedBoost=20;notif(`🚨 ${senderNick} ADRENALINE DUMP — +50% speed!`,'good');break;
   }
 }
 
 // ══════════════════════════════════════════════════════
 //  HUD
 // ══════════════════════════════════════════════════════
-function fmt(v) {
-  if (v >= 1000000) return '$' + (v / 1000000).toFixed(1) + 'M';
-  return '$' + (v / 1000).toFixed(0) + 'k';
+function fmt(v){if(v>=1000000)return'$'+(v/1000000).toFixed(1)+'M';return'$'+(v/1000).toFixed(0)+'k';}
+
+function updateHUD(){
+  document.getElementById('hl-personal').textContent=fmt(GS.myPersonal+GS.myInventory.reduce((s,i)=>s+i.val,0));
+  document.getElementById('hl-van').textContent=fmt(GS.vanLoot);
+  document.getElementById('hl-tgt').textContent=fmt(GS.targetLoot);
+  const pct=Math.min(100,Math.round(GS.vanLoot/GS.targetLoot*100));
+  document.getElementById('lp-pct').textContent=pct+'%';
+  document.getElementById('lp-fill').style.width=pct+'%';
+  // Player HUD dots
+  document.getElementById('hud-players').innerHTML=G.players.map(p=>{
+    const c=CHARS.find(x=>x.id===p.charId);
+    const isMe=p.id===socket.id;
+    return`<div class="hud-p${isMe?' me':''}"><div class="hud-pdot" style="background:${p.color||'#888'}"></div><span>${p.nick.substring(0,5)}</span></div>`;
+  }).join('');
 }
 
-function updateHUD() {
-  document.getElementById('hl-van').textContent = fmt(GS.vanLoot);
-  document.getElementById('hl-tgt').textContent = fmt(GS.targetLoot);
-  const pct = Math.min(100, Math.round(GS.vanLoot / GS.targetLoot * 100));
-  document.getElementById('lp-pct').textContent  = pct + '%';
-  document.getElementById('lp-fill').style.width = pct + '%';
+// ══════════════════════════════════════════════════════
+//  TIMER
+// ══════════════════════════════════════════════════════
+function startTimer(){
+  GS.timerIv=setInterval(()=>{
+    if(!GS.running)return;
+    GS.timeLeft--;
+    socket.emit('timer_tick',{timeLeft:GS.timeLeft});
+    updateTimerDisplay();
+    if(GS.timeLeft<=0)triggerDefeat('timeout');
+    if(GS.timeLeft===60&&GS.arrested&&!GS.arrestPermanent)releaseFromArrest();
+  },1000);
+}
+function updateTimerDisplay(){
+  const m=Math.floor(GS.timeLeft/60),s=String(GS.timeLeft%60).padStart(2,'0');
+  const el=document.getElementById('hud-timer');
+  el.textContent=`${m}:${s}`;
+  el.classList.toggle('danger',GS.timeLeft<=60);
+  if(GS.timeLeft===60&&GS.arrested&&!GS.arrestPermanent)releaseFromArrest();
+}
 
-  // Player dots in HUD
-  const hudP = document.getElementById('hud-players');
-  hudP.innerHTML = G.players.map(p => {
-    const c   = CHARS.find(x => x.id === p.charId);
-    const isMe = p.id === socket.id;
-    return `<div class="hud-p${isMe ? ' me' : ''}">
-      <div class="hud-pdot" style="background:${p.color}"></div>
-      <span>${p.nick.substring(0, 6)}</span>
-    </div>`;
-  }).join('');
+// ══════════════════════════════════════════════════════
+//  BEGIN GAME (after all ready)
+// ══════════════════════════════════════════════════════
+function beginGame(){
+  GS.running=true;
+  const n=G.players.length,s=SCALE[Math.min(n,6)]||SCALE[3];
+  GS.targetLoot=s.target;GS.aiMode=s.ai;
+  // Seed loot
+  ZONES.forEach(z=>{GS.zoneLoot[z.id]=z.loot.map(l=>({...l,stolen:false}));});
+  // Start position — gallery center
+  const startZ=ZONES.find(z=>z.id==='h_mid');
+  const sc=zoneCenterScreen(startZ);
+  GS.myPos={zoneId:'h_mid',x:sc.x,y:sc.y,vx:0,vy:0};
+  // Others start positions
+  G.players.forEach(p=>{
+    if(p.id!==socket.id)GS.others[p.id]={x:sc.x+Math.random()*30-15,y:sc.y+Math.random()*30-15,zone:'h_mid'};
+  });
+  if(G.isHost)initGuards();
+  // Token button
+  const c=CHARS.find(x=>x.id===G.myCharId)||CHARS[0];
+  const tb=document.getElementById('token-btn');
+  tb.textContent=`⚡ ${c.token}`;
+  tb.disabled=G.myCharId==='acrobat'; // acrobat uses smoke in confrontation
+  // Driver sees van total
+  if(G.myCharId==='driver')document.getElementById('hl-total-wrap').style.display='block';
+  document.getElementById('hud-room').textContent='Mid Corridor';
+  updateHUD();
+  if(G.isHost)startTimer();
+  requestAnimationFrame(gameLoop);
+}
+
+function stopGame(){
+  GS.running=false;
+  if(GS.timerIv)clearInterval(GS.timerIv);
+  if(GS.confrontIv)clearInterval(GS.confrontIv);
+  if(GS.stealIv)clearInterval(GS.stealIv);
+  ['cf-overlay','arrest-overlay','end-overlay','brief-overlay'].forEach(id=>document.getElementById(id).classList.remove('open'));
 }
 
 // ══════════════════════════════════════════════════════
 //  ENDGAME
 // ══════════════════════════════════════════════════════
-function triggerVictory() {
-  if (!GS.running) return;
-  GS.running = false;
-  stopGame();
-  if (G.isHost) socket.emit('game_over', { result: 'victory' });
-
-  const pct   = Math.min(100, Math.round(GS.vanLoot / GS.targetLoot * 100));
-  const mLeft = Math.floor(GS.timeLeft / 60);
-  const sLeft = String(GS.timeLeft % 60).padStart(2, '0');
-
-  document.getElementById('end-icon').textContent  = '🚐';
-  document.getElementById('end-title').textContent = 'Heist Complete';
-  document.getElementById('end-sub').textContent   = 'The crew ghosted the floor';
-  document.getElementById('end-title').style.color = '#00B894';
-  document.getElementById('e-loot').textContent    = fmt(GS.vanLoot);
-  document.getElementById('e-target').textContent  = fmt(GS.targetLoot);
-  document.getElementById('e-time').textContent    = `${mLeft}:${sLeft}`;
-  document.getElementById('e-guards').textContent  = GS.guardTriggers;
-  document.getElementById('e-bribes').textContent  = GS.bribesCount;
-  document.getElementById('e-pbar').style.background = '#00B894';
-  document.getElementById('e-pbar').style.width   = pct + '%';
-  document.getElementById('e-loot').className     = 'good';
-
-  // Badges
-  const badges = [];
-  if (GS.guardTriggers === 0)   badges.push({icon:'👻', name:'Ghost'});
-  if (GS.bribesCount   === 0)   badges.push({icon:'🤝', name:'Clean Hands'});
-  if (GS.timeLeft      > 120)   badges.push({icon:'⚡', name:'Speed Demons'});
-  if (GS.vanLoot >= GS.targetLoot * 1.2) badges.push({icon:'💰', name:'Greedy Crew'});
-  document.getElementById('end-badges').innerHTML =
-    badges.map(b => `<div class="badge">${b.icon} ${b.name}</div>`).join('');
-
+function triggerVictory(){
+  if(!GS.running)return;
+  GS.running=false;stopGame();
+  if(G.isHost)socket.emit('game_over',{result:'victory'});
+  const pct=Math.min(100,Math.round(GS.vanLoot/GS.targetLoot*100));
+  const mL=Math.floor(GS.timeLeft/60),sL=String(GS.timeLeft%60).padStart(2,'0');
+  document.getElementById('end-icon').textContent='🚐';
+  document.getElementById('end-title').textContent='Heist Complete';
+  document.getElementById('end-title').style.color='#00B894';
+  document.getElementById('end-sub').textContent='The crew ghosted the floor';
+  document.getElementById('e-loot').textContent=fmt(GS.vanLoot);
+  document.getElementById('e-target').textContent=fmt(GS.targetLoot);
+  document.getElementById('e-time').textContent=`${mL}:${sL}`;
+  document.getElementById('e-guards').textContent=GS.guardTriggers;
+  document.getElementById('e-bribes').textContent=GS.bribesCount;
+  document.getElementById('e-pbar').style.background='#00B894';
+  document.getElementById('e-pbar').style.width=pct+'%';
+  document.getElementById('e-loot').className='good';
+  const badges=[];
+  if(GS.guardTriggers===0)badges.push('👻 Ghost');
+  if(GS.bribesCount===0)badges.push('🤝 Clean Hands');
+  if(GS.timeLeft>120)badges.push('⚡ Speed Demons');
+  if(GS.vanLoot>=GS.targetLoot*1.2)badges.push('💰 Greedy Crew');
+  document.getElementById('end-badges').innerHTML=badges.map(b=>`<div class="badge">${b}</div>`).join('');
+  renderEndPlayerRows();
   document.getElementById('end-overlay').classList.add('open');
 }
-
-function triggerDefeat(reason) {
-  if (!GS.running) return;
-  GS.running = false;
-  stopGame();
-  if (G.isHost && reason !== 'total_arrest') socket.emit('game_over', { result: reason });
-
-  const pct   = Math.min(100, Math.round(GS.vanLoot / GS.targetLoot * 100));
-
-  const msgs = {
-    timeout:      {icon:'🚔', title:'Heist Failed',  sub:'Time expired — SWAT moved in'},
-    total_arrest: {icon:'🔒', title:'Crew Apprehended', sub:'Every operative detained'},
-  };
-  const m = msgs[reason] || msgs.timeout;
-
-  document.getElementById('end-icon').textContent  = m.icon;
-  document.getElementById('end-title').textContent = m.title;
-  document.getElementById('end-sub').textContent   = m.sub;
-  document.getElementById('end-title').style.color = '#D63031';
-  document.getElementById('e-loot').textContent    = fmt(GS.vanLoot);
-  document.getElementById('e-target').textContent  = fmt(GS.targetLoot);
-  document.getElementById('e-time').textContent    = '0:00';
-  document.getElementById('e-guards').textContent  = GS.guardTriggers;
-  document.getElementById('e-bribes').textContent  = GS.bribesCount;
-  document.getElementById('e-pbar').style.background = pct > 70 ? '#C9A030' : '#D63031';
-  document.getElementById('e-pbar').style.width   = pct + '%';
-  document.getElementById('e-loot').className     = 'bad';
-  document.getElementById('end-badges').innerHTML =
-    `<div class="badge">📊 ${pct}% secured</div>`;
-
+function triggerDefeat(reason){
+  if(!GS.running)return;
+  GS.running=false;stopGame();
+  if(G.isHost)socket.emit('game_over',{result:reason});
+  const pct=Math.min(100,Math.round(GS.vanLoot/GS.targetLoot*100));
+  const msgs={timeout:{icon:'🚔',title:'Heist Failed',sub:'Time expired — SWAT moved in'},total_arrest:{icon:'🔒',title:'Crew Apprehended',sub:'Every operative detained'}};
+  const m=msgs[reason]||msgs.timeout;
+  document.getElementById('end-icon').textContent=m.icon;
+  document.getElementById('end-title').textContent=m.title;
+  document.getElementById('end-title').style.color='#D63031';
+  document.getElementById('end-sub').textContent=m.sub;
+  document.getElementById('e-loot').textContent=fmt(GS.vanLoot);
+  document.getElementById('e-target').textContent=fmt(GS.targetLoot);
+  document.getElementById('e-time').textContent='0:00';
+  document.getElementById('e-guards').textContent=GS.guardTriggers;
+  document.getElementById('e-bribes').textContent=GS.bribesCount;
+  document.getElementById('e-pbar').style.background=pct>70?'#C9A030':'#D63031';
+  document.getElementById('e-pbar').style.width=pct+'%';
+  document.getElementById('e-loot').className='bad';
+  document.getElementById('end-badges').innerHTML=`<div class="badge">📊 ${pct}% secured</div>`;
+  renderEndPlayerRows();
   document.getElementById('end-overlay').classList.add('open');
 }
-
-function goLobbyFromEnd() {
-  stopGame();
-  G.myCharId = null;
-  show('lobby');
-  renderLobby();
+function renderEndPlayerRows(){
+  document.getElementById('end-player-rows').innerHTML=G.players.map(p=>{
+    const c=CHARS.find(x=>x.id===p.charId);
+    const isMe=p.id===socket.id;
+    return`<div class="end-p-row">
+      <div style="display:flex;align-items:center">
+        <div class="end-p-dot" style="background:${p.color}"></div>
+        <span style="color:${isMe?p.color:'var(--offwhite)'}">${p.nick}${isMe?' (you)':''}</span>
+        <span style="color:var(--muted);font-size:10px;margin-left:6px">${c?c.name:''}</span>
+      </div>
+      <span style="color:var(--gold)">${isMe?fmt(GS.myPersonal):'—'}</span>
+    </div>`;
+  }).join('');
 }
+function goLobbyFromEnd(){stopGame();G.myCharId=null;show('lobby');renderLobby();}
 
 // ══════════════════════════════════════════════════════
-//  NOTIFICATIONS
+//  NOTIF
 // ══════════════════════════════════════════════════════
-let notifTimer = null;
-function notif(msg, type) {
-  const el = document.getElementById('notif');
-  el.textContent = msg;
-  el.className   = 'notif show' + (type === 'alert' ? ' alert' : '');
-  if (notifTimer) clearTimeout(notifTimer);
-  notifTimer = setTimeout(() => el.classList.remove('show'), 2800);
+let notifT=null;
+function notif(msg,type){
+  const el=document.getElementById('notif');
+  el.textContent=msg;
+  el.className='notif show'+(type==='alert'?' alert':type==='good'?' good':'');
+  if(notifT)clearTimeout(notifT);
+  notifT=setTimeout(()=>el.classList.remove('show'),2800);
 }
 </script>
 </body>
