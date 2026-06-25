@@ -7,46 +7,61 @@ const app = express();
 const server = http.createServer(app);
 const io = new Server(server);
 
-// Serve the game files
 app.use(express.static(path.join(__dirname, 'public')));
 
-// Store active rooms
 const rooms = {};
+
+function rndCode() {
+  const chars = 'ABCDEFGHJKLMNPQRSTUVWXYZ';
+  return Array.from({length:4}, () => chars[Math.floor(Math.random()*chars.length)]).join('');
+}
+
+const PLAYER_COLORS = ['#F5C842','#00C8FF','#00E676','#FF6B35','#B388FF','#FF4757'];
 
 io.on('connection', (socket) => {
 
-  // Player creates a room
+  // ── LOBBY ──────────────────────────────────────────
+
   socket.on('create_room', ({ nick }) => {
-    const code = Math.random().toString(36).substring(2,6).toUpperCase();
+    const code = rndCode();
     rooms[code] = {
       code,
-      players: [{ id: socket.id, nick, charId: null, locked: false, color: '#F5C842', isHost: true }],
+      players: [{
+        id: socket.id, nick,
+        charId: null, style: 0,
+        locked: false, isHost: true,
+        color: PLAYER_COLORS[0],
+        briefReady: false,
+        personal: 0,
+      }],
       started: false,
-      gameState: null,
+      briefReadyCount: 0,
+      vanLoot: 0,
     };
     socket.join(code);
     socket.roomCode = code;
     io.to(code).emit('room_update', rooms[code]);
   });
 
-  // Player joins a room
   socket.on('join_room', ({ code, nick }) => {
     const room = rooms[code];
-    if (!room) { socket.emit('error', 'Room not found'); return; }
-    if (room.started) { socket.emit('error', 'Game already started'); return; }
+    if (!room)          { socket.emit('error', 'Room not found');    return; }
+    if (room.started)   { socket.emit('error', 'Game already started'); return; }
     if (room.players.length >= 6) { socket.emit('error', 'Room is full'); return; }
-
-    const colors = ['#00C8FF','#00E676','#FFB300','#FF6B35','#B388FF','#FF4757'];
-    const usedColors = room.players.map(p => p.color);
-    const color = colors.find(c => !usedColors.includes(c)) || '#EDE8DC';
-
-    room.players.push({ id: socket.id, nick, charId: null, locked: false, color, isHost: false });
+    const color = PLAYER_COLORS[room.players.length] || '#EDE8DC';
+    room.players.push({
+      id: socket.id, nick,
+      charId: null, style: 0,
+      locked: false, isHost: false,
+      color,
+      briefReady: false,
+      personal: 0,
+    });
     socket.join(code);
     socket.roomCode = code;
     io.to(code).emit('room_update', room);
   });
 
-  // Player selects a character
   socket.on('select_char', ({ charId, style }) => {
     const room = rooms[socket.roomCode];
     if (!room) return;
@@ -55,85 +70,162 @@ io.on('connection', (socket) => {
     const taken = room.players.find(p => p.id !== socket.id && p.charId === charId);
     if (taken) { socket.emit('char_taken', charId); return; }
     player.charId = charId;
-    player.style = style || 0;
+    player.style  = style || 0;
     player.locked = true;
     io.to(socket.roomCode).emit('room_update', room);
   });
 
-  // Host starts the game
   socket.on('start_game', () => {
     const room = rooms[socket.roomCode];
     if (!room) return;
     const host = room.players.find(p => p.isHost);
     if (host?.id !== socket.id) return;
     if (room.players.length < 3) return;
+    const allLocked = room.players.every(p => p.locked);
+    if (!allLocked) return;
     room.started = true;
+    room.briefReadyCount = 0;
+    room.players.forEach(p => p.briefReady = false);
     io.to(socket.roomCode).emit('game_start', room);
   });
 
-  // Player moved
-  socket.on('player_move', ({ x, y, roomId }) => {
-    socket.to(socket.roomCode).emit('other_player_move', { id: socket.id, x, y, roomId });
-  });
+  // ── BRIEFING READY ─────────────────────────────────
 
-  // Loot stolen
-  socket.on('loot_stolen', ({ roomId, lootId }) => {
+  socket.on('player_brief_ready', () => {
     const room = rooms[socket.roomCode];
     if (!room) return;
-    io.to(socket.roomCode).emit('loot_stolen', { roomId, lootId });
+    const player = room.players.find(p => p.id === socket.id);
+    if (!player || player.briefReady) return;
+    player.briefReady = true;
+    room.briefReadyCount = room.players.filter(p => p.briefReady).length;
+    io.to(socket.roomCode).emit('room_update', room);
+    if (room.briefReadyCount === room.players.length) {
+      io.to(socket.roomCode).emit('all_ready');
+    }
   });
 
-  // Loot dropped off at van
-  socket.on('loot_dropoff', ({ amount }) => {
+  // ── GAME EVENTS ────────────────────────────────────
+
+  socket.on('player_move', ({ x, y, zone }) => {
+    socket.to(socket.roomCode).emit('other_player_move', {
+      id: socket.id, x, y, zone,
+    });
+  });
+
+  socket.on('loot_stolen', ({ zoneId, lootIdx }) => {
+    io.to(socket.roomCode).emit('loot_stolen', { zoneId, lootIdx });
+  });
+
+  socket.on('hall_drop', ({ x, y, val, icon, weight }) => {
+    io.to(socket.roomCode).emit('hall_loot_dropped', {
+      x, y, val, icon, weight, byId: socket.id,
+    });
+  });
+
+  socket.on('loot_deposited', ({ amount }) => {
     const room = rooms[socket.roomCode];
     if (!room) return;
-    io.to(socket.roomCode).emit('loot_dropoff', { id: socket.id, amount });
+    room.vanLoot = (room.vanLoot || 0) + amount;
+    const player = room.players.find(p => p.id === socket.id);
+    if (player) player.personal = (player.personal || 0) + amount;
+    io.to(socket.roomCode).emit('loot_deposited', {
+      playerId: socket.id,
+      amount,
+      vanTotal: room.vanLoot,
+    });
   });
 
-  // Confrontation
+  socket.on('player_personal_update', ({ personal }) => {
+    const room = rooms[socket.roomCode];
+    if (!room) return;
+    const player = room.players.find(p => p.id === socket.id);
+    if (player) player.personal = personal;
+    io.to(socket.roomCode).emit('player_personal_update', {
+      playerId: socket.id, personal,
+    });
+  });
+
+  socket.on('guard_state', ({ guards }) => {
+    socket.to(socket.roomCode).emit('guard_update', { guards });
+  });
+
+  socket.on('timer_tick', ({ timeLeft }) => {
+    socket.to(socket.roomCode).emit('timer_sync', { timeLeft });
+  });
+
+  // ── CONFRONTATION ──────────────────────────────────
+
   socket.on('confrontation_start', () => {
     socket.to(socket.roomCode).emit('teammate_confronted', { id: socket.id });
   });
 
   socket.on('confrontation_end', ({ outcome }) => {
-    io.to(socket.roomCode).emit('confrontation_resolved', { id: socket.id, outcome });
+    io.to(socket.roomCode).emit('confrontation_resolved', {
+      id: socket.id, outcome,
+    });
   });
 
-  // Timer sync — host is the authority
-  socket.on('timer_tick', ({ timeLeft }) => {
-    socket.to(socket.roomCode).emit('timer_sync', { timeLeft });
+  socket.on('confrontation_auto_resolved', () => {
+    io.to(socket.roomCode).emit('confrontation_auto_resolved');
   });
 
-  // Guard state — host broadcasts
-  socket.on('guard_state', ({ guards }) => {
-    socket.to(socket.roomCode).emit('guard_update', { guards });
+  // ── TOKENS ─────────────────────────────────────────
+
+  socket.on('token_used', ({ tokenId, targetZone }) => {
+    socket.to(socket.roomCode).emit('token_activated', {
+      id: socket.id, tokenId, targetZone,
+    });
   });
 
-  // Power token used
-  socket.on('token_used', ({ tokenId, targetRoom }) => {
-    io.to(socket.roomCode).emit('token_activated', { id: socket.id, tokenId, targetRoom });
+  socket.on('riot_call', ({ fromZone }) => {
+    io.to(socket.roomCode).emit('riot_call', { fromZone, byId: socket.id });
   });
 
-  // Victory / defeat
+  socket.on('riot_resolved', () => {
+    io.to(socket.roomCode).emit('riot_resolved');
+  });
+
+  socket.on('source_grant_access', ({ toId, zone }) => {
+    // Tell the target player they now have access
+    io.to(toId).emit('master_key_grant', { toId, zone });
+    // Notify the room
+    socket.to(socket.roomCode).emit('token_activated', {
+      id: socket.id, tokenId: 'source', targetZone: zone,
+    });
+  });
+
+  // ── GAME OVER ──────────────────────────────────────
+
   socket.on('game_over', ({ result }) => {
-    io.to(socket.roomCode).emit('game_over', { result });
-  });
-
-  // Disconnect
-  socket.on('disconnect', () => {
-    const code = socket.roomCode;
-    if (!code || !rooms[code]) return;
-    rooms[code].players = rooms[code].players.filter(p => p.id !== socket.id);
-    if (rooms[code].players.length === 0) {
-      delete rooms[code];
-    } else {
-      if (!rooms[code].players.find(p => p.isHost)) {
-        rooms[code].players[0].isHost = true;
-      }
-      io.to(code).emit('room_update', rooms[code]);
+    const room = rooms[socket.roomCode];
+    if (!room) return;
+    // Only broadcast if host sends it (or result is genuine)
+    const player = room.players.find(p => p.id === socket.id);
+    if (player?.isHost || result === 'victory') {
+      io.to(socket.roomCode).emit('game_over', { result });
     }
   });
 
+  // ── DISCONNECT ─────────────────────────────────────
+
+  socket.on('disconnect', () => {
+    const code = socket.roomCode;
+    if (!code || !rooms[code]) return;
+    const room = rooms[code];
+    const leaving = room.players.find(p => p.id === socket.id);
+    room.players = room.players.filter(p => p.id !== socket.id);
+    if (room.players.length === 0) {
+      delete rooms[code];
+    } else {
+      if (!room.players.find(p => p.isHost)) {
+        room.players[0].isHost = true;
+      }
+      if (leaving) {
+        io.to(code).emit('player_disconnected', { nick: leaving.nick });
+      }
+      io.to(code).emit('room_update', room);
+    }
+  });
 });
 
 const PORT = process.env.PORT || 3000;
